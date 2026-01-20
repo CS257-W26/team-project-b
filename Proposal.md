@@ -12,9 +12,6 @@
 
 ## Feature 2: 
 
-* Person responsible:
-* User story:
-* Acceptance Criteria:
 
 ## Feature 3: 
 
