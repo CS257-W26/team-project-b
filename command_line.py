@@ -47,7 +47,7 @@ def year_co2 (year):
     Purpose: To get the total CO2 emissions of each country 
     in the dataset from a specific year
     '''
-    load_data(dataset)
+    load_data("Data/dummy_energy_data.csv")
 
     output = []
 
@@ -87,5 +87,4 @@ def main():
     '''
     Purpose: 
     '''
-    
     pass

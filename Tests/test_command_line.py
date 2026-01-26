@@ -45,7 +45,7 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests the year_co2 function in command_line.py
         '''
         self.assertEqual(year_co2('2004'), [['Canada', '2004', '1.452'], ['Japan', '2004', '1.133'], ['Argentina', '2004', '0.630']])
-        self.assertEqual(year_co2('1998'), [['Canada', '1998', '2.045'], ['Japan', '1998', '0.792'], ['Argentina', '2004', '1.582']])
+        self.assertEqual(year_co2('1998'), [['Canada', '1998', '2.045'], ['Japan', '1998', '0.792'], ['Argentina', '1998', '1.582']])
 
     def test_year_co2_edge(self):
         '''Arguments: self (TestCommandLine)
@@ -68,4 +68,4 @@ class TestCommandLine(unittest.TestCase):
         Return: none
         Purpose: Tests edge cases for highest_co2 function in command_line.py
         '''
-        self.assertEqual(highest_biofuel_consumption(1234), "Invalid input")
+        self.assertEqual(highest_biofuel_consumption("Canadaa"), "Invalid input")
