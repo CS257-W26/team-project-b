@@ -12,7 +12,7 @@ def load_data(dataset):
     '''
     Purpose: Load data for other functions in this file
     '''
-    with open("Data/dummy_data.csv", newline='') as file:
+    with open(dataset, newline='') as file:
         reader = csv.reader(file)
         for row in reader:
             data.append(row)
@@ -39,16 +39,12 @@ def average_co2(country):
     return sum/count
 
 
-<<<<<<< HEAD
-def year_co2(year):
-=======
 def year_co2 (year):
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and 
     total CO2 emissions from a specific year
     Purpose: To get the total CO2 emissions of each country 
     in the dataset from a specific year
->>>>>>> 39f2ac2 (Updated command_line.py)
     '''
     load_data
 
