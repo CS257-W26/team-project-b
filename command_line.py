@@ -12,7 +12,7 @@ def load_data(dataset):
     '''
     Purpose: Load data for other functions in this file
     '''
-    with open(dataset, newline='') as file:
+    with open("Data/dummy_data.csv", newline='') as file:
         reader = csv.reader(file)
         for row in reader:
             data.append(row)
@@ -62,4 +62,5 @@ def main():
     '''
     Purpose: 
     '''
+    load_data('Data/dummy_data.csv')
     pass
