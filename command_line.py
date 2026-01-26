@@ -12,6 +12,7 @@ def load_data(dataset):
     '''
     Purpose: Load data for other functions in this file
     '''
+    data.clear()
     with open(dataset, newline='') as file:
         reader = csv.reader(file)
         for row in reader:
