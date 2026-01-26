@@ -38,17 +38,12 @@ def average_co2(country):
         return 'Please input a valid country'
     return sum/count
 
-
-<<<<<<< HEAD
-def year_co2(year):
-=======
 def year_co2 (year):
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and 
     total CO2 emissions from a specific year
     Purpose: To get the total CO2 emissions of each country 
     in the dataset from a specific year
->>>>>>> 39f2ac2 (Updated command_line.py)
     '''
     load_data
 
@@ -69,16 +64,20 @@ def year_co2 (year):
 
 
 def highest_co2(country):
-    '''
-    Purpose: Return the highest co2 emissions for a country 
+    '''Argument: country (String)
     Return: int highest emissions
+    Purpose: Returns a single int representing the highest 
+    co2 emissions for a specific country 
     '''
-    emission = 0
-    for row in data:
-        if row[0] == country:
-            if float(row[2]) > emission:
-                emission = float(row[2])         
-    return emission
+    if type(country) is not str:
+        return "Invalid input"
+    else:
+        emission = 0
+        for row in data:
+            if row[0] == country:
+                if float(row[2]) > emission:
+                    emission = float(row[2])         
+        return emission
 
 
 def main():
