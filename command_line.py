@@ -51,7 +51,7 @@ def highest_co2 (country):
     Return: int highest emissions
     '''
     emission = 0
-    for row in load_data():
+    for row in data:
         if row[0] == country:
             if float(row[2]) > emission:
                 emission = float(row[2])         
