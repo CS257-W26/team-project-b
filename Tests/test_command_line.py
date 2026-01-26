@@ -24,8 +24,8 @@ class TestCommandLine (unittest.TestCase):
         Return: none
         Purpose: Tests the average_co2 function in command_line.py
         '''
-        self.assertEqual(average_co2('Canada'),2.22966667)
-        self.assertEqual(average_co2('Japan'),10.95900)
+        self.assertAlmostEqual(average_co2('Canada'),2.22966667)
+        self.assertAlmostEqual(average_co2('Japan'),10.95900)
 
     def test_average_co2_edge(self):
         '''Arguments: self (TestCommandLine)

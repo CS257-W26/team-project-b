@@ -12,6 +12,7 @@ def load_data(dataset):
     '''
     Purpose: Load data for other functions in this file
     '''
+    data = []
     with open(dataset, newline='') as file:
         reader = csv.reader(file)
         for row in reader:
@@ -36,7 +37,7 @@ def average_co2(country):
         return 'Please input a string for a country'
     if count == 0:
         return 'Please input a valid country'
-    return sum/count
+    return float (sum/count)
 
 
 def year_co2 (year):
@@ -81,5 +82,5 @@ def main():
     '''
     Purpose: 
     '''
-    load_data('Data/dummy_data.csv')
+    
     pass
