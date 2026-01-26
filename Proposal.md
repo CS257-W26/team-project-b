@@ -15,7 +15,7 @@ Look up top CO2 emission information about a specific country
 
 
 ## Feature 2: 
- Look up information about the average CO2 emission information of a country
+Look up information about the average CO2 emission information of a country
 
 * Person responsible:Bradley
 * User story: As a user interested in climate change, I can find the average emissions of a country to have a better understanding of the impacts the country has had on the environment on average
@@ -46,7 +46,6 @@ Terms of use: Creative Commons BY License
 Suggested citation: Hannah Ritchie, Pablo Rosado, and Max Roser (2023) - “CO₂ and Greenhouse Gas Emissions” Published online at OurWorldinData.org. Retrieved from: 'https://ourworldindata.org/co2-and-greenhouse-gas-emissions' [Online Resource]
 
 # Mock up
-https://drive.google.com/drive/folders/1tYh2Oo19U8HlL0kEmmlXHgTEIJEJ07hr?usp=drive_link
 
 # Data story
 
