@@ -6,6 +6,18 @@ import csv
 import sys
 import argparse
 
+data = []
+
+def load_data(dataset):
+    '''
+    Purpose: Load data for other functions in this file
+    '''
+    with open(dataset, newline='') as file:
+        reader = csv.reader (file)
+        for row in reader:
+            data.append(row)
+    return data
+
 def average_co2 (country):
     pass
 
@@ -23,11 +35,6 @@ def highest_co2 (country):
     '''
     pass
 
-def load_data():
-    '''
-    Purpose: Load data for other functions in this file
-    '''
-    pass
 
 def main ():
     '''
