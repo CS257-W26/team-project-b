@@ -4,7 +4,7 @@
 * Organizer: Beyonce
 * Gluer: Beyonce 
 * Researcher: Bradley
-* Ambassador: Bradley
+* Ambassador: Bradley 
 * Note-taker: Rimona
 
 ## Sprint 2 
