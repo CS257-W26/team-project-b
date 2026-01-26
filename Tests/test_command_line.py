@@ -1,5 +1,5 @@
 import unittest
-from command_line import average,year_co2,highest_biofuel_consumption,load_data,main
+from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data,main
 
 class TestCommandLine(unittest.TestCase):
     maxDiff = None
@@ -39,6 +39,14 @@ class TestCommandLine(unittest.TestCase):
         '''
         self.assertEqual(average(12,'Data/dummy_data.csv',2), 'Please input a string for a country')
         self.assertEqual(average('','Data/dummy_data.csv',2), 'Please input a valid country')
+
+    def test_ratio(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests the ratio function in command_line.py
+        '''
+        self.assertAlmostEqual(ratio('Canada'),0.460715567)
+        self.assertAlmostEqual(ratio('Japan'),0.555215345)
 
     def test_year_co2(self):
         '''Arguments: self (TestCommandLine)
