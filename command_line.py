@@ -38,6 +38,7 @@ def average_co2(country):
         return 'Please input a valid country'
     return sum/count
 
+
 def year_co2 (year):
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and 
@@ -84,4 +85,5 @@ def main():
     '''
     Purpose: 
     '''
+    load_data('Data/dummy_data.csv')
     pass

@@ -10,7 +10,7 @@ class TestCommandLine (unittest.TestCase):
         self.assertEqual(load_data('Data/dummy_data.csv'), [['country', 'year', 'cumulative_co2'], 
         ['Canada', '2004', '1.452'],
         ['Canada', '1998', '2.045'],
-        ['Canada', '2018', '3.192'],
+        ['Canada', '2018','3.192'],
         ['Japan', '2004', '1.133'],
         ['Japan', '1998', '0.792'],
         ['Japan', '2018', '9.034'],
