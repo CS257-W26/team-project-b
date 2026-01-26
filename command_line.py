@@ -84,7 +84,7 @@ def highest_biofuel_consumption(country):
                     biofuel = float(row[2])         
         return biofuel
     else:
-        print("Invalid input")
+        return "Invalid input"
         
 
 def main():
