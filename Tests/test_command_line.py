@@ -1,5 +1,5 @@
 import unittest
-from command_line import average_co2,year_co2,highest_co2,load_data,main
+from command_line import average_co2,year_co2,highest_biofuel_consumption,load_data,main
 
 class TestCommandLine (unittest.TestCase):
     def test_load_data(self):
@@ -7,6 +7,7 @@ class TestCommandLine (unittest.TestCase):
         Return: none
         Purpose: Tests load data with the dummy_data.csv file
         '''
+        self.assertEqual(load_data('Data/dummy_data_one_line.csv'),[['country', 'year', 'cumulative_co2']])
         self.assertEqual(load_data('Data/dummy_data.csv'), [['country', 'year', 'cumulative_co2'], 
         ['Canada', '2004', '1.452'],
         ['Canada', '1998', '2.045'],
@@ -56,12 +57,12 @@ class TestCommandLine (unittest.TestCase):
         Return: none
         Purpose: Tests highest_co2 function in command_line.py
         '''
-        self.assertEqual(highest_co2("Canada"), 3.192)
-        self.assertEqual(highest_co2("Japan"), 9.034)
+        self.assertEqual(highest_biofuel_consumption("Canada"), 3.192)
+        self.assertEqual(highest_biofuel_consumption("Japan"), 9.034)
 
-    def test_biofuel_consumption(edge):
+    def test_biofuel_consumption_edge(self):
         '''Arguments: self (TestCommandLine)
         Return: none
         Purpose: Tests edge cases for highest_co2 function in command_line.py
         '''
-        self.assertEqual(highest_co2(1234), "Invalid input")
+        self.assertEqual(highest_biofuel_consumption(1234), "Invalid input")
