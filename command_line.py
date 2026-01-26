@@ -39,11 +39,34 @@ def average_co2(country):
     return sum/count
 
 
+<<<<<<< HEAD
 def year_co2(year):
+=======
+def year_co2 (year):
+    '''Arguments: year (string)
+    Return: A list of lists (string) with each country and 
+    total CO2 emissions from a specific year
+    Purpose: To get the total CO2 emissions of each country 
+    in the dataset from a specific year
+>>>>>>> 39f2ac2 (Updated command_line.py)
     '''
-    
-    '''
-    pass
+    load_data
+
+    output = []
+
+    if type(year) is str:
+        for row in data:
+            country = row[0]
+            year_row = row[1]
+            co2 = row[2]
+            if year_row == (year) and co2 != "":
+                output.append([country, year_row, co2])
+    else:
+        return "Please input a valid year"
+    if len(year) != 4:
+        return "Please input a valid year"
+    return output
+
 
 def highest_co2(country):
     '''
