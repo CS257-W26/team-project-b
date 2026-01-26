@@ -19,7 +19,7 @@ def load_data(dataset):
             data.append(row)
     return data
 
-def average(country,dataset):
+def average(country,dataset,col):
     '''Arguments: country (string)
     Return: The average CO2 emissions of a country (float), 
     or a correction of how this function should work (string)
@@ -30,8 +30,8 @@ def average(country,dataset):
     count = 0
     if type(country) is str:
         for row in data:
-            if (row[0] == country) and (row[2] != ''):
-                sum += float(row[2])
+            if (row[0] == country) and (row[col] != ''):
+                sum += float(row[col])
                 count += 1
     else:
         return 'Please input a string for a country'
