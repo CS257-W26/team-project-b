@@ -19,7 +19,24 @@ def load_data(dataset):
     return data
 
 def average_co2 (country):
-    pass
+    '''Arguments: country (string)
+    Return: The average CO2 emissions of a country (float), 
+    or a correction of how this function should work (string)
+    Purpose: To get the average CO2 emissions of a country
+    '''
+    load_data
+    sum = 0
+    count = 0
+    if type(country) is str:
+        for row in data:
+            if row[0].equals(country):
+                sum += row[2]
+                count += 1
+    else:
+        return 'Please input a string for a country'
+    if count == 0:
+        return 'Please input a valid country'
+    return sum/count
 
 
 def year_co2 (year):
