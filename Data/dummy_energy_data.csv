@@ -1,0 +1,11 @@
+country,year,biofuel_consumption,c02_per_capita, 
+Canada,2004,1.452,42.47
+Canada,1998,2.045,30.90
+Canada,2018,3.192,10.20
+Japan,2004,1.133,4.359
+Japan,1998,0.792,24.132
+Japan,2018,9.034,45.32
+Argentina,2004,0.630,12.234
+Argentina,1998,1.582,20.111
+Argentina,2018,,,
+Argentina,2019,1.609,60.125

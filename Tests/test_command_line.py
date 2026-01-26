@@ -51,7 +51,7 @@ class TestCommandLine (unittest.TestCase):
         with self.assertRaises(TypeError):
             year_co2("")
 
-    def test_highest_co2(self):
+    def test_biofuel_consumption(self):
         '''Arguments: self (TestCommandLine)
         Return: none
         Purpose: Tests highest_co2 function in command_line.py
@@ -59,7 +59,7 @@ class TestCommandLine (unittest.TestCase):
         self.assertEqual(highest_co2("Canada"), 3.192)
         self.assertEqual(highest_co2("Japan"), 9.034)
 
-    def test_highest_co2(edge):
+    def test_biofuel_consumption(edge):
         '''Arguments: self (TestCommandLine)
         Return: none
         Purpose: Tests edge cases for highest_co2 function in command_line.py

@@ -64,7 +64,7 @@ def year_co2 (year):
     return output
 
 
-def highest_co2(country):
+def highest_biofuel_consumption(country):
     '''Argument: country (String)
     Return: int highest emissions
     Purpose: Returns a single int representing the highest 
@@ -73,12 +73,12 @@ def highest_co2(country):
     if type(country) is not str:
         return "Invalid input"
     else:
-        emission = 0
+        biofuel = 0
         for row in data:
             if row[0] == country:
                 if float(row[2]) > emission:
-                    emission = float(row[2])         
-        return emission
+                    biofuel = float(row[2])         
+        return biofuel
 
 
 def main():
