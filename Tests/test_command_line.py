@@ -7,7 +7,7 @@ class TestCommandLine (unittest.TestCase):
         Return: none
         Purpose: Tests load data with the dummy_data.csv file
         '''
-        self.assertEqual(load_data('Dummy/dummy_data.csv'), [['country', 'year', 'cumulative_co2'], 
+        self.assertEqual(load_data('Data/dummy_data.csv'), [['country', 'year', 'cumulative_co2'], 
         ['Canada', '2004', '1.452'],
         ['Canada', '1998', '2.045'],
         ['Canada', '2018', '3.192'],
