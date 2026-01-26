@@ -48,9 +48,14 @@ def year_co2(year):
 def highest_co2(country):
     '''
     Purpose: Return the highest co2 emissions for a country 
-    
+    Return: int highest emissions
     '''
-    pass
+    emission = 0
+    for row in data:
+        if row[0] == country:
+            if float(row[2]) > emission:
+                emission = float(row[2])         
+    return emission
 
 
 def main():
