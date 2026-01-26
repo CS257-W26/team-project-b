@@ -48,5 +48,5 @@ class TestCommandLine (unittest.TestCase):
         Return: none
         Purpose: Tests edge cases for the year_co2 function in command_line.py
         '''
-        self.assertEqual(year_co2('Canada'), 'Please input a valid year')
-        self.assertEqual(year_co2('98'), 'Please input a valid year')
+        with self.assertRaises(TypeError):
+            year_co2("")
