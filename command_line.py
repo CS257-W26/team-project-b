@@ -47,7 +47,7 @@ def year_co2 (year):
     Purpose: To get the total CO2 emissions of each country 
     in the dataset from a specific year
     '''
-    load_data
+    load_data(dataset)
 
     output = []
 
@@ -71,16 +71,17 @@ def highest_biofuel_consumption(country):
     Purpose: Returns a single int representing the highest 
     co2 emissions for a specific country 
     '''
-    if type(country) is not str:
-        return "Invalid input"
-    else:
-        biofuel = 0
-        for row in data:
+    
+    biofuel = 0
+    if type(country) is str:
+        for row in load_data("Data/dummy_energy_data.csv"):
             if row[0] == country:
                 if float(row[2]) > biofuel:
                     biofuel = float(row[2])         
         return biofuel
-
+    else:
+        print("Invalid input")
+        
 
 def main():
     '''
