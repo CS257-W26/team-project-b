@@ -12,7 +12,6 @@ def load_data(dataset):
     '''
     Purpose: Load data for other functions in this file
     '''
-    data = []
     with open(dataset, newline='') as file:
         reader = csv.reader(file)
         for row in reader:
@@ -77,7 +76,7 @@ def highest_biofuel_consumption(country):
         biofuel = 0
         for row in data:
             if row[0] == country:
-                if float(row[2]) > emission:
+                if float(row[2]) > biofuel:
                     biofuel = float(row[2])         
         return biofuel
 

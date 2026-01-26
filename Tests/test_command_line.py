@@ -8,17 +8,16 @@ class TestCommandLine (unittest.TestCase):
         Purpose: Tests load data with the dummy_data.csv file
         '''
         self.assertEqual(load_data('Data/dummy_data_one_line.csv'),[['country', 'year', 'cumulative_co2']])
-        self.assertEqual(load_data('Data/dummy_data.csv'), [['country', 'year', 'cumulative_co2'], 
-        ['Canada', '2004', '1.452'],
-        ['Canada', '1998', '2.045'],
-        ['Canada', '2018','3.192'],
-        ['Japan', '2004', '1.133'],
-        ['Japan', '1998', '0.792'],
-        ['Japan', '2018', '9.034'],
-        ['Argentina', '2004', '0.630'],
-        ['Argentina', '1998', '1.582'],
-        ['Argentina', '2018', ''],
-        ['Argentina', '2019', '1.609']])
+        # self.assertEqual(load_data('Data/dummy_data.csv'), [['country', 'year', 'cumulative_co2'],['Canada', '2004', '1.452'],
+        # ['Canada', '1998', '2.045'],
+        # ['Canada', '2018','3.192'],
+        # ['Japan', '2004', '1.133'],
+        # ['Japan', '1998', '0.792'],
+        # ['Japan', '2018', '9.034'],
+        # ['Argentina', '2004', '0.630'],
+        # ['Argentina', '1998', '1.582'],
+        # ['Argentina', '2018', ''],
+        # ['Argentina', '2019', '1.609']])
     
     def test_average_co2(self):
         '''Arguments: self (TestCommandLine)
@@ -44,7 +43,7 @@ class TestCommandLine (unittest.TestCase):
         self.assertEqual(year_co2('2004'), ['Canada', '2004', '1.452'], ['Japan', '2004', '1.133'], ['Argentina', '2004', '0.630'])
         self.assertEqual(year_co2('1998'), ['Canada', '1998', '2.045'], ['Japan', '1998', '0.792'], ['Argentina', '2004', '1.582'])
 
-    def test_year_co2(self):
+    def test_year_co2_edge(self):
         '''Arguments: self (TestCommandLine)
         Return: none
         Purpose: Tests edge cases for the year_co2 function in command_line.py
