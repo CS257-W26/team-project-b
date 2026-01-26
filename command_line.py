@@ -41,7 +41,7 @@ def average(country,dataset,col):
 
 def ratio(country1, country2):
     country1_avg = average(country1,'dummy_dataset.csv',2)
-    country2_avg = average(country2,'dummy_energy_dataset.csv',2)
+    country2_avg = average(country2,'dummy_dataset.csv',2)
 
 def year_co2 (year):
     '''Arguments: year (string)
