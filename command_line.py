@@ -80,7 +80,7 @@ def highest_biofuel_consumption(country):
     biofuel = 0
     if type(country) is str:
         for row in load_data("Data/dummy_energy_data.csv"):
-            if row[0] == country:
+            if (row[0] == country and row[2] != ''):
                 if float(row[2]) > biofuel:
                     biofuel = float(row[2])         
         return biofuel
