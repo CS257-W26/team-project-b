@@ -96,6 +96,8 @@ def main():
     '''
     args = sys.argv
 
+    if len(sys.argv) <= 1:
+
     if len(args) == 2 and args[1] == 'ratio':
         ratio (args[2])
     elif len(args) == 2 and args[1] == 'year_co2':
