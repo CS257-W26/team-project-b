@@ -5,6 +5,10 @@ python3 command_line.py --year_co2 "2004"
 
 python3 command_line.py --biofuel "Canada"
 
+# Usage Statement
+
+Usage: python3 command_line.py [options]
+
 # Dependecies
 
 unittest: The module unittest was used for the construction of tests
