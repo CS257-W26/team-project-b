@@ -1,5 +1,7 @@
 import unittest
+import sys
 from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data,main
+from io import StringIO
 
 class TestCommandLine(unittest.TestCase):
     maxDiff = None
@@ -78,3 +80,16 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests edge cases for highest_co2 function in command_line.py
         '''
         self.assertEqual(highest_biofuel_consumption(123), "Invalid input")
+    
+    def test_main(self):
+        '''Arguments: self (TestProductionCode)
+        Return value: None
+        Purpose: Tests whether the main function returns the correct value for the
+        specified function in command line arguments
+        '''
+        sys.argv = ["command_line.py", "--ratio", "Canada"]
+        sys.stdout = StringIO()
+        main()
+        output = sys.stdout.getvalue().strip()
+
+        self.assertEqual(output, 0.460715567) 

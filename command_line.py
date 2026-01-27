@@ -4,6 +4,7 @@ Purpose: Allows user to interact with data with the command line
 '''
 import csv
 import sys
+from io import StringIO
 import argparse
 
 data = []
@@ -73,7 +74,7 @@ def highest_biofuel_consumption(country):
     '''Argument: country (String)
     Return: int highest emissions
     Purpose: Returns a single int representing the highest 
-    co2 emissions for a specific country 
+    biofuel consumption of a specific country 
     '''
     
     biofuel = 0
@@ -88,7 +89,17 @@ def highest_biofuel_consumption(country):
         
 
 def main():
-    '''
+    ''' Arguments: none
+    Return value:
     Purpose: 
     '''
-    pass
+    sys.stdout = StringIO()
+
+    parser = argparse.ArgumentParser(
+        prog = 'command_line.py',
+        usage = 'Usage: python3 comand_line.py [options]'
+    )
+    parser.add_argument('--ratio', nargs = 1, help = 'returns ratio of avg co2_per_capita to energy_per_capita for an inputted country', type = ratio)
+    parser.add_argument('--year_co2', nargs = 1, help = 'returns lists of lists country, year, and total co2 emissions for an inputted year')
+    parser.add_argument('--biofuel', nargs = 1, help = 'returns an int representing highest biofuel consumption for inputted country')
+    
