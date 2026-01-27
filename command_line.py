@@ -88,7 +88,7 @@ def highest_biofuel_consumption(country):
         return biofuel
 
     return "Invalid input"
-
+  
 def main():
     '''Arguments: none
     Return value: none
@@ -96,14 +96,15 @@ def main():
     '''
     args = sys.argv
 
-    if len(args) == 2 and args[1] == 'ratio':
-        ratio (args[2])
-    elif len(args) == 2 and args[1] == 'year_co2':
-        year_co2(args[2])
-    elif len(args) == 2 and args[1] == 'biofuel':
-        highest_biofuel_consumption(args[2])
-    else: 
-        return 'Invalid inputs'
+    if len(args) == 3:
+        if args[1] == 'ratio':
+            return ratio(args[2])
+        elif args[1] == 'year_co2':
+            return year_co2(args[2])
+        elif args[1] == 'biofuel':
+            return highest_biofuel_consumption(args[2])
+        else: 
+            return 'Invalid inputs'
 
 if __name__ == "__main__":
     main()
