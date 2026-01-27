@@ -90,7 +90,7 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests edge cases for highest_co2 function in command_line.py
         '''
         self.assertEqual(highest_biofuel_consumption(123), "Invalid input")
-  
+
     def test_main(self):
         '''Arguments: self (TestProductionCode)
         Return value: None
