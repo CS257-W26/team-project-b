@@ -99,9 +99,9 @@ def main():
     if len(args) == 3:
         if args[1] == 'ratio':
             return ratio(args[2])
-        elif args[1] == 'year_co2':
+        if args[1] == 'year_co2':
             return year_co2(args[2])
-        elif args[1] == 'biofuel':
+        if args[1] == 'biofuel':
             return highest_biofuel_consumption(args[2])
     return 'Invalid inputs'
 

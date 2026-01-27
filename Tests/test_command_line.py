@@ -91,7 +91,7 @@ class TestCommandLine(unittest.TestCase):
         '''
         self.assertEqual(highest_biofuel_consumption(123), "Invalid input")
 
-    #We could not get our main to work well. 
+    #We could not get our main to work well.
     #We repeatedly got AssertionError: '' != 0.460715567 for our test results
     # def test_main(self):
     #     '''Arguments: self (TestProductionCode)
