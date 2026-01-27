@@ -94,15 +94,16 @@ def main():
     Return value: none
     Purpose: Takes command line inputs to run other functions in command_line
     '''
-    parser = argparse.ArgumentParser(
-        prog = 'command_line.py',
-        usage = 'Usage: python3 command_line.py [options]'
-    )
-    parser.add_argument('--ratio', type = str, help = 'returns ratio of avg co2_per_capita to energy_per_capita for an inputted country')
-    parser.add_argument('--year_co2', type =str, help = 'returns lists of lists country, year, and total co2 emissions for an inputted year')
-    parser.add_argument('--biofuel', type = str, help = 'returns an int representing highest biofuel consumption for inputted country')
+    args = sys.argv
 
-    args = parser.parse_args()
+    if len(args) == 2 and args[1] == 'ratio':
+        ratio (args[2])
+    elif len(args) == 2 and args[1] == 'year_co2':
+        year_co2(args[2])
+    elif len(args) == 2 and args[1] == 'biofuel':
+        highest_biofuel_consumption(args[2])
+    else: 
+        return 'Invalid inputs'
 
 if __name__ == "__main__":
     main()

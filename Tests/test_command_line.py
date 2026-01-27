@@ -97,7 +97,7 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests whether the main function returns the correct value for the
         specified function in command line arguments
         '''
-        sys.argv = ['command_line.py','--ratio','Canada']
+        sys.argv = ['command_line.py','ratio','Canada']
         sys.stdout = StringIO()
         main()
         output = sys.stdout.getvalue().strip()
