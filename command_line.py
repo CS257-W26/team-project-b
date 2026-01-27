@@ -4,8 +4,8 @@ Purpose: Allows user to interact with data with the command line
 '''
 import csv
 import sys
-from io import StringIO
-import argparse
+#from io import StringIO
+#import argparse
 
 data=[]
 
@@ -14,7 +14,7 @@ def load_data(dataset):
     Purpose: Load data for other functions in this file
     '''
     data.clear()
-    with open(dataset, newline='') as file:
+    with open(dataset, newline='', encoding='utf-8') as file:
         reader = csv.reader(file)
         for row in reader:
             data.append(row)
@@ -27,18 +27,18 @@ def average(country,dataset,col):
     Purpose: To get the average CO2 emissions of a country
     '''
     load_data(dataset)
-    sum = 0
+    total = 0
     count = 0
     if isinstance(country, str):
         for row in data:
             if (row[0] == country) and (row[col] != ''):
-                sum += float(row[col])
+                total += float(row[col])
                 count += 1
     else:
         return 'Please input a string for a country'
     if count == 0:
         return 'Please input a valid country'
-    return float (sum/count)
+    return float (total/count)
 
 def ratio(country):
     '''Arguments: country (year)
@@ -88,7 +88,7 @@ def highest_biofuel_consumption(country):
         return biofuel
 
     return "Invalid input"
-  
+
 def main():
     '''Arguments: none
     Return value: none
@@ -103,8 +103,7 @@ def main():
             return year_co2(args[2])
         elif args[1] == 'biofuel':
             return highest_biofuel_consumption(args[2])
-        else: 
-            return 'Invalid inputs'
+    return 'Invalid inputs'
 
 if __name__ == "__main__":
     main()

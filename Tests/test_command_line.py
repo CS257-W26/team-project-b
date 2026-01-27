@@ -1,8 +1,8 @@
 '''modules for testing basic_cl.py main function'''
-import sys
+#import sys
 import unittest
-from io import StringIO
-from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data,main
+#from io import StringIO
+from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data
 
 class TestCommandLine(unittest.TestCase):
     '''Arguments: unittest.TestCase
@@ -91,7 +91,8 @@ class TestCommandLine(unittest.TestCase):
         '''
         self.assertEqual(highest_biofuel_consumption(123), "Invalid input")
 
-    #We could not get our main to work well. We repeatedly got AssertionError: '' != 0.460715567 for our test results
+    #We could not get our main to work well. 
+    #We repeatedly got AssertionError: '' != 0.460715567 for our test results
     # def test_main(self):
     #     '''Arguments: self (TestProductionCode)
     #     Return value: None
