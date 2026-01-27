@@ -11,7 +11,6 @@ class TestCommandLine(unittest.TestCase):
         Return: none
         Purpose: Tests load data with the dummy_data.csv file
         '''
-        
         self.assertEqual(load_data('Data/dummy_data_one_line.csv'),[['country','year','cumulative_co2']])
         self.assertEqual(load_data('Data/dummy_data.csv'),[['country','year','cumulative_co2','co2_per_capita'],
         ['Canada','2004','1.452','12.345'],
@@ -24,7 +23,7 @@ class TestCommandLine(unittest.TestCase):
         ['Argentina','1998','1.582','9.87'],
         ['Argentina','2018','',''],
         ['Argentina','2019','1.609','10.23']])
-    
+
     def test_average(self):
         '''Arguments: self (TestCommandLine)
         Return: none
@@ -80,7 +79,7 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests edge cases for highest_co2 function in command_line.py
         '''
         self.assertEqual(highest_biofuel_consumption(123), "Invalid input")
-    
+  
     def test_main(self):
         '''Arguments: self (TestProductionCode)
         Return value: None
@@ -93,3 +92,6 @@ class TestCommandLine(unittest.TestCase):
         output = sys.stdout.getvalue().strip()
 
         self.assertEqual(output, 0.460715567)
+    
+    if __name__ == '__main__':
+        unittest.main()

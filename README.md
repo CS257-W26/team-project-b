@@ -7,4 +7,10 @@ python3 command_line.py --biofuel "Canada"
 
 # Dependecies
 
-unittest: The unittest
+unittest: The module unittest was used for the construction of tests
+
+sys: Sys module was used to allow access to command line arguments
+
+io:  The module io was used to handle input/output streams
+
+argparse: argparse module was used to create command lines 
