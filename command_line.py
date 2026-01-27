@@ -29,7 +29,7 @@ def average(country,dataset,col):
     load_data(dataset)
     sum = 0
     count = 0
-    if type(country) is str:
+    if isinstance(country, str):
         for row in data:
             if (row[0] == country) and (row[col] != ''):
                 sum += float(row[col])
@@ -41,6 +41,10 @@ def average(country,dataset,col):
     return float (sum/count)
 
 def ratio(country):
+    '''Arguments: country (year)
+    Return: A ratio (float) 
+    Purpose: Calculates the ratio for co2 and co2 per capita
+    '''
     avg_co2 = average(country,'Data/dummy_data.csv',3)
     avg_energy = average(country,'Data/dummy_energy_data.csv',3)
     return avg_co2/avg_energy
@@ -56,7 +60,7 @@ def year_co2 (year):
 
     output = []
 
-    if type(year) is str:
+    if isinstance(year, str):
         for row in data:
             country = row[0]
             year_row = row[1]
@@ -76,28 +80,30 @@ def highest_biofuel_consumption(country):
     Purpose: Returns a single int representing the highest
     biofuel consumption of a specific country
     '''
-    
     biofuel = 0
-    if type(country) is str:
+    if isinstance(country, str):
         for row in load_data("Data/dummy_energy_data.csv"):
-            if row[0] == country:
-                if float(row[2]) > biofuel:
-                    biofuel = float(row[2])
+            if (row[0] == country and row[2] != ''):
+                biofuel = max(biofuel, float(row[2]))
         return biofuel
-    else:
-        return "Invalid input"
 
+    return "Invalid input"
+  
 def main():
-    ''' Arguments: none
+    '''Arguments: none
     Return value: none
     Purpose: Takes command line inputs to run other functions in command_line
     '''
-    sys.stdout = StringIO()
+    args = sys.argv
 
-    parser = argparse.ArgumentParser(
-        prog = 'command_line.py',
-        usage = 'Usage: python3 comand_line.py [options]'
-    )
-    parser.add_argument('--ratio', help = 'returns ratio of avg co2_per_capita to energy_per_capita for an inputted country', type = ratio)
-    parser.add_argument('--year_co2', nargs = 1, help = 'returns lists of lists country, year, and total co2 emissions for an inputted year')
-    parser.add_argument('--biofuel', nargs = 1, help = 'returns an int representing highest biofuel consumption for inputted country')
+    if len(args) == 2 and args[1] == 'ratio':
+        ratio (args[2])
+    elif len(args) == 2 and args[1] == 'year_co2':
+        year_co2(args[2])
+    elif len(args) == 2 and args[1] == 'biofuel':
+        highest_biofuel_consumption(args[2])
+    else: 
+        return 'Invalid inputs'
+
+if __name__ == "__main__":
+    main()
