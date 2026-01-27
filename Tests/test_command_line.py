@@ -8,7 +8,7 @@ class TestCommandLine(unittest.TestCase):
     '''Arguments: unittest.TestCase
     Return value: none
     Purpose: Holds the tests for command_line.py
-    ''''
+    '''
 
     maxDiff = None
 
