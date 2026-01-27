@@ -1,13 +1,13 @@
-# Features
-
-Feature 1: As a user interested in climate change, I can look up individual countries' top biofuel consumption information so that I can form a more comprehensive view of the world.
-
 # Command Line Arguments
 python3 command_line.py --ratio "Japan"
 
 python3 command_line.py --year_co2 "2004"
 
 python3 command_line.py --biofuel "Canada"
+
+# Usage Statement
+
+Usage: python3 command_line.py [options]
 
 # Dependecies
 
