@@ -1,9 +1,15 @@
-import unittest
+'''modules for testing basic_cl.py main function'''
 import sys
-from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data,main
+import unittest
 from io import StringIO
+from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data,main
 
 class TestCommandLine(unittest.TestCase):
+    '''Arguments: unittest.TestCase
+    Return value: none
+    Purpose: Holds the tests for command_line.py
+    ''''
+
     maxDiff = None
 
     def test_load_data(self):
@@ -11,8 +17,10 @@ class TestCommandLine(unittest.TestCase):
         Return: none
         Purpose: Tests load data with the dummy_data.csv file
         '''
-        self.assertEqual(load_data('Data/dummy_data_one_line.csv'),[['country','year','cumulative_co2']])
-        self.assertEqual(load_data('Data/dummy_data.csv'),[['country','year','cumulative_co2','co2_per_capita'],
+        self.assertEqual(load_data('Data/dummy_data_one_line.csv'),
+        [['country','year','cumulative_co2']])
+        self.assertEqual(load_data('Data/dummy_data.csv'),
+        [['country','year','cumulative_co2','co2_per_capita'],
         ['Canada','2004','1.452','12.345'],
         ['Canada','1998','2.045','10.432'],
         ['Canada','2018','3.192','15.725'],
@@ -52,10 +60,13 @@ class TestCommandLine(unittest.TestCase):
     def test_year_co2(self):
         '''Arguments: self (TestCommandLine)
         Return: none
-        Purpose: Tests the year_co2 function in command_line.py
+        Purpose: Tests year_co2 function in command_line.py
         '''
-        self.assertEqual(year_co2('2004'),[['Canada','2004','1.452'],['Japan','2004','1.133'],['Argentina','2004','0.630']])
-        self.assertEqual(year_co2('1998'),[['Canada','1998','2.045'],['Japan','1998','0.792'],['Argentina','1998','1.582']])
+        self.assertEqual(year_co2('2004'),[['Canada','2004','1.452'],
+        ['Japan','2004','1.133'],['Argentina','2004','0.630']])
+
+        self.assertEqual(year_co2('1998'),[['Canada','1998','2.045'],
+        ['Japan','1998','0.792'],['Argentina','1998','1.582']])
 
     def test_year_co2_edge(self):
         '''Arguments: self (TestCommandLine)

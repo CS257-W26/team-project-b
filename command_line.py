@@ -88,7 +88,7 @@ def highest_biofuel_consumption(country):
         return biofuel
 
     return "Invalid input"
-        
+  
 def main():
     '''Arguments: none
     Return value: none
@@ -104,7 +104,5 @@ def main():
 
     args = parser.parse_args()
 
-
 if __name__ == "__main__":
-    main()
-
+    print(main())
