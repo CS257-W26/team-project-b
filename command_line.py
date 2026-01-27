@@ -86,7 +86,6 @@ def highest_biofuel_consumption(country):
         return biofuel
     else:
         return "Invalid input"
-        
 
 def main():
     ''' Arguments: none
@@ -102,4 +101,3 @@ def main():
     parser.add_argument('--ratio', help = 'returns ratio of avg co2_per_capita to energy_per_capita for an inputted country', type = ratio)
     parser.add_argument('--year_co2', nargs = 1, help = 'returns lists of lists country, year, and total co2 emissions for an inputted year')
     parser.add_argument('--biofuel', nargs = 1, help = 'returns an int representing highest biofuel consumption for inputted country')
-    
