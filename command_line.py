@@ -88,7 +88,7 @@ def highest_biofuel_consumption(country):
         return biofuel
 
     return "Invalid input"
-  
+
 def main():
     '''Arguments: none
     Return value: none
