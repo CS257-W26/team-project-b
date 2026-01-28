@@ -6,27 +6,26 @@ Our group plans to focus our project on SDG 13, Climate Action. Possible contrib
 # Features
 
 ## Feature 1:  
-Look up top CO2 emission information about a specific country 
+Look up top biofuel consumption information about a specific country 
 
 * Person responsible: Beyonce 
-* User story:  As a user interested in climate change, I can look up individual countries' top Co2 emission so that I can form a more comprehensive view of the world.
-
-* Acceptance Criteria: Given that I (the user) pick a country, I will receive an output of the highest co2 emission that is recorded.
+* User story:  As a user interested in climate change, I can look up individual countries' top biofuel consumption information so that I can form a more comprehensive view of the world.
+* Acceptance Criteria: Given that I (the user) pick Australia, I will receive an output of 190.864 (measured in terawatt-hours).
 
 
 ## Feature 2: 
-Look up information about the average CO2 emission information of a country
+Look up information about the ratio of average co2 per capita data to the average energy consumption per capita data of a country.
 
 * Person responsible:Bradley
-* User story: As a user interested in climate change, I can find the average emissions of a country to have a better understanding of the impacts the country has had on the environment on average
-* Acceptance Criteria: Given that a specific country is chosen, then we should calculate and output the average CO2 emissions of that country for all years in the data set.
+* User story: As a user interested in climate change, I can find the ratio of co2 per capita to energy consumption per capita of a country to know how much a country emits co2 compared to how much energy it uses on average.
+* Acceptance Criteria: Given that Canada is chosen, then we get a float value equal to the average of co2_per_capita.
 
 ## Feature 3:  
 Look up CO2 emissions of all countries for a specific year
 
 * Person responsible: Rimona
-* User story: As a user interested in climate change, I want to compare CO2 emissions between each country in the dataset in a specific year so that I can learn more about how they compare to one another.
-* Acceptance Criteria:
+* User story: As a user interested in climate change, I can compare CO2 emissions between each country in the dataset in a specific year so that I can learn more about how they compare to each other.
+* Acceptance Criteria: Given that the user chooses the year 2008, then they will get an output of lists with the country, year, and emissions for every row from 2008, such as |Canada, 2008, 1.672|, |Japan, 2008, 1.334|, and |Argentina, 2008, 1.029|.
 
 # Datasets Metadata
 Energy Dataset:
