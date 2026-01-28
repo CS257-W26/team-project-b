@@ -20,7 +20,7 @@ For subsequent sprints, we will continue with our original roles from the first 
 # Meetings
 
 ## Weekly Meeting
-Our team will meet every Saturday in person, 10-11am in CS Lab, which are scheduled meetings in Google Calendar 
+Our team will meet every Saturday in person, 10-11am in CS Lab, which are scheduled meetings in Google Calendar. If this time does not work due to scheduling issues, we will discuss on another date and time to meet.
 
 
 ## Drop-in hour options
