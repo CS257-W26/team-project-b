@@ -1,0 +1,118 @@
+'''modules for testing basic_cl.py main function'''
+import sys
+import unittest
+from io import StringIO
+from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data, main
+
+class TestCommandLine(unittest.TestCase):
+    '''Arguments: unittest.TestCase
+    Return value: none
+    Purpose: Holds the tests for command_line.py
+    '''
+
+    maxDiff = None
+
+    def test_load_data(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests load data with the dummy_data.csv file
+        '''
+        self.assertEqual(load_data('Data/dummy_data_one_line.csv'),
+        [['country','year','cumulative_co2']])
+        self.assertEqual(load_data('Data/dummy_data.csv'),
+        [['country','year','cumulative_co2','co2_per_capita'],
+        ['Canada','2004','1.452','12.345'],
+        ['Canada','1998','2.045','10.432'],
+        ['Canada','2018','3.192','15.725'],
+        ['Japan','2004','1.133','12.333'],
+        ['Japan','1998','0.792','8.324'],
+        ['Japan','2018','9.034','20.324'],
+        ['Argentina','2004','0.630','1.234'],
+        ['Argentina','1998','1.582','9.87'],
+        ['Argentina','2018','',''],
+        ['Argentina','2019','1.609','10.23']])
+
+    def test_average(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests the average_co2 function in command_line.py
+        '''
+        self.assertAlmostEqual(average('Canada','Data/dummy_data.csv',2),2.22966667)
+        self.assertAlmostEqual(average('Japan','Data/dummy_data.csv',2),3.65300)
+        self.assertAlmostEqual(average('Argentina','Data/dummy_energy_data.csv',2),1.27366667)
+
+    def test_average_edge(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests edge cases for the average_co2 function in command_line.py
+        '''
+        self.assertEqual(average(12,'Data/dummy_data.csv',2), 'Please input a string for a country')
+        self.assertEqual(average('','Data/dummy_data.csv',2), 'Please input a valid country')
+
+    def test_ratio(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests the ratio function in command_line.py
+        '''
+        self.assertAlmostEqual(ratio('Canada'),0.460715567)
+        self.assertAlmostEqual(ratio('Japan'),0.555215345)
+
+    def test_year_co2(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests year_co2 function in command_line.py
+        '''
+        self.assertEqual(year_co2('2004'),[['Canada','2004','1.452'],
+        ['Japan','2004','1.133'],['Argentina','2004','0.630']])
+
+        self.assertEqual(year_co2('1998'),[['Canada','1998','2.045'],
+        ['Japan','1998','0.792'],['Argentina','1998','1.582']])
+
+    def test_year_co2_edge(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests edge cases for the year_co2 function in command_line.py
+        '''
+        self.assertEqual(year_co2(2004), "Please input a valid year")
+        self.assertEqual(year_co2("Canadaa"), "Please input a valid year")
+
+    def test_biofuel_consumption(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests highest_co2 function in command_line.py
+        '''
+        self.assertEqual(highest_biofuel_consumption("Canada"),3.192)
+        self.assertEqual(highest_biofuel_consumption("Japan"),9.034)
+
+    def test_biofuel_consumption_edge(self):
+        '''Arguments: self (TestCommandLine)
+        Return: none
+        Purpose: Tests edge cases for highest_co2 function in command_line.py
+        '''
+        self.assertEqual(highest_biofuel_consumption(123), "Invalid input")
+
+    #We could not get our main to work well.
+    #We repeatedly got AssertionError: '' != 0.460715567 for our test results
+    def test_main(self):
+        '''Arguments: self (TestProductionCode)
+        Return value: None
+        Purpose: Tests whether the main function returns the correct value for the
+        specified function in command line arguments
+        '''
+        sys.argv = ['command_line.py','ratio','Canada']
+        sys.stdout = StringIO()
+        main()
+        output = sys.stdout.getvalue().strip()
+
+        self.assertEqual(output, "0.46071556778748357")
+    
+    def test_main_no_arg(self):
+        sys.argv = ['command_line.py']
+        sys.stdout = StringIO()
+        main()
+        output = sys.stdout.getvalue().strip()
+
+        self.assertEqual(output, "Usage: python3 command_line.py [options]")
+
+    if __name__ == '__main__':
+        unittest.main()
