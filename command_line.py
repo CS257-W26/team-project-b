@@ -47,7 +47,8 @@ def ratio(country):
     '''
     avg_co2 = average(country,'Data/dummy_data.csv',3)
     avg_energy = average(country,'Data/dummy_energy_data.csv',3)
-    return avg_co2/avg_energy
+    ratio_variable = avg_co2/avg_energy
+    return ratio_variable
 
 def year_co2 (year):
     '''Arguments: year (string)
@@ -98,11 +99,11 @@ def main():
 
     if len(args) == 3:
         if args[1] == 'ratio':
-            return ratio(args[2])
+            print (ratio(args[2]))
         if args[1] == 'year_co2':
-            return year_co2(args[2])
+            print (year_co2(args[2]))
         if args[1] == 'biofuel':
-            return highest_biofuel_consumption(args[2])
+            print (highest_biofuel_consumption(args[2]))
     return 'Invalid inputs'
 
 if __name__ == "__main__":

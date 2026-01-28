@@ -1,8 +1,8 @@
 '''modules for testing basic_cl.py main function'''
-#import sys
+import sys
 import unittest
-#from io import StringIO
-from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data
+from io import StringIO
+from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data, main
 
 class TestCommandLine(unittest.TestCase):
     '''Arguments: unittest.TestCase
@@ -93,18 +93,18 @@ class TestCommandLine(unittest.TestCase):
 
     #We could not get our main to work well.
     #We repeatedly got AssertionError: '' != 0.460715567 for our test results
-    # def test_main(self):
-    #     '''Arguments: self (TestProductionCode)
-    #     Return value: None
-    #     Purpose: Tests whether the main function returns the correct value for the
-    #     specified function in command line arguments
-    #     '''
-    #     sys.argv = ['command_line.py','ratio','Canada']
-    #     sys.stdout = StringIO()
-    #     main()
-    #     output = sys.stdout.getvalue().strip()
+    def test_main(self):
+        '''Arguments: self (TestProductionCode)
+        Return value: None
+        Purpose: Tests whether the main function returns the correct value for the
+        specified function in command line arguments
+        '''
+        sys.argv = ['command_line.py','ratio','Canada']
+        sys.stdout = StringIO()
+        main()
+        output = sys.stdout.getvalue().strip()
 
-    #     self.assertEqual(output, 0.460715567)
+        self.assertEqual(output, "0.46071556778748357")
 
     if __name__ == '__main__':
         unittest.main()
