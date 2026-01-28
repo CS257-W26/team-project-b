@@ -15,26 +15,32 @@
 * Note-taker: Bradley
 
 ## Plan for subsequent sprints
-Stick with same roles from sprint 2 or continue to rotate?
+For subsequent sprints, we will continue with our original roles from the first sprint
 
 # Meetings
 
 ## Weekly Meeting
-Every Saturday in person, 10-11am in CS Lab - scheduled meetings in Google Drive 
+Our team will meet every Saturday in person, 10-11am in CS Lab, which are scheduled meetings in Google Calendar 
 
 
 ## Drop-in hour options
+Mondays 1-2pm: Bradley and Rimona
+Wednesdays 2-3pm: Bradley and Rimona
+Thursdays 2:30-3:30pm: Bradley
 
 # Communication
 
-Message through group chat - at least once a week
-When making decisions, discuss with group members and consider pros and cons to decide on which idea to choose
-For satisfactory participation, we will check in on each other and see how much time each person takes, adjusting hours working on project as such
+Our main platform to communicate with one another will be through group chat on messages. We plan to use this group chat at least once a week in regards to asking questions, updating one another on any changes in our schedules, and checking in with each other. We will also have a Google Chat to share our work and code, which we will use to update each other if we are working on the project separately. 
+
+If a member has not been communicating with the group, we will check in with them and understand the reason behind their absence. From there, we will adjust our methods of communication to a way that is easier for the member to reach out.
+
+When making decisions, we will discuss with our group members and consider pros and cons to decide which idea is chosen. For satisfactory participation, we will check in on each other and see how much time each person takes, adjusting hours working on the project as such.
 
 
 
 # Conflict resolution
 
 If someone is not on track with their responsibilities, we will check in and find the reason why they are falling behind. If there are personal reasons, we can discuss and make compromises. 
-When there is a disagreement amongst the group, we plan to discuss and share our opinions to sort things out
+
+When there is a disagreement amongst the group, we plan to discuss and share our opinions to sort things out.
 
