@@ -97,7 +97,9 @@ def main():
     '''
     args = sys.argv
 
-    if len(args) == 3:
+    if len(args) == 1:
+        print("Usage: python3 command_line.py [options]")
+    elif len(args) == 3:
         if args[1] == 'ratio':
             print (ratio(args[2]))
         if args[1] == 'year_co2':
