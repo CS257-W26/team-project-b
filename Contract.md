@@ -15,7 +15,7 @@
 * Note-taker: Bradley
 
 ## Plan for subsequent sprints
-For subsequent sprints, we will continue with our original roles from the first sprint
+For subsequent sprints, we will continue with our original roles from the first sprint.
 
 # Meetings
 

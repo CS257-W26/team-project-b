@@ -9,7 +9,7 @@ Our group plans to focus our project on SDG 13, Climate Action. Possible contrib
 Look up top biofuel consumption information about a specific country 
 
 * Person responsible: Beyonce 
-* User story: As a user interested in climate change, I can look up individual countries' top biofuel consumption information so that I can form a more comprehensive view of the world.
+* User story: As a user interested in climate change, I can look up individual countries' top biofuel consumption information so that I can form a more comprehensive view of biofuel usage across the world.
 * Acceptance Criteria: Given that I (the user) pick Australia, I will receive an output of 190.864 (measured in terawatt-hours).
 
 
