@@ -14,7 +14,7 @@ Look up top biofuel consumption information about a specific country
 
 
 ## Feature 2: 
-Look up information about the ratio of average co2 per capita data to the average energy consumption per capita data of a country.
+Look up information about the ratio of average co2 per capita data to the average energy consumption per capita data of a country
 
 * Person responsible:Bradley
 * User story: As a user interested in climate change, I can find the ratio of co2 per capita to energy consumption per capita of a country to know how much a country emits co2 compared to how much energy it uses on average.

@@ -40,7 +40,7 @@ When making decisions, we will discuss with our group members and consider pros 
 
 # Conflict resolution
 
-If someone is not on track with their responsibilities, we will check in and find the reason why they are falling behind. If there are personal reasons, we can discuss and make compromises. 
+In the case that someone is not on track with their responsibilities, we will check in and find the reason why they are falling behind. If there are personal reasons, we can discuss and make compromises. 
 
-When there is a disagreement amongst the group, we plan to discuss and share our opinions to sort things out.
+When there is a disagreement amongst the group, we plan to discuss and share our opinions to sort things out and find a resolution.
 
