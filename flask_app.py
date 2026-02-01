@@ -3,9 +3,10 @@ The eventual location for the Flask app interface for the project.
 '''
 
 from flask import Flask
-from ProductionCode.core import load_data, average,ratio,year_co2,highest_biofuel_consumption,load_data, main
+from ProductionCode.core import Features
 
 app = Flask(__name__)
+core = Features()
 
 @app.route("/")
 def homepage():
@@ -31,7 +32,7 @@ def route_year_co2(year):
     in the dataset from a specific year
     '''
 
-    data = year_co2(year)
+    data = core.year_co2(year)
 
     output = "CO2 emissions in the year " + year + ": "
 
@@ -54,7 +55,7 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    data = highest_biofuel_consumption(country)
+    data = core.highest_biofuel_consumption(country)
     return "Highest biofuel consumption for " + country + " is " + str(data)
 
 if __name__ == "__main__":
