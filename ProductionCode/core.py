@@ -62,7 +62,7 @@ class Features():
                     output.append([country, year_row, co2])
         return output
 
-    def highest_biofuel(self, values):
+    def highest_biofuel_consumption(self, values):
         '''Argument: country (String)
         Return: int highest emissions
         Purpose: Returns a single int representing the highest
@@ -73,7 +73,3 @@ class Features():
             if num > biofuel:
                 biofuel = num
         return biofuel
-
-feat = Features()
-
-avg1 = 12.345, 10.432, 15.725
