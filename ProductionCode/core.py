@@ -15,33 +15,27 @@ class Features():
                 self.data.append(row)
         return self.data
 
-    def average(self,country,dataset,col):
-        '''Arguments: country (string)
+    def average(self, dataset):
+        '''Arguments: dataset (list of values)
         Return: The average CO2 emissions of a country (float), 
         or a correction of how this function should work (string)
         Purpose: To get the average CO2 emissions of a country
         '''
-        self.load_data(dataset)
         total = 0
         count = 0
-        if isinstance(country, str):
-            for row in self.data:
-                if (row[0] == country) and (row[col] != ''):
-                    total += float(row[col])
-                    count += 1
-        else:
-            return 'Please input a string for a country'
-        if count == 0:
-            return 'Please input a valid country'
-        return float (total/count)
+        for row in dataset:
+            total += row
+            count += 1
+        return str((total/count))
 
-    def ratio(self,country):
+
+    def ratio(self, country, dataset):
         '''Arguments: country (year)
         Return: A ratio (float) 
         Purpose: Calculates the ratio for co2 and co2 per capita
         '''
-        avg_co2 = self.average(country,'"Data/dummy_co2_data.csv"',3)
-        avg_energy = self.average(country,'Data/dummy_energy_data.csv',3)
+        avg_co2 = self.average('Data/dummy_data.csv')
+        avg_energy = self.average('Data/dummy_energy_data.csv')
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
@@ -52,7 +46,7 @@ class Features():
         Purpose: To get the total CO2 emissions of each country
         in the dataset from a specific year
         '''
-        self.load_data("Data/dummy_co2_data.csv")
+        self.load_data("Data/dummy_data.csv")
 
         output = []
 
@@ -63,24 +57,17 @@ class Features():
                 co2 = row[2]
                 if year_row == (year) and co2 != "":
                     output.append([country, year_row, co2])
-        else:
-            return "Please input a valid year"
-        if len(year) != 4:
-            return "Please input a valid year"
         return output
 
-    def highest_biofuel_consumption(self,country):
+    def highest_biofuel(self, values):
         '''Argument: country (String)
         Return: int highest emissions
         Purpose: Returns a single int representing the highest
         biofuel consumption of a specific country
         '''
         biofuel = 0
-        if isinstance(country, str):
-            for row in self.load_data("Data/dummy_energy_data.csv"):
-                if (row[0] == country and row[2] != ''):
-                    biofuel = max(biofuel, float(row[2]))
-            return biofuel
-
-        return "Invalid input"
+        for num in values:
+            if num > biofuel:
+                biofuel = num
+        return biofuel
 
