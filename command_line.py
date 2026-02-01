@@ -3,6 +3,7 @@ Purpose: Allows user to interact with data with the command line
 
 '''
 import argparse
+import sys
 from ProductionCode.core import Features
 
 def parsing():
@@ -10,8 +11,7 @@ def parsing():
     Return value: parser
     Purpose: Taking command line inputs to run functions in command_line
     '''
-    parser = argparse.ArgumentsParser(
-        prog = 'command_line.py'
+    parser = argparse.ArgumentParser(
         epilog = (
             "Example Commands:\n"
             "python3 command_line.py --ratio Japan\n"
@@ -25,6 +25,19 @@ def parsing():
     parser.add_argument('-r', '--ratio', type = str, help = '')
     parser.add_argument('-y', '--year_co2', type = str, help = '')
     parser.add_argument('-b', '--biofuel', type = str, help = '' )
+
+    return parser
+
+def no_arg():
+    no_arg_parser = parsing()
+
+    args = parser.parse_args()
+
+    if len(sys.argv) < 2:
+        no_arg_parser.print_help()
+        sys.exit(1)
+
+    return args
 
 # def main():
 #     '''Arguments: none
@@ -46,4 +59,4 @@ def parsing():
 #     return 'Invalid inputs'
 
 if __name__ == "__main__":
-    main()
+    parsing()
