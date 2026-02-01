@@ -5,12 +5,18 @@ Purpose: Allows user to interact with data with the command line
 import argparse
 import sys
 from ProductionCode.core import Features
+from ProductionCode.data_handling import Data_Handler
 
-def parsing():
+def set_parser():
     ''''Arguments: none
     Return value: parser
     Purpose: Taking command line inputs to run functions in command_line
     '''
+    core = Features()
+    handler = Data_Handler()
+
+    handler.load_data('Data/dummy_data.csv')
+
     parser = argparse.ArgumentParser(
         epilog = (
             "Example Commands:\n"
@@ -18,7 +24,8 @@ def parsing():
             "python3 command_line.py --year_co2 2004\n"
             "python3 command_line.py --biofuel Canada\n"
 
-        )
+        ) , 
+        usage = 'command_line [options]'
     )
 
     parser.add_argument('-a', '--average', type = str, help= 'Provides')
@@ -26,18 +33,15 @@ def parsing():
     parser.add_argument('-y', '--year_co2', type = str, help = '')
     parser.add_argument('-b', '--biofuel', type = str, help = '' )
 
-    return parser
+    if len(sys.argv) == 1:
+        parser.print_help(sys.stderr)
+    else:
+        args = parser.parse_args()
+        if args.ratio:
+            print(core.ratio(args.ratio))
 
-def no_arg():
-    no_arg_parser = parsing()
-
-    args = parser.parse_args()
-
-    if len(sys.argv) < 2:
-        no_arg_parser.print_help()
-        sys.exit(1)
-
-    return args
+if __name__ == "__main__":
+    set_parser()
 
 # def main():
 #     '''Arguments: none
@@ -57,6 +61,3 @@ def no_arg():
 #         if args[1] == 'biofuel':
 #             print (core.highest_biofuel_consumption(args[2]))
 #     return 'Invalid inputs'
-
-if __name__ == "__main__":
-    parsing()
