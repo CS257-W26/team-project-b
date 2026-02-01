@@ -34,13 +34,8 @@ class Features():
         Return: A ratio (float) 
         Purpose: Calculates the ratio for co2 and co2 per capita
         '''
-<<<<<<< HEAD
-        avg_co2 = self.average(country,'Data/dummy_data.csv',3)
-        avg_energy = self.average(country,'Data/dummy_energy_data.csv',3)
-=======
         avg_co2 = self.average('Data/dummy_data.csv')
         avg_energy = self.average('Data/dummy_energy_data.csv')
->>>>>>> be055634a2c35ff3d1b29c7d422d213afe5c5e5a
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
