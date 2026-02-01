@@ -6,6 +6,7 @@ from flask import Flask
 from ProductionCode.core import Features
 
 app = Flask(__name__)
+# api = Blueprint('api', __name__)
 core = Features()
 
 @app.route("/")
@@ -21,7 +22,7 @@ def homepage():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return "Sorry, wrong format - "
+    return """Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada """
 
 @app.route("/year_co2/<year>")
 def route_year_co2(year):
@@ -31,14 +32,10 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-
-<<<<<<< HEAD
+    core.load_data("Data/dummy_data.csv")
     data = core.year_co2(year)
 
-=======
-    data = year_co2(year)
->>>>>>> b8b1797 (committing changes)
-    output = "CO2 emissions in the year " + year + ": "
+    output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
 
     if isinstance(data, str):
         return data
@@ -63,4 +60,6 @@ def route_biofuel(country):
     return "Highest biofuel consumption for " + country + " is " + str(data)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port = 5006)
+    # app.register_blueprint(api, url_prefix='/api')
+
