@@ -1,7 +1,7 @@
 '''
 Test file for flask_app.py
 Run with:
-python -m unittest flask_tests.py
+python -m unittest flask_app.py
 '''
 
 from flask_app import *
