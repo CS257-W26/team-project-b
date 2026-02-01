@@ -4,10 +4,12 @@ The eventual location for the Flask app interface for the project.
 
 from flask import Flask
 from ProductionCode.core import Features
+from ProductionCode.data_handling import Data_Handler
 
 app = Flask(__name__)
 # api = Blueprint('api', __name__)
 core = Features()
+data_handling = Data_Handler()
 
 @app.route("/")
 def homepage():
@@ -31,7 +33,7 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    core.load_data(dataset)
+    data_handling.set_data("Data/dummy_data.csv")
     average = core.average(country, "Data/dummy_data.csv", 2)
 
     if isinstance(average, str):
@@ -61,7 +63,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    core.load_data("Data/dummy_data.csv")
+    data_handling.load_data("Data/dummy_data.csv")
     data = core.year_co2(year)
 
     output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
