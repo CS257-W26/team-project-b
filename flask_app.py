@@ -90,13 +90,13 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    values = data_handling.set_data("Data/dummy_energy_data.csv", 2)
-    data = core.highest_biofuel_consumption(values)
+    values = data_handling.set_data("Data/dummy_energy_data.csv", country, 2)
+    data = core.highest_biofuel(values)
 
     output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
     return output + str(data)
 
 if __name__ == "__main__":
-    app.run(port = 5011)
+    app.run(port = 5013)
     # app.register_blueprint(api, url_prefix='/api')
 
