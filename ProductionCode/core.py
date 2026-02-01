@@ -17,15 +17,18 @@ class Features():
 
     def average(self, dataset):
         '''Arguments: dataset (list of values)
-        Return: The average CO2 emissions of a country (float), 
-        or a correction of how this function should work (string)
-        Purpose: To get the average CO2 emissions of a country
+        Return: The average of the given dataset (str)
+        Purpose: To get the average of a subset of data for a country
         '''
+        
         total = 0
         count = 0
         for row in dataset:
-            total += row
-            count += 1
+            if isinstance(row,float):
+                total += row
+                count += 1
+        if count == 0:
+            return 'No data found'
         return str((total/count))
 
 
@@ -35,9 +38,7 @@ class Features():
         Purpose: Calculates the ratio for co2 and co2 per capita
         '''
         avg_co2 = float(self.average(dataset1))
-        print(avg_co2)
         avg_energy = float(self.average(dataset2))
-        print(avg_energy)
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
