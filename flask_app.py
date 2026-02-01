@@ -32,8 +32,12 @@ def route_year_co2(year):
     in the dataset from a specific year
     '''
 
+<<<<<<< HEAD
     data = core.year_co2(year)
 
+=======
+    data = year_co2(year)
+>>>>>>> b8b1797 (committing changes)
     output = "CO2 emissions in the year " + year + ": "
 
     if isinstance(data, str):
