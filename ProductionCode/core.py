@@ -35,7 +35,7 @@ class Features():
     def ratio(self, dataset1, dataset2):
         '''Arguments: country (year)
         Return: A ratio (float) 
-        Purpose: Calculates the ratio for co2 and co2 per capita
+        Purpose: Calculates the ratio for co2_per_capita to energy_per_capita
         '''
         avg_co2 = float(self.average(dataset1))
         avg_energy = float(self.average(dataset2))
@@ -62,7 +62,7 @@ class Features():
                     output.append([country, year_row, co2])
         return output
 
-    def highest_biofuel_consumption(self, values):
+    def highest_biofuel(self, values):
         '''Argument: country (String)
         Return: int highest emissions
         Purpose: Returns a single int representing the highest
