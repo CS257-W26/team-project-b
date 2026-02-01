@@ -38,7 +38,16 @@ def set_parser():
     else:
         args = parser.parse_args()
         if args.ratio:
-            print(core.ratio(args.ratio))
+            final_data = handler.set_data('Data/dummy_data.csv', args.ratio)
+            print(core.ratio(final_data))
+
+        elif args.average:
+            final_data = handler.set_data('Data/dummy_data.csv', args.average)
+            print(core.average(final_data))
+
+        elif args.biofuel:
+            final_data = handler.set_data('Data/dummy_energy_data.csv', args.biofuel)
+            print(core.highest_biofuel(final_data))
 
 if __name__ == "__main__":
     set_parser()

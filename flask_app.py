@@ -4,10 +4,12 @@ The eventual location for the Flask app interface for the project.
 
 from flask import Flask
 from ProductionCode.core import Features
+from ProductionCode.data_handling import Data_Handler
 
 app = Flask(__name__)
 # api = Blueprint('api', __name__)
 core = Features()
+data_handling = Data_Handler()
 
 @app.route("/")
 def homepage():
@@ -24,6 +26,35 @@ def homepage():
 def page_not_found(e):
     return """Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada """
 
+@app.route("/average/<country>")
+def route_average(country):
+    '''Arguments: country (string)
+    Return: The average CO2 emissions of a country (float), 
+    or a correction of how this function should work (string)
+    Purpose: Display the average CO2 emissions of a country
+    '''
+    data_handling.set_data("Data/dummy_data.csv")
+    average = core.average(country, "Data/dummy_data.csv", 2)
+
+    if isinstance(average, str):
+        return average
+
+    return "The average CO2 emissions (measured in million tonnes) for " + country + " is " + str(average)
+    
+@app.route("/ratio/<country>")
+def route_ratio(country):
+    '''Arguments: country (year)
+    Return: A ratio (float) 
+    Purpose: Display the ratio for co2 and co2 per capita
+    '''
+    avg_co2 = core.average("Data/dummy_data.csv")
+    avg_co2_per_capita = core.average(country,'Data/dummy_energy_data.csv',3)
+
+    output = "The ratio between averages of annual CO2 emissions and CO2 per capita (measured in million tonnes) for " + country + ": "
+
+    ratio_variable = avg_co2/avg_co2_per_capita
+    return output + ratio_variable
+
 @app.route("/year_co2/<year>")
 def route_year_co2(year):
     '''Arguments: year (string)
@@ -32,7 +63,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    core.load_data("Data/dummy_data.csv")
+    data_handling.load_data("Data/dummy_data.csv")
     data = core.year_co2(year)
 
     output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
@@ -57,7 +88,7 @@ def route_biofuel(country):
     Purpose: Display the highest biofuel consumption for the given country
     """
     data = core.highest_biofuel_consumption(country)
-    return "Highest biofuel consumption for " + country + " is " + str(data)
+    return "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is " + str(data)
 
 if __name__ == "__main__":
     app.run(port = 5006)
