@@ -38,8 +38,9 @@ def set_parser():
     else:
         args = parser.parse_args()
         if args.ratio:
-            final_data = handler.set_data('Data/dummy_data.csv', args.ratio)
-            print(core.ratio(final_data))
+            data1 = handler.set_data('Data/dummy_data.csv', args.ratio)
+            data2 = handler.set_data('Data/dummy_energy_data.csv', args.ratio)
+            print(core.ratio(data1, data2))
 
         elif args.average:
             final_data = handler.set_data('Data/dummy_data.csv', args.average)
