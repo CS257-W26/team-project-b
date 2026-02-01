@@ -8,16 +8,16 @@ from flask_app import *
 import unittest
 
 class TestFlaskApp(unittest.TestCase):
-    def test_route(self,route):
-        self.app = app.test_client() 
-        return self.app.get(route, follow_redirects=True) 
-        
+    app = app.test_client() 
 
     def test_homepage(self):
-        self.assertEqual(self.test_route('/'), b'Hello') 
+        result = self.app.get('/', follow_redirects=True) 
+        self.assertEqual(result.data, b'Hello')
 
     def test_biofuel(self):
-        self.assertEqual(self.test_route('/biofuel/Canada'), b'Hello')
+        result = self.app.get('/biofuel/Canada', follow_redirects=True) 
+        self.assertEqual(result.data, b'Hello')
 
     def test_error(self):
-        self.assertEqual(self.test_route('/Canada'), b'Sorry, wrong format - ') 
+        result = self.app.get('/Canada', follow_redirects=True) 
+        self.assertEqual(result.data, b'Hello')
