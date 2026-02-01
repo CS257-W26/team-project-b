@@ -29,13 +29,15 @@ class Features():
         return str((total/count))
 
 
-    def ratio(self, avg1, avg2):
+    def ratio(self, dataset1, dataset2):
         '''Arguments: country (year)
         Return: A ratio (float) 
         Purpose: Calculates the ratio for co2 and co2 per capita
         '''
-        avg_co2 = float(self.average(avg1))
-        avg_energy = float(self.average(avg2))
+        avg_co2 = float(self.average(dataset1))
+        print(avg_co2)
+        avg_energy = float(self.average(dataset2))
+        print(avg_energy)
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
@@ -71,3 +73,6 @@ class Features():
                 biofuel = num
         return biofuel
 
+feat = Features()
+
+avg1 = 12.345, 10.432, 15.725

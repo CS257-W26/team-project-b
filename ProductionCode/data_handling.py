@@ -50,12 +50,12 @@ class Data_Handler:
             value_list[index] = float(i)
         return value_list
 
-    def set_data(self, dataset, country):
+    def set_data(self, dataset, country, col):
         '''Argument: country (Str)
         '''
         self.load_data(dataset)
 
-        cleaned = self.clean_column(2, self.extract_row(country))
+        cleaned = self.clean_column(col, self.extract_row(country))
         
         final_data = self.convert_type(cleaned)
 
