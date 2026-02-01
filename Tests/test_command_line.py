@@ -9,17 +9,17 @@ class TestCommandLine(unittest.TestCase):
     Return value: none
     Purpose: Holds the tests for command_line.py
     '''
-
+    
     maxDiff = None
 
     def test_load_data(self):
         '''Arguments: self (TestCommandLine)
         Return: none
-        Purpose: Tests load data with the dummy_data.csv file
+        Purpose: Tests load data with the dummy_co2_data.csv file
         '''
         self.assertEqual(load_data('Data/dummy_data_one_line.csv'),
         [['country','year','cumulative_co2']])
-        self.assertEqual(load_data('Data/dummy_data.csv'),
+        self.assertEqual(load_data("Data/dummy_co2_data.csv"),
         [['country','year','cumulative_co2','co2_per_capita'],
         ['Canada','2004','1.452','12.345'],
         ['Canada','1998','2.045','10.432'],
