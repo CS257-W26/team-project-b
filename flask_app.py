@@ -4,7 +4,6 @@ The eventual location for the Flask app interface for the project.
 
 from flask import Flask
 from ProductionCode.core import load_data, average,ratio,year_co2,highest_biofuel_consumption,load_data, main
-from ProductionCode.data_handling import load_data, extract
 
 app = Flask(__name__)
 
@@ -18,6 +17,10 @@ def homepage():
     enter the following: /year_co2/2004 \n
     To view the highest biofuel consumption for a country,
     enter the following: /biofuel/Canada"""
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return "Sorry, wrong format - "
 
 @app.route("/year_co2/<year>")
 def route_year_co2(year):
