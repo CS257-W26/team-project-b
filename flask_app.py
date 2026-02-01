@@ -33,13 +33,15 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    data_handling.set_data("Data/dummy_data.csv")
-    average = core.average(country, "Data/dummy_data.csv", 2)
+    average_list = data_handling.set_data("Data/dummy_data.csv", country, 2)
+    average = core.average(average_list)
 
     if isinstance(average, str):
         return average
+    
+    output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
 
-    return "The average CO2 emissions (measured in million tonnes) for " + country + " is " + str(average)
+    return output + str(average)
     
 @app.route("/ratio/<country>")
 def route_ratio(country):
@@ -47,13 +49,14 @@ def route_ratio(country):
     Return: A ratio (float) 
     Purpose: Display the ratio for co2 and co2 per capita
     '''
-    avg_co2 = core.average("Data/dummy_data.csv")
-    avg_co2_per_capita = core.average(country,'Data/dummy_energy_data.csv',3)
+    co2_data = data_handling.set_data("Data/dummy_data.csv", country, 3)
+    co2_per_capita = data_handling.set_data("Data/dummy_energy_data.csv", country, 3)
+
+    ratio = core.ratio(co2_data, co2_per_capita)
 
     output = "The ratio between averages of annual CO2 emissions and CO2 per capita (measured in million tonnes) for " + country + ": "
 
-    ratio_variable = avg_co2/avg_co2_per_capita
-    return output + ratio_variable
+    return output + str(ratio)
 
 @app.route("/year_co2/<year>")
 def route_year_co2(year):
@@ -87,10 +90,13 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    data = core.highest_biofuel_consumption(country)
-    return "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is " + str(data)
+    values = data_handling.set_data("Data/dummy_energy_data.csv", 2)
+    data = core.highest_biofuel_consumption(values)
+
+    output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
+    return output + str(data)
 
 if __name__ == "__main__":
-    app.run(port = 5006)
+    app.run(port = 5011)
     # app.register_blueprint(api, url_prefix='/api')
 
