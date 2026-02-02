@@ -1,10 +1,7 @@
-'''
-Purpose: 
-'''
-import csv
-
 class Features():
-
+    '''
+    Purpose: Stores the core features of the website 
+    '''
     data=[]
 
     def average(self, dataset):
@@ -21,7 +18,6 @@ class Features():
         if count == 0:
             return 'No data found'
         return str((total/count))
-
 
     def ratio(self, dataset1, dataset2):
         '''Arguments: country (year)
@@ -65,5 +61,4 @@ class Features():
             return biofuel
         if biofuel == -1:
             return 'Invalid input'
-        else:
-            return biofuel
+        return biofuel
