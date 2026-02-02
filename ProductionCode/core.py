@@ -63,13 +63,16 @@ class Features():
         return output
 
     def highest_biofuel(self, values):
-        '''Argument: country (String)
+        '''Argument: values (list)
         Return: int highest emissions
         Purpose: Returns a single int representing the highest
         biofuel consumption of a specific country
         '''
         biofuel = 0
-        for num in values:
-            if num > biofuel:
-                biofuel = num
-        return biofuel
+        if type(values, list):
+            for num in values:
+                if num > biofuel:
+                    biofuel = num
+            return biofuel
+        else:
+            return "Invalid input"
