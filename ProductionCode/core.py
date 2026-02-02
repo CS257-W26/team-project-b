@@ -69,7 +69,7 @@ class Features():
         biofuel consumption of a specific country
         '''
         biofuel = 0
-        if type(values, list):
+        if isinstance(values, list):
             for num in values:
                 if num > biofuel:
                     biofuel = num
