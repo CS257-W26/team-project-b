@@ -93,6 +93,6 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    app.Q(api, url_prefix='/api')
+    app.register_blueprint(api, url_prefix='/api')
     app.run(port = 5001)
 
