@@ -62,8 +62,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    data_handling.load_data("Data/dummy_data.csv")
-    data = core.year_co2(year)
+    data = core.year_co2(year, data_handling.load_data("Data/dummy_data.csv"))
 
     output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
 
