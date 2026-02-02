@@ -7,7 +7,7 @@ import sys
 from ProductionCode.core import Features
 from ProductionCode.data_handling import Data_Handler
 
-def set_parser():
+def main():
     ''''Arguments: none
     Return value: parser
     Purpose: Taking command line inputs to run functions in command_line
@@ -28,13 +28,13 @@ def set_parser():
         usage = 'command_line [options]'
     )
 
-    parser.add_argument('-a', '--average', type = str, help= 'Provides')
-    parser.add_argument('-r', '--ratio', type = str, help = '')
-    parser.add_argument('-y', '--year_co2', type = str, help = '')
-    parser.add_argument('-b', '--biofuel', type = str, help = '' )
+    parser.add_argument('-a', '--average', type = str, help= 'Calculates avg co2 of a country')
+    parser.add_argument('-r', '--ratio', type = str, help = 'Provides co2 and co2 per capita ratio')
+    parser.add_argument('-y', '--year_co2', type = str, help = 'co2 emissions of all countries for a year')
+    parser.add_argument('-b', '--biofuel', type = str, help = 'Finds the top biofuel consumption of a country' )
 
     if len(sys.argv) == 1:
-        parser.print_help(sys.stderr)
+        print("Usage: python3 command_line.py [options]")
     else:
         args = parser.parse_args()
         if args.ratio:
@@ -51,7 +51,7 @@ def set_parser():
             print(core.highest_biofuel(final_data))
 
 if __name__ == "__main__":
-    set_parser()
+    main()
 
 # def main():
 #     '''Arguments: none
