@@ -1,7 +1,6 @@
 '''
 Purpose: 
 '''
-
 import csv
 
 class Features():
@@ -13,7 +12,6 @@ class Features():
         Return: The average of the given dataset (str)
         Purpose: To get the average of a subset of data for a country
         '''
-
         total = 0
         count = 0
         for row in dataset:
@@ -35,19 +33,17 @@ class Features():
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
-    def year_co2 (self,year):
+    def year_co2 (self,year, dataset):
         '''Arguments: year (string)
         Return: A list of lists (string) with each country and
         total CO2 emissions from a specific year
         Purpose: To get the total CO2 emissions of each country
         in the dataset from a specific year
         '''
-        self.load_data("Data/dummy_data.csv")
-
         output = []
 
         if isinstance(year, str):
-            for row in self.data:
+            for row in dataset:
                 country = row[0]
                 year_row = row[1]
                 co2 = row[2]
