@@ -5,6 +5,10 @@ python3 command_line.py --year_co2 "2004"
 
 python3 command_line.py --biofuel "Canada"
 
+
+# Flask App Routes
+
+
 # Usage Statement
 
 Usage: python3 command_line.py [options]
@@ -18,3 +22,5 @@ sys: Sys module was used to allow access to command line arguments
 io:  The module io was used to handle input/output streams
 
 argparse: argparse module was used to create command lines 
+
+flask: Flask framework was used to write and route web applications
