@@ -8,17 +8,6 @@ class Features():
 
     data=[]
 
-    def load_data(self,dataset):
-        '''
-        Purpose: Load data for other functions in this file
-        '''
-        self.data.clear()
-        with open(dataset, newline='', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                self.data.append(row)
-        return self.data
-
     def average(self, dataset):
         '''Arguments: dataset (list of values)
         Return: The average of the given dataset (str)
