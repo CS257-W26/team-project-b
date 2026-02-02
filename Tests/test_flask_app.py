@@ -12,18 +12,36 @@ class TestFlaskApp(unittest.TestCase):
 
     def test_homepage(self):
         result = self.app.get('/',follow_redirects=True) 
-        self.assertEqual(result.data, b"""Welcome to Emission Tracker!
-    To view CO2 data from 2004 (or 1998/2018),
-    enter the following: /year_co2/2004 \n
-    To view the highest biofuel consumption for a country,
-    enter the following: /biofuel/Canada""")
+        self.assertEqual(result.data, b'Welcome to Emission Tracker!\
+    To view CO2 data from 2004 (or 1998/2018),\
+    enter the following: /year_co2/2004 \n\
+    To view the highest biofuel consumption for a country,\
+    enter the following: /biofuel/Canada')
 
-    def test_biofuel(self):
-        result = self.app.get('/biofuel/Canada',follow_redirects=True) 
-        self.assertEqual(result.data, b"Highest biofuel consumption for Canada is 3.192")
-        result = self.app.get('/biofuel/Japan',follow_redirects=True) 
-        self.assertEqual(result.data, b"Highest biofuel consumption for Japan is 9.034")
+    def test_route_average(self):
+        dictionary = {'/average/Canada':b'The average annual CO2 emissions (measured in million tonnes) for Canada: 2.2296666666666667',
+                      '/average/Japan':b'The average annual CO2 emissions (measured in million tonnes) for Japan: 3.6530000000000005'}
+        for case,output in dictionary.items():
+            result = self.app.get(case,follow_redirects=True) 
+            self.assertEqual(result.data, output)
+    
+    def test_route_ratio(self):
+        dictionary = {'/ratio/Canada':b'The ratio between averages of annual CO2 per capita (tonnes per person) to energy use per capita (kilowatt-hours per person) for Canada: 0.46071556778748357',
+                      '/ratio/Japan':b'The ratio between averages of annual CO2 per capita (tonnes per person) to energy use per capita (kilowatt-hours per person) for Japan: 0.5552153473059571'}
+        for case,output in dictionary.items():
+            result = self.app.get(case,follow_redirects=True) 
+            self.assertEqual(result.data, output)
+
+    def test_route_biofuel(self):
+        dictionary = {'/biofuel/Canada':b'Highest biofuel consumption (measured in terawatt-hours) for Canada is 3.192',
+                      '/biofuel/Japan':b'Highest biofuel consumption (measured in terawatt-hours) for Japan is 9.034'}
+        for case,output in dictionary.items():
+            result = self.app.get(case,follow_redirects=True) 
+            self.assertEqual(result.data, output)
+
 
     def test_error(self):
-        result = self.app.get('/Canada',follow_redirects=True) 
-        self.assertEqual(result.data, b'Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada ')
+        dictionary = {'/Canada':b'Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada'}
+        for case,output in dictionary.items():
+            result = self.app.get(case,follow_redirects=True) 
+            self.assertEqual(result.data, output)

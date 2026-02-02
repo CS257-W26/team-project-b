@@ -16,15 +16,15 @@ def homepage():
     """
     Purpose: homepage to show instructions for available routes
     """
-    return """Welcome to Emission Tracker!
-    To view CO2 data from 2004 (or 1998/2018),
-    enter the following: /year_co2/2004 \n
-    To view the highest biofuel consumption for a country,
-    enter the following: /biofuel/Canada"""
+    return "Welcome to Emission Tracker!\
+    To view CO2 data from 2004 (or 1998/2018),\
+    enter the following: /year_co2/2004 \n\
+    To view the highest biofuel consumption for a country,\
+    enter the following: /biofuel/Canada"
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return """Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada """
+    return "Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada"
 
 @app.route("/average/<country>")
 def route_average(country):
@@ -36,25 +36,21 @@ def route_average(country):
     average_list = data_handling.set_data("Data/dummy_data.csv", country, 2)
     average = core.average(average_list)
 
-    if isinstance(average, str):
-        return average
-    
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
-
     return output + str(average)
     
 @app.route("/ratio/<country>")
 def route_ratio(country):
     '''Arguments: country (year)
     Return: A ratio (float) 
-    Purpose: Display the ratio for co2 and co2 per capita
+    Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
     co2_data = data_handling.set_data("Data/dummy_data.csv", country, 3)
     co2_per_capita = data_handling.set_data("Data/dummy_energy_data.csv", country, 3)
 
     ratio = core.ratio(co2_data, co2_per_capita)
 
-    output = "The ratio between averages of annual CO2 emissions and CO2 per capita (measured in million tonnes) for " + country + ": "
+    output = "The ratio between averages of annual CO2 per capita (tonnes per person) to energy use per capita (kilowatt-hours per person) for " + country + ": "
 
     return output + str(ratio)
 
