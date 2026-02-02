@@ -37,13 +37,7 @@ def route_average(country):
     average = core.average(average_list)
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
-<<<<<<< HEAD
     return output + str(average)
-=======
-
-    if isinstance(average, str):
-        return output + average
->>>>>>> a836c49 (revisions with api and added to README)
     
 @app.route("/ratio/<country>")
 def route_ratio(country):
