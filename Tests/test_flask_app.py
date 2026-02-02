@@ -33,8 +33,8 @@ class TestFlaskApp(unittest.TestCase):
             self.assertEqual(result.data, output)
 
     def test_route_year_co2(self):
-        dictionary = {'/year_co2/2004':b'Annual CO2 emissions (measured in million tonnes) in the year 2004: [[Canada,2004,1.452,12.345],[Japan,2004,1.133,12.333],[Argentina,2004,0.630,1.234]]',
-                    '/year_co2/Japan':b'Annual CO2 emissions (measured in million tonnes) in the year 2018: [[Canada,2018,3.192,15.725],[Japan,2018,9.034,20.324],[Argentina,2018,,]]'}
+        dictionary = {'/year_co2/2004':b'Annual CO2 emissions (measured in million tonnes) in the year 2004: Canada: 1.452\nJapan: 1.133\nArgentina: 0.630\n',
+                    '/year_co2/2018':b'Annual CO2 emissions (measured in million tonnes) in the year 2018: Canada: 3.192\nJapan: 9.034\n'}
         for case,output in dictionary.items():
             result = self.app.get(case,follow_redirects=True) 
             self.assertEqual(result.data, output)

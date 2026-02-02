@@ -62,8 +62,8 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    data_handling.load_data("Data/dummy_data.csv")
-    data = core.year_co2(year)
+    dataset = data_handling.load_data("Data/dummy_data.csv")
+    data = core.year_co2(year, dataset)
 
     output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
 
@@ -78,7 +78,7 @@ def route_year_co2(year):
 
     return output
 
-@api.route("/biofuel/<country>")
+@app.route("/biofuel/<country>")
 def route_biofuel(country):
     """
     Arguments: country (string)
@@ -93,6 +93,6 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    app.register_blueprint(api, url_prefix='/api')
+    #app.register_blueprint(api, url_prefix='/api')
     app.run(port = 5001)
 
