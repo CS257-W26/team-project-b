@@ -2,7 +2,7 @@
 import sys
 import unittest
 from io import StringIO
-from command_line import average,ratio,year_co2,highest_biofuel_consumption,load_data, main
+from command_line import main
 
 class TestCommandLine(unittest.TestCase):
     '''Arguments: unittest.TestCase
@@ -15,7 +15,7 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests whether the main function returns the correct value for the
         specified function in command line arguments
         '''
-        sys.argv = ['command_line.py','ratio','Canada']
+        sys.argv = ['command_line.py','--ratio','Canada']
         sys.stdout = StringIO()
         main()
         output = sys.stdout.getvalue().strip()
