@@ -1,12 +1,12 @@
 import unittest
-from ProductionCode.data_handling import Data_Handler
+from ProductionCode.data_handling import DataHandler
 
 class TestDataHandling(unittest.TestCase):
     '''Argument: unittest.TestCase
     Return value: None
     Purpose: Holds the test for the data handling file
     '''
-    data = Data_Handler()
+    data = DataHandler()
 
     data.load_data('Data/dummy_energy_data.csv')
 

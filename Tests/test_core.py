@@ -3,7 +3,7 @@ import sys
 import unittest
 from io import StringIO
 from ProductionCode.core import Features
-from ProductionCode.data_handling import Data_Handler
+from ProductionCode.data_handling import DataHandler
 
 class TestCommandLine(unittest.TestCase):
     '''Arguments: unittest.TestCase
@@ -13,7 +13,7 @@ class TestCommandLine(unittest.TestCase):
     '''
     
     core = Features()
-    handler = Data_Handler()
+    handler = DataHandler()
 
     data = handler.load_data("Data/dummy_data.csv")
 
