@@ -2,12 +2,12 @@
 The eventual location for the Flask app interface for the project.
 '''
 
-from flask import Flask
+from flask import Flask, Blueprint #importing blueprint
 from ProductionCode.core import Features
 from ProductionCode.data_handling import Data_Handler
 
 app = Flask(__name__)
-# api = Blueprint('api', __name__)
+api = Blueprint('api', __name__) #api object
 core = Features()
 data_handling = Data_Handler()
 
@@ -37,7 +37,13 @@ def route_average(country):
     average = core.average(average_list)
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
+<<<<<<< HEAD
     return output + str(average)
+=======
+
+    if isinstance(average, str):
+        return output + average
+>>>>>>> a836c49 (revisions with api and added to README)
     
 @app.route("/ratio/<country>")
 def route_ratio(country):
@@ -77,7 +83,7 @@ def route_year_co2(year):
 
     return output
 
-@app.route("/biofuel/<country>")
+@api.route("/biofuel/<country>")
 def route_biofuel(country):
     """
     Arguments: country (string)
@@ -92,6 +98,6 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    app.run(port = 5013)
-    # app.register_blueprint(api, url_prefix='/api')
+    app.register_blueprint(api, url_prefix='/api')
+    app.run(port = 5001)
 
