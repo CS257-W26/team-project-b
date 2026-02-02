@@ -37,13 +37,7 @@ def route_average(country):
     average = core.average(average_list)
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
-<<<<<<< HEAD
     return output + str(average)
-=======
-
-    if isinstance(average, str):
-        return output + average
->>>>>>> a836c49 (revisions with api and added to README)
     
 @app.route("/ratio/<country>")
 def route_ratio(country):
@@ -68,7 +62,8 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    data = core.year_co2(year, data_handling.load_data("Data/dummy_data.csv"))
+    data_handling.load_data("Data/dummy_data.csv")
+    data = core.year_co2(year)
 
     output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
 
@@ -98,6 +93,6 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    app.register_blueprint(api, url_prefix='/api')
+    app.Q(api, url_prefix='/api')
     app.run(port = 5001)
 
