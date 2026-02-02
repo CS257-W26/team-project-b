@@ -1,3 +1,7 @@
+'''
+Purpose: 
+'''
+
 import csv
 
 class Features():
@@ -20,7 +24,7 @@ class Features():
         Return: The average of the given dataset (str)
         Purpose: To get the average of a subset of data for a country
         '''
-        
+
         total = 0
         count = 0
         for row in dataset:
@@ -68,8 +72,11 @@ class Features():
         Purpose: Returns a single int representing the highest
         biofuel consumption of a specific country
         '''
-        biofuel = 0
-        for num in values:
-            if num > biofuel:
-                biofuel = num
+        biofuel = -1
+        if isinstance(values,list):
+            for num in values:
+                if isinstance(num,float) and num > biofuel:
+                    biofuel = num
+        if biofuel == -1:
+            return 'Invalid input'
         return biofuel
