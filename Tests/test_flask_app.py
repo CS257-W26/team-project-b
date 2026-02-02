@@ -32,13 +32,19 @@ class TestFlaskApp(unittest.TestCase):
             result = self.app.get(case,follow_redirects=True) 
             self.assertEqual(result.data, output)
 
+    def test_route_year_co2(self):
+        dictionary = {'/year_co2/2004':b'Annual CO2 emissions (measured in million tonnes) in the year 2004: [[Canada,2004,1.452,12.345],[Japan,2004,1.133,12.333],[Argentina,2004,0.630,1.234]]',
+                    '/year_co2/Japan':b'Annual CO2 emissions (measured in million tonnes) in the year 2018: [[Canada,2018,3.192,15.725],[Japan,2018,9.034,20.324],[Argentina,2018,,]]'}
+        for case,output in dictionary.items():
+            result = self.app.get(case,follow_redirects=True) 
+            self.assertEqual(result.data, output)
+
     def test_route_biofuel(self):
         dictionary = {'/biofuel/Canada':b'Highest biofuel consumption (measured in terawatt-hours) for Canada is 3.192',
                       '/biofuel/Japan':b'Highest biofuel consumption (measured in terawatt-hours) for Japan is 9.034'}
         for case,output in dictionary.items():
             result = self.app.get(case,follow_redirects=True) 
             self.assertEqual(result.data, output)
-
 
     def test_error(self):
         dictionary = {'/Canada':b'Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada'}
