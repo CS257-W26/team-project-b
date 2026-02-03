@@ -23,7 +23,7 @@ def main():
             "python3 command_line.py --ratio Japan\n"
             "python3 command_line.py --year_co2 2004\n"
             "python3 command_line.py --biofuel Canada\n"
-        ), 
+        ),
         usage = 'command_line [options]'
     )
 
@@ -55,4 +55,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

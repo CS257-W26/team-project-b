@@ -3,8 +3,8 @@ Test file for flask_app.py
 Run with:
 python -m unittest Tests/test_flask_app.py
 '''
-import unittest
 from flask_app import app
+import unittest
 
 class TestFlaskApp(unittest.TestCase):
     app = app.test_client()
