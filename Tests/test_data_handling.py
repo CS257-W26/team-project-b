@@ -1,3 +1,4 @@
+'''unittest module imported to conduct tests'''
 import unittest
 from ProductionCode.data_handling import DataHandler
 
@@ -7,7 +8,6 @@ class TestDataHandling(unittest.TestCase):
     Purpose: Holds the test for the data handling file
     '''
     data = DataHandler()
-
     data.load_data('Data/dummy_energy_data.csv')
 
     def test_load_data(self):
@@ -36,7 +36,7 @@ class TestDataHandling(unittest.TestCase):
         [['Japan', '2004', '1.133', '4.359'],
         ['Japan', '1998', '0.792' , '24.132'],
         ['Japan', '2018', '9.034' , '45.32']])
-    
+
     def test_clean_column(self):
         '''Argument: self
         Return: None
@@ -48,7 +48,7 @@ class TestDataHandling(unittest.TestCase):
         ['Japan', '1998', '', '24.132'],
         ['Japan', '2018', '9.034', '45.32']]),
         ["9.034"])
-    
+
     def test_convert_type(self):
         '''Argument: self
         Return: None
