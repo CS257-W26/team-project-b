@@ -2,7 +2,6 @@ class Features():
     '''
     Purpose: Stores the core features of the website 
     '''
-    data=[]
 
     def average(self, dataset):
         '''Arguments: dataset (list of values)

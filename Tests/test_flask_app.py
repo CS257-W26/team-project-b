@@ -7,6 +7,7 @@ from flask_app import app
 import unittest
 
 class TestFlaskApp(unittest.TestCase):
+    '''Purpose: Tests the route functions in flask_app'''
     app = app.test_client()
 
     def test_homepage(self):

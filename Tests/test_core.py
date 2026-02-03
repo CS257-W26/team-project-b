@@ -9,7 +9,7 @@ class TestCommandLine(unittest.TestCase):
     Purpose: Holds the tests for core.py
     Run with: python -m unittest Tests/test_core.py
     '''
-    
+
     core = Features()
     handler = DataHandler()
 
@@ -42,8 +42,10 @@ class TestCommandLine(unittest.TestCase):
         Return: none
         Purpose: Tests the ratio function in command_line.py
         '''
-        self.assertAlmostEqual(self.core.ratio([12.345,10.432,15.725],[42.47,30.90,10.20]),0.460715567)
-        self.assertAlmostEqual(self.core.ratio([12.333,8.324,20.324],[4.359,24.132,45.32]),0.555215345)
+        self.assertAlmostEqual(self.core.ratio([12.345,10.432,15.725],
+        [42.47,30.90,10.20]),0.460715567)
+        self.assertAlmostEqual(self.core.ratio([12.333,8.324,20.324],
+        [4.359,24.132,45.32]),0.555215345)
 
     def test_year_co2(self):
         '''Arguments: self (TestCommandLine)
