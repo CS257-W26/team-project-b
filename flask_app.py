@@ -4,18 +4,18 @@ The eventual location for the Flask app interface for the project.
 
 from flask import Flask, Blueprint #importing blueprint
 from ProductionCode.core import Features
-from ProductionCode.data_handling import Data_Handler
+from ProductionCode.data_handling import DataHandler
 
 app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
 core = Features()
-data_handling = Data_Handler()
+data_handling = DataHandler()
 
 @app.route("/")
 def homepage():
-    """
+    '''
     Purpose: homepage to show instructions for available routes
-    """
+    '''
     return "Welcome to Emission Tracker!\
     To view CO2 data from 2004 (or 1998/2018),\
     enter the following: /year_co2/2004 \n\
@@ -24,6 +24,9 @@ def homepage():
 
 @app.errorhandler(404)
 def page_not_found(e):
+    '''
+    Purpose: Handles user error if wrong format is inputted
+    '''
     return "Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada"
 
 @app.route("/average/<country>")
@@ -95,4 +98,3 @@ def route_biofuel(country):
 if __name__ == "__main__":
     #app.register_blueprint(api, url_prefix='/api')
     app.run(port = 5001)
-

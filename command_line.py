@@ -5,7 +5,7 @@ Purpose: Allows user to interact with data with the command line
 import argparse
 import sys
 from ProductionCode.core import Features
-from ProductionCode.data_handling import Data_Handler
+from ProductionCode.data_handling import DataHandler
 
 def main():
     ''''Arguments: none
@@ -13,7 +13,7 @@ def main():
     Purpose: Taking command line inputs to run functions in command_line
     '''
     core = Features()
-    handler = Data_Handler()
+    handler = DataHandler()
 
     handler.load_data('Data/dummy_data.csv')
 
@@ -23,15 +23,18 @@ def main():
             "python3 command_line.py --ratio Japan\n"
             "python3 command_line.py --year_co2 2004\n"
             "python3 command_line.py --biofuel Canada\n"
-
-        ) , 
+            ) , 
         usage = 'command_line [options]'
     )
 
-    parser.add_argument('-a', '--average', type = str, help= 'Calculates avg co2 of a country')
-    parser.add_argument('-r', '--ratio', type = str, help = 'Provides co2 and co2 per capita ratio')
-    parser.add_argument('-y', '--year_co2', type = str, help = 'co2 emissions of all countries for a year')
-    parser.add_argument('-b', '--biofuel', type = str, help = 'Finds the top biofuel consumption of a country' )
+    parser.add_argument('-a', '--average', type = str,
+    help= 'Calculates avg co2 of a country')
+    parser.add_argument('-r', '--ratio', type = str,
+    help = 'Provides co2 and co2 per capita ratio')
+    parser.add_argument('-y', '--year_co2', type = str,
+    help = 'co2 emissions of all countries for a year')
+    parser.add_argument('-b', '--biofuel', type = str,
+    help = 'Finds the top biofuel consumption of a country')
 
     if len(sys.argv) == 1:
         print("Usage: python3 command_line.py [options]")
