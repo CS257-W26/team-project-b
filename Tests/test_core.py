@@ -1,7 +1,5 @@
 '''modules for testing basic_cl.py main function'''
-import sys
 import unittest
-from io import StringIO
 from ProductionCode.core import Features
 from ProductionCode.data_handling import DataHandler
 

@@ -15,7 +15,7 @@ class TestDataHandling(unittest.TestCase):
         Return: None
         Purpose: Tests if load_data function properly loads csv data
         '''
-        self.assertEqual(self.data.load_data('Data/dummy_data.csv'), 
+        self.assertEqual(self.data.load_data('Data/dummy_data.csv'),
         [["Canada", "2004", "1.452", "12.345"],
         ["Canada", "1998", "2.045", "10.432"],
         ["Canada", "2018", "3.192", "15.725"],
@@ -32,7 +32,7 @@ class TestDataHandling(unittest.TestCase):
         Return: None
         Purpose: Tests if function extracts correct country row
         '''
-        self.assertEqual(self.data.extract_row("Japan"), 
+        self.assertEqual(self.data.extract_row("Japan"),
         [['Japan', '2004', '1.133', '4.359'],
         ['Japan', '1998', '0.792' , '24.132'],
         ['Japan', '2018', '9.034' , '45.32']])
@@ -43,8 +43,8 @@ class TestDataHandling(unittest.TestCase):
         Purpose: Tests if clean_column returns appropriate 
         column with no white space
         '''
-        self.assertEqual(self.data.clean_column(2, 
-        [['Japan', '2004', '', '4.359'], 
+        self.assertEqual(self.data.clean_column(2,
+        [['Japan', '2004', '', '4.359'],
         ['Japan', '1998', '', '24.132'],
         ['Japan', '2018', '9.034', '45.32']]),
         ["9.034"])
@@ -54,5 +54,5 @@ class TestDataHandling(unittest.TestCase):
         Return: None
         Purpose: Tests if conversion of str to float works appropriately
         '''
-        self.assertEqual(self.data.convert_type(["9.034", "19.213", "11"]), 
+        self.assertEqual(self.data.convert_type(["9.034", "19.213", "11"]),
         [9.034, 19.213, 11])

@@ -21,8 +21,12 @@ class TestCommandLine(unittest.TestCase):
         output = sys.stdout.getvalue().strip()
 
         self.assertEqual(output, "0.46071556778748357")
-    
+
     def test_main_no_arg(self):
+        '''Arguments: self
+        Return value: None
+        Purpose: Tests if usage statement is printed when no arguments are given
+        '''
         sys.argv = ['command_line.py']
         sys.stdout = StringIO()
         main()
