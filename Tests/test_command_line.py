@@ -32,7 +32,7 @@ class TestCommandLine(unittest.TestCase):
         main()
         output = sys.stdout.getvalue().strip()
 
-        self.assertEqual(output, "Usage: python3 command_line.py [options]")
+        self.assertEqual(output, "Usage: python3 command_line.py [--help]")
 
     if __name__ == '__main__':
         unittest.main()

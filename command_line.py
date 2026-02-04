@@ -24,7 +24,7 @@ def main():
             "python3 command_line.py --year_co2 2004\n"
             "python3 command_line.py --biofuel Canada\n"
         ),
-        usage = 'command_line [options]'
+        usage = 'command_line [--help]'
     )
 
     parser.add_argument('-a', '--average', type = str,
@@ -37,7 +37,7 @@ def main():
     help = 'Finds the top biofuel consumption of a country')
 
     if len(sys.argv) == 1:
-        print("Usage: python3 command_line.py [options]")
+        print("Usage: python3 command_line.py [--help]")
     else:
         args = parser.parse_args()
         if args.ratio:
@@ -52,6 +52,9 @@ def main():
         elif args.biofuel:
             final_data = handler.set_data('Data/dummy_energy_data.csv', args.biofuel, 2)
             print(core.highest_biofuel(final_data))
+
+        elif args.year_co2:
+            print(core.year_co2(args.year_co2, handler.load_data('Data/dummy_data.csv')))
 
 if __name__ == "__main__":
     main()

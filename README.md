@@ -18,7 +18,7 @@ python3 flask_app.py
 
 # Usage Statement
 
-Usage: python3 command_line.py [options]
+Usage: python3 command_line.py [--help]
 
 # Dependecies
 
