@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+'''
+Purpose: 
+'''
+
+import csv
+
+>>>>>>> e7da852 (storing changes)
 class Features():
     '''
     Purpose: Stores the core features of the website 
@@ -8,6 +17,7 @@ class Features():
         Return: The average of the given dataset (str)
         Purpose: To get the average of a subset of data for a country
         '''
+
         total = 0
         count = 0
         for row in dataset:
@@ -38,7 +48,7 @@ class Features():
         output = []
 
         if isinstance(year, str):
-            for row in dataset:
+            for row in self.data:
                 country = row[0]
                 year_row = row[1]
                 co2 = row[2]
