@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-=======
-'''
-Purpose: 
-'''
-
-import csv
-
->>>>>>> e7da852 (storing changes)
 class Features():
     '''
     Purpose: Stores the core features of the website 
