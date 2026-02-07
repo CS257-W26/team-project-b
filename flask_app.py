@@ -2,20 +2,20 @@
 The eventual location for the Flask app interface for the project.
 '''
 
-from flask import Flask
+from flask import Flask, Blueprint #importing blueprint
 from ProductionCode.core import Features
-from ProductionCode.data_handling import Data_Handler
+from ProductionCode.data_handling import DataHandler
 
 app = Flask(__name__)
-# api = Blueprint('api', __name__)
+api = Blueprint('api', __name__) #api object
 core = Features()
-data_handling = Data_Handler()
+data_handling = DataHandler()
 
 @app.route("/")
 def homepage():
-    """
+    '''
     Purpose: homepage to show instructions for available routes
-    """
+    '''
     return "Welcome to Emission Tracker!\
     To view CO2 data from 2004 (or 1998/2018),\
     enter the following: /year_co2/2004 \n\
@@ -24,7 +24,10 @@ def homepage():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return "Sorry, wrong format. Please enter one of the following commands: /year_co2/2004, /biofuel/Canada"
+    '''
+    Purpose: Handles user error if wrong format is inputted
+    '''
+    return "Enter one of the following commands: /year_co2/2004, /biofuel/Canada"
 
 @app.route("/average/<country>")
 def route_average(country):
@@ -38,7 +41,7 @@ def route_average(country):
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
-    
+
 @app.route("/ratio/<country>")
 def route_ratio(country):
     '''Arguments: country (year)
@@ -62,8 +65,8 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    data_handling.load_data("Data/dummy_data.csv")
-    data = core.year_co2(year)
+    dataset = data_handling.load_data("Data/dummy_data.csv")
+    data = core.year_co2(year, dataset)
 
     output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
 
@@ -93,6 +96,5 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    app.run(port = 5013)
-    # app.register_blueprint(api, url_prefix='/api')
-
+    #app.register_blueprint(api, url_prefix='/api')
+    app.run(port = 5001)

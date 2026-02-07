@@ -5,13 +5,20 @@ python3 command_line.py --year_co2 "2004"
 
 python3 command_line.py --biofuel "Canada"
 
-
 # Flask App Routes
+python3 flask_app.py
 
+/average/Japan
+
+/ratio/Canada
+
+/year_co2/2004
+
+/biofuel/Argentina
 
 # Usage Statement
 
-Usage: python3 command_line.py [options]
+Usage: python3 command_line.py [--help]
 
 # Dependecies
 

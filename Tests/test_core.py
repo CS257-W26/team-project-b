@@ -1,8 +1,7 @@
 '''modules for testing basic_cl.py main function'''
-import sys
 import unittest
-from io import StringIO
 from ProductionCode.core import Features
+from ProductionCode.data_handling import DataHandler
 
 class TestCommandLine(unittest.TestCase):
     '''Arguments: unittest.TestCase
@@ -10,8 +9,11 @@ class TestCommandLine(unittest.TestCase):
     Purpose: Holds the tests for core.py
     Run with: python -m unittest Tests/test_core.py
     '''
-    
+
     core = Features()
+    handler = DataHandler()
+
+    data = handler.load_data("Data/dummy_data.csv")
 
     def test_average(self):
         '''Arguments: self (TestCommandLine)
@@ -40,18 +42,20 @@ class TestCommandLine(unittest.TestCase):
         Return: none
         Purpose: Tests the ratio function in command_line.py
         '''
-        self.assertAlmostEqual(self.core.ratio([12.345,10.432,15.725],[42.47,30.90,10.20]),0.460715567)
-        self.assertAlmostEqual(self.core.ratio([12.333,8.324,20.324],[4.359,24.132,45.32]),0.555215345)
+        self.assertAlmostEqual(self.core.ratio([12.345,10.432,15.725],
+        [42.47,30.90,10.20]),0.460715567)
+        self.assertAlmostEqual(self.core.ratio([12.333,8.324,20.324],
+        [4.359,24.132,45.32]),0.555215345)
 
     def test_year_co2(self):
         '''Arguments: self (TestCommandLine)
         Return: none
         Purpose: Tests year_co2 function in command_line.py
         '''
-        self.assertEqual(self.core.year_co2('2004'),[['Canada','2004','1.452'],
+        self.assertEqual(self.core.year_co2('2004', self.data),[['Canada','2004','1.452'],
         ['Japan','2004','1.133'],['Argentina','2004','0.630']])
 
-        self.assertEqual(self.core.year_co2('1998'),[['Canada','1998','2.045'],
+        self.assertEqual(self.core.year_co2('1998', self.data),[['Canada','1998','2.045'],
         ['Japan','1998','0.792'],['Argentina','1998','1.582']])
 
     def test_year_co2_edge(self):
@@ -59,8 +63,8 @@ class TestCommandLine(unittest.TestCase):
         Return: none
         Purpose: Tests edge cases for the year_co2 function in command_line.py
         '''
-        self.assertEqual(self.core.year_co2(2004), [])
-        self.assertEqual(self.core.year_co2("Canadaa"), [])
+        self.assertEqual(self.core.year_co2(2004, self.data), [])
+        self.assertEqual(self.core.year_co2("Canadaa", self.data), [])
 
     def test_highest_biofuel(self):
         '''Arguments: self (TestCommandLine)

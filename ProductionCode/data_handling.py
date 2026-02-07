@@ -1,6 +1,9 @@
+'''Purpose: csv module used to read csv file'''
 import csv
 
-class Data_Handler:
+class DataHandler:
+    '''Purpose: Handles the processing of data
+    '''
 
     def __init__(self):
         self.data = []
@@ -16,7 +19,7 @@ class Data_Handler:
             for row in reader:
                 self.data.append(row)
         return self.data
-    
+
     def extract_row(self, country):
         '''Argument: self, country (str)
         Purpose: Extracts a row from the dataset based on country
@@ -24,10 +27,10 @@ class Data_Handler:
         '''
         country_data = []
         for row in self.data:
-            if (row[0] == country):
+            if row[0] == country:
                 country_data.append(row)
         return country_data
-        
+
     def clean_column(self, col, dataset):
         '''Argument: self, column to clean (col)
         Purpose: Returns a clean column with only necessary data
@@ -56,7 +59,7 @@ class Data_Handler:
         self.load_data(dataset)
 
         cleaned = self.clean_column(col, self.extract_row(country))
-        
+
         final_data = self.convert_type(cleaned)
 
         return final_data
