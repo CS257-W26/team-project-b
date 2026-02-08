@@ -9,8 +9,9 @@ class DataHandler:
         self.data = []
 
     def load_data(self, dataset):
-        '''
+        '''Argument: dataset (str)
         Purpose: Load data for other functions in this file
+        Return: A list
         '''
         self.data.clear()
         with open(dataset, newline='', encoding='utf-8') as file:
@@ -32,7 +33,7 @@ class DataHandler:
         return country_data
 
     def clean_column(self, col, dataset):
-        '''Argument: self, column to clean (col)
+        '''Argument: self, col (int), dataset (list)
         Purpose: Returns a clean column with only necessary data
         Return: A list 
         '''
@@ -44,7 +45,8 @@ class DataHandler:
 
     def convert_type(self, value_list):
         '''
-        Purpose: Convert column from str to float type
+        Arguments: self, value_list (list)
+        Purpose: Convert list from str to float type
         Return: A list of float values
         '''
         index = -1
@@ -54,7 +56,9 @@ class DataHandler:
         return value_list
 
     def set_data(self, dataset, country, col):
-        '''Argument: country (Str)
+        '''Argument: dataset (list), country (Str), col (int)
+        Purpose: Has a list of data for a specific country for a specific column
+        Return: final_data (list)
         '''
         self.load_data(dataset)
 

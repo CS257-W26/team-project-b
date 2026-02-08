@@ -7,15 +7,15 @@ import sys
 from ProductionCode.core import Features
 from ProductionCode.data_handling import DataHandler
 
-def main():
+def set_parser():
     ''''Arguments: none
     Return value: parser
-    Purpose: Taking command line inputs to run functions in command_line
+    Purpose: Setting up the parser with arguments
     '''
     core = Features()
     handler = DataHandler()
 
-    handler.load_data('Data/dummy_data.csv')
+    handler.load_data('Data/owid-co2-data.csv')
 
     parser = argparse.ArgumentParser(
         epilog = (
@@ -36,25 +36,35 @@ def main():
     parser.add_argument('-b', '--biofuel', type = str,
     help = 'Finds the top biofuel consumption of a country')
 
+    return parser
+
+def main():
+    '''Arguments: None
+    Purpose: Handles command line user input
+    Return: None
+    '''
+    parser = set_parser()
+
     if len(sys.argv) == 1:
-        print("Usage: python3 command_line.py [--help]")
+        print("Usage: python3 command_line.py --help")
+        sys.exit(0)
     else:
         args = parser.parse_args()
         if args.ratio:
-            data1 = handler.set_data('Data/dummy_data.csv', args.ratio, 3)
-            data2 = handler.set_data('Data/dummy_energy_data.csv', args.ratio, 3)
+            data1 = handler.set_data('Data/owid-co2-data.csv', args.ratio, 8)
+            data2 = handler.set_data('Data/owid-energy-data.csv', args.ratio, 9)
             print(core.ratio(data1, data2))
 
         elif args.average:
-            final_data = handler.set_data('Data/dummy_data.csv', args.average, 2)
+            final_data = handler.set_data('Data/owid-co2-data.csv', args.average, 8)
             print(core.average(final_data))
 
         elif args.biofuel:
-            final_data = handler.set_data('Data/dummy_energy_data.csv', args.biofuel, 2)
+            final_data = handler.set_data('Data/owid-energy-data.csv', args.biofuel, 9)
             print(core.highest_biofuel(final_data))
 
         elif args.year_co2:
-            print(core.year_co2(args.year_co2, handler.load_data('Data/dummy_data.csv')))
+            print(core.year_co2(args.year_co2, handler.load_data('Data/owid-co2-data.csv')))
 
 if __name__ == "__main__":
     main()
