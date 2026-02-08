@@ -18,7 +18,7 @@ class TestCommandLine(unittest.TestCase):
         main()
         return sys.stdout.getvalue().strip()
 
-    def test_main_arg_ratio(self):
+    def test_arg_ratio(self):
         '''Arguments: self (TestProductionCode)
         Return value: None
         Purpose: Tests whether the main function returns the correct value for the
@@ -27,7 +27,7 @@ class TestCommandLine(unittest.TestCase):
         sys.argv = ['command_line.py','--ratio','Canada']
         self.assertEqual(self.sys_helper(), "0.46071556778748357")
 
-    def test_main_arg_average(self):
+    def test_arg_average(self):
         '''Arguments: self (TestProductionCode)
         Return value: None
         Purpose: Tests main function's output for arg.average
@@ -35,7 +35,7 @@ class TestCommandLine(unittest.TestCase):
         sys.argv = ['command_line.py', '--average', 'Japan']
         self.assertEqual(self.sys_helper(), '3.6530000000000005')
 
-    def test_main_arg_biofuel(self):
+    def test_arg_biofuel(self):
         '''Arguments: self (TestProductionCode)
         Return value: None
         Purpose: Tests if biofuel argument in main works as expected
@@ -43,7 +43,16 @@ class TestCommandLine(unittest.TestCase):
         sys.argv = ['command_line.py', '--biofuel', 'Canada']
         self.assertEqual(self.sys_helper(), '3.192')
 
-    def test_main_no_arg(self):
+    def test_arg_year_co2(self):
+        '''Arguments: self (TestProductionCode)
+        Return value: None
+        Purpose: Tests if year_co2 argument in main displays correct output
+        '''
+        sys.argv = ['command_line.py', '--year_co2', '1998']
+        self.assertEqual(self.sys_helper(), 
+        'Annual CO2 emissions (measured in million tonnes) in the year 2019: Argentina: 1.609')
+
+    def test_no_arg(self):
         '''Arguments: self
         Return value: None
         Purpose: Tests if usage statement is printed when no arguments are given

@@ -39,10 +39,10 @@ class Features():
         output = []
 
         if isinstance(year, str):
-            for row in self.data:
+            for row in dataset:
                 country = row[0]
                 year_row = row[1]
-                co2 = row[2]
+                co2 = row[8]
                 if year_row == (year) and co2 != "":
                     output.append([country, year_row, co2])
         return output
