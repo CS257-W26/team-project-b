@@ -32,10 +32,14 @@ class TestDataHandling(unittest.TestCase):
         Return: None
         Purpose: Tests if function extracts correct country row
         '''
-        self.assertEqual(self.data.extract_row("Japan"),
+        self.assertEqual(self.data.extract_row("Japan",0),
         [['Japan', '2004', '1.133', '4.359'],
         ['Japan', '1998', '0.792' , '24.132'],
         ['Japan', '2018', '9.034' , '45.32']])
+        self.assertEqual(self.data.extract_row("2004",1),
+        [['Canada','2004','1.452','42.47'],
+         ['Japan', '2004', '1.133', '4.359'],
+         ['Argentina','2004','0.630','12.234']])
 
     def test_clean_column(self):
         '''Argument: self

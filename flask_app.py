@@ -11,7 +11,7 @@ api = Blueprint('api', __name__) #api object
 core = Features()
 data_handling = DataHandler()
 
-@app.route("/")
+@api.route("/")
 def homepage():
     '''
     Purpose: homepage to show instructions for available routes
@@ -22,14 +22,14 @@ def homepage():
     To view the highest biofuel consumption for a country,\
     enter the following: /biofuel/Canada"
 
-@app.errorhandler(404)
+@api.errorhandler(404)
 def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
-    return "Enter one of the following commands: /year_co2/2004, /biofuel/Canada"
+    return str(e) + "Enter one of the following commands: /year_co2/2004, /biofuel/Canada"
 
-@app.route("/average/<country>")
+@api.route("/average/<country>")
 def route_average(country):
     '''Arguments: country (string)
     Return: The average CO2 emissions of a country (float), 
@@ -42,7 +42,7 @@ def route_average(country):
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
 
-@app.route("/ratio/<country>")
+@api.route("/ratio/<country>")
 def route_ratio(country):
     '''Arguments: country (year)
     Return: A ratio (float) 
@@ -57,7 +57,7 @@ def route_ratio(country):
 
     return output + str(ratio)
 
-@app.route("/year_co2/<year>")
+@api.route("/year_co2/<year>")
 def route_year_co2(year):
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and
@@ -81,7 +81,7 @@ def route_year_co2(year):
 
     return output
 
-@app.route("/biofuel/<country>")
+@api.route("/biofuel/<country>")
 def route_biofuel(country):
     """
     Arguments: country (string)
@@ -96,5 +96,5 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    #app.register_blueprint(api, url_prefix='/api')
+    app.register_blueprint(api, url_prefix='/api')
     app.run(port = 5001)
