@@ -52,19 +52,17 @@ class TestCommandLine(unittest.TestCase):
         Return: none
         Purpose: Tests year_co2 function in command_line.py
         '''
-        self.assertEqual(self.core.year_co2('2004', self.data),[['Canada','2004','1.452'],
-        ['Japan','2004','1.133'],['Argentina','2004','0.630']])
-
-        self.assertEqual(self.core.year_co2('1998', self.data),[['Canada','1998','2.045'],
-        ['Japan','1998','0.792'],['Argentina','1998','1.582']])
+        self.assertEqual(self.core.year_co2('2018', [['Canada','2018','3.192','15.725'],
+        ['Japan','2018','9.034','20.324'],['Argentina','2018','','']],3),[['Canada','2018','15.725'],
+        ['Japan','2018','20.324']])
 
     def test_year_co2_edge(self):
         '''Arguments: self (TestCommandLine)
         Return: none
         Purpose: Tests edge cases for the year_co2 function in command_line.py
         '''
-        self.assertEqual(self.core.year_co2(2004, self.data), [])
-        self.assertEqual(self.core.year_co2("Canadaa", self.data), [])
+        self.assertEqual(self.core.year_co2(2004, [],3), [])
+        self.assertEqual(self.core.year_co2("Canadaa", [],3), [])
 
     def test_highest_biofuel(self):
         '''Arguments: self (TestCommandLine)

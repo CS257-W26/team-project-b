@@ -1,6 +1,7 @@
 '''modules for testing basic_cl.py main function'''
 import sys
 import unittest
+from unittest.mock import patch
 from io import StringIO
 from command_line import main
 
@@ -9,6 +10,12 @@ class TestCommandLine(unittest.TestCase):
     Return value: none
     Purpose: Holds the tests for command_line.py
     '''
+    @patch ('command_line.co2_data',
+           'Data/dummy_data.csv')
+    @patch ('command_line.energy_data',
+            'Data/dummy_energy_data.csv')
+    @patch ('command_line.wanted_columns',
+            [2,3])
     def sys_helper(self):
         '''Arguments: self
         Return value: Returns sys.stdout output (str)
