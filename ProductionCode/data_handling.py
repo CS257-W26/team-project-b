@@ -6,31 +6,33 @@ class DataHandler:
     '''
 
     def __init__(self):
-        self.data = []
+        self.co2_data = self.load_data('owid-co2-data')
+        self.energy_data = self.load_data('owid-energy-data')
 
     def load_data(self, dataset):
         '''Argument: dataset (str)
         Purpose: Load data for other functions in this file
         Return: A list
         '''
-        self.data.clear()
+        data = []
         with open(dataset, newline='', encoding='utf-8') as file:
             reader = csv.reader(file)
             next(reader)
             for row in reader:
                 self.data.append(row)
-        return self.data
+        return data data
 
-    def extract_row(self, country):
-        '''Argument: self, country (str)
-        Purpose: Extracts a row from the dataset based on country
+    def extract_row(self, extraction, column_basis):
+        '''Argument: self, extraction (str), column_basis (int)
+        Purpose: Extracts a row from the dataset based on extraction (country/year) 
         Returns: A list
         '''
-        country_data = []
-        for row in self.data:
-            if row[0] == country:
-                country_data.append(row)
-        return country_data
+        extraction_data = []
+        if isinstance(column_basis, int) and column_basis < len(self.data):
+            for row in self.data:
+                if row[column_basis] == extraction:
+                    extraction_data.append(row)
+        return extraction_data
 
     def clean_column(self, col, dataset):
         '''Argument: self, col (int), dataset (list)
@@ -60,8 +62,6 @@ class DataHandler:
         Purpose: Has a list of data for a specific country for a specific column
         Return: final_data (list)
         '''
-        self.load_data(dataset)
-
         cleaned = self.clean_column(col, self.extract_row(country))
 
         final_data = self.convert_type(cleaned)
