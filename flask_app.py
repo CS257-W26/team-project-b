@@ -27,7 +27,7 @@ def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
-    return "Enter one of the following commands: /year_co2/2004, /biofuel/Canada"
+    return "Enter one of the following commands: /year_co2/2004, /biofuel/Canada" + str(e)
 
 @api.route("/average/<country>")
 def route_average(country):
@@ -53,7 +53,10 @@ def route_ratio(country):
 
     ratio = core.ratio(co2_data, co2_per_capita)
 
-    output = "The ratio between averages of annual CO2 per capita (tonnes per person) to energy use per capita (kilowatt-hours per person) for " + country + ": "
+    output = (
+        "The ratio between averages of annual CO2 per capita (tonnes per person)"
+        " to energy use per capita (kilowatt-hours per person) for " + country + ": "
+    )
 
     return output + str(ratio)
 
