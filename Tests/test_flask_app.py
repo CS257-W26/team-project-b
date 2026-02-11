@@ -3,8 +3,8 @@ Test file for flask_app.py
 Run with:
 python -m unittest Tests/test_flask_app.py
 '''
-from flask_app import app
 import unittest
+from flask_app import app
 
 class TestFlaskApp(unittest.TestCase):
     '''Purpose: Tests the route functions in flask_app'''
@@ -27,8 +27,10 @@ class TestFlaskApp(unittest.TestCase):
         Return: None
         Purpose: Tests average route for appropriate output messages
         '''
-        dictionary = {'/average/Canada':b'The average annual CO2 emissions (measured in million tonnes) for Canada: 2.2296666666666667',
-                      '/average/Japan':b'The average annual CO2 emissions (measured in million tonnes) for Japan: 3.6530000000000005'}
+        dictionary = {'/average/Canada':b'The average annual CO2 emissions '
+                      +'(measured in million tonnes) for Canada: 2.2296666666666667',
+                      '/average/Japan':b'The average annual CO2 emissions '
+                      +'(measured in million tonnes) for Japan: 3.6530000000000005'}
         for case,output in dictionary.items():
             result = self.app.get(case,follow_redirects=True)
             self.assertEqual(result.data, output)
@@ -38,8 +40,12 @@ class TestFlaskApp(unittest.TestCase):
         Return: None
         Purpose: Tests ratio route for expected output messages
         '''
-        dictionary = {'/ratio/Canada':b'The ratio between averages of annual CO2 per capita (tonnes per person) to energy use per capita (kilowatt-hours per person) for Canada: 0.46071556778748357',
-                      '/ratio/Japan':b'The ratio between averages of annual CO2 per capita (tonnes per person) to energy use per capita (kilowatt-hours per person) for Japan: 0.5552153473059571'}
+        dictionary = {'/ratio/Canada':b'The ratio between averages of annual CO2 per capita '
+                      +'(tonnes per person) to energy use per capita (kilowatt-hours per person) '
+                      +'for Canada: 0.46071556778748357',
+                      '/ratio/Japan':b'The ratio between averages of annual CO2 per capita '
+                      +'(tonnes per person) to energy use per capita (kilowatt-hours per person) '
+                      +'for Japan: 0.5552153473059571'}
         for case,output in dictionary.items():
             result = self.app.get(case,follow_redirects=True)
             self.assertEqual(result.data, output)
@@ -49,8 +55,10 @@ class TestFlaskApp(unittest.TestCase):
         Return: None
         Purpose: Tests year_co2 route for expected output messages
         '''
-        dictionary = {'/year_co2/2004':b'Annual CO2 emissions (measured in million tonnes) in the year 2004: Canada: 1.452\nJapan: 1.133\nArgentina: 0.630\n',
-                    '/year_co2/2018':b'Annual CO2 emissions (measured in million tonnes) in the year 2018: Canada: 3.192\nJapan: 9.034\n'}
+        dictionary = {'/year_co2/2004':b'Annual CO2 emissions (measured in million tonnes) '
+                      +'in the year 2004: Canada: 1.452\nJapan: 1.133\nArgentina: 0.630\n',
+                    '/year_co2/2018':b'Annual CO2 emissions (measured in million tonnes) '
+                    +'in the year 2018: Canada: 3.192\nJapan: 9.034\n'}
         for case,output in dictionary.items():
             result = self.app.get(case,follow_redirects=True)
             self.assertEqual(result.data, output)
@@ -60,8 +68,10 @@ class TestFlaskApp(unittest.TestCase):
         Return: None
         Purpose: Tests biofuel route for expected output messages 
         '''
-        dictionary = {'/biofuel/Canada':b'Highest biofuel consumption (measured in terawatt-hours) for Canada is 3.192',
-                      '/biofuel/Japan':b'Highest biofuel consumption (measured in terawatt-hours) for Japan is 9.034'}
+        dictionary = {'/biofuel/Canada':b'Highest biofuel consumption (measured in terawatt-hours) '
+                      +'for Canada is 3.192',
+                      '/biofuel/Japan':b'Highest biofuel consumption (measured in terawatt-hours) '
+                      +'for Japan is 9.034'}
         for case,output in dictionary.items():
             result = self.app.get(case,follow_redirects=True)
             self.assertEqual(result.data, output)

@@ -53,7 +53,9 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests year_co2 function in command_line.py
         '''
         self.assertEqual(self.core.year_co2('2018', [['Canada','2018','3.192','15.725'],
-        ['Japan','2018','9.034','20.324'],['Argentina','2018','','']],3),[['Canada','2018','15.725'],
+        ['Japan','2018','9.034','20.324'],
+        ['Argentina','2018','','']],3),
+        [['Canada','2018','15.725'],
         ['Japan','2018','20.324']])
 
     def test_year_co2_edge(self):
