@@ -5,7 +5,7 @@ class DataHandler:
     '''Purpose: Handles the processing of data
     '''
 
-    def __init__(self, ):
+    def __init__(self):
         self.co2_data = self.load_data('owid-co2-data')
         self.energy_data = self.load_data('owid-energy-data')
 
@@ -19,16 +19,16 @@ class DataHandler:
             reader = csv.reader(file)
             next(reader)
             for row in reader:
-                data.append(row)
-        return data
+                self.data.append(row)
+        return data data
 
     def extract_row(self, extraction, column_basis):
-        '''Argument: self, country (str)
-        Purpose: Extracts a row from the dataset based on country
+        '''Argument: self, extraction (str), column_basis (int)
+        Purpose: Extracts a row from the dataset based on extraction (country/year) 
         Returns: A list
         '''
         extraction_data = []
-        if isinstance(column_basis,int) and column_basis < len(self.data):
+        if isinstance(column_basis, int) and column_basis < len(self.data):
             for row in self.data:
                 if row[column_basis] == extraction:
                     extraction_data.append(row)
