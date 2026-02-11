@@ -7,15 +7,17 @@ import sys
 from ProductionCode.core import Features
 from ProductionCode.data_handling import DataHandler
 
+co2_data = 'Data/owid-co2-data.csv'
+energy_data = 'Data/owid-energy-data.csv'
+wanted_columns = [8,9]
+core = Features()
+handler = DataHandler()
+
 def set_parser():
     ''''Arguments: none
     Return value: parser
     Purpose: Setting up the parser with arguments
     '''
-    core = Features()
-    handler = DataHandler()
-
-    handler.load_data('Data/owid-co2-data.csv')
 
     parser = argparse.ArgumentParser(
         epilog = (
@@ -46,25 +48,24 @@ def main():
     parser = set_parser()
 
     if len(sys.argv) == 1:
-        print("Usage: python3 command_line.py --help")
-        sys.exit(0)
+        print("Usage: python3 command_line.py [--help]")
     else:
         args = parser.parse_args()
         if args.ratio:
-            data1 = handler.set_data('Data/owid-co2-data.csv', args.ratio, 8)
-            data2 = handler.set_data('Data/owid-energy-data.csv', args.ratio, 9)
+            data1 = handler.set_data(co2_data, args.ratio, wanted_columns[0])
+            data2 = handler.set_data(energy_data, args.ratio, wanted_columns[1])
             print(core.ratio(data1, data2))
 
         elif args.average:
-            final_data = handler.set_data('Data/owid-co2-data.csv', args.average, 8)
+            final_data = handler.set_data(co2_data, args.average, wanted_columns[0])
             print(core.average(final_data))
 
         elif args.biofuel:
-            final_data = handler.set_data('Data/owid-energy-data.csv', args.biofuel, 9)
+            final_data = handler.set_data(energy_data, args.biofuel, wanted_columns[1])
             print(core.highest_biofuel(final_data))
 
         elif args.year_co2:
-            print(core.year_co2(args.year_co2, handler.load_data('Data/owid-co2-data.csv')))
+            print(core.year_co2(args.year_co2, handler.load_data(co2_data)))
 
 if __name__ == "__main__":
     main()
