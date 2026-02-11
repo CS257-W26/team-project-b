@@ -33,7 +33,7 @@ def page_not_found(e):
 @api.route("/average/<country>")
 def route_average(country):
     '''Arguments: country (string)
-    Return: The average CO2 emissions of a country (float), 
+    Return: The average CO2 emissions of a country (float),
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
