@@ -5,6 +5,7 @@ The eventual location for the Flask app interface for the project.
 from flask import Flask, Blueprint
 from ProductionCode.core import Features
 from ProductionCode.data_handling import DataHandler
+from ProductionCode.datasource import DataSource
 
 app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
@@ -68,21 +69,9 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    dataset = data_handling.sets("Data/dummy_data.csv", year, 1)
-    data = core.year_co2(year, dataset, 2)
+    year_co2_data = ds.get_year(year)
 
-    output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
-
-    if isinstance(data, str):
-        return data
-
-    for row in data:
-        country = row[0]
-        co2 = row[2]
-        if co2 != "":
-            output = output + country + ": " + co2 + "\n"
-
-    return output
+    return year_co2_data
 
 @api.route("/biofuel/<country>")
 def route_biofuel(country):
@@ -99,5 +88,7 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    app.register_blueprint(api, url_prefix='/api')
-    app.run(port = 5002)
+    # app.register_blueprint(api, url_prefix='/api')
+    # app.run(host='0.0.0.0',port=YOUR_NUMBER)
+    ds = DataSource()
+    print(ds.get_country("Canada"))
