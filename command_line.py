@@ -18,7 +18,6 @@ def set_parser():
     Return value: parser
     Purpose: Setting up the parser with arguments
     '''
-
     parser = argparse.ArgumentParser(
         epilog = (
             "Example Commands:\n"
@@ -68,4 +67,7 @@ def main():
             print(core.year_co2(args.year_co2,handler.load_data(co2_data),wanted_columns[0]))
 
 if __name__ == "__main__":
+    core = Features()
+    handler = DataHandler()
+    handler.load_data('Data/owid-co2-data.csv')
     main()

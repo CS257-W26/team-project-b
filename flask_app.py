@@ -53,7 +53,10 @@ def route_ratio(country):
 
     ratio = core.ratio(co2_data, co2_per_capita)
 
-    output = "The ratio between averages of annual CO2 per capita (tonnes per person) to energy use per capita (kilowatt-hours per person) for " + country + ": "
+    output = (
+        "The ratio between averages of annual CO2 per capita (tonnes per person)"
+        " to energy use per capita (kilowatt-hours per person) for " + country + ": "
+    )
 
     return output + str(ratio)
 
