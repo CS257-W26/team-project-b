@@ -6,21 +6,20 @@ class DataHandler:
     '''
 
     def __init__(self):
-        self.co2_data = self.load_data('owid-co2-data')
-        self.energy_data = self.load_data('owid-energy-data')
+        self.data = []
 
     def load_data(self, dataset):
         '''Argument: dataset (str)
         Purpose: Load data for other functions in this file
         Return: A list
         '''
-        data = []
+        self.data.clear()
         with open(dataset, newline='', encoding='utf-8') as file:
             reader = csv.reader(file)
             next(reader)
             for row in reader:
                 self.data.append(row)
-        return data data
+        return self.data
 
     def extract_row(self, extraction, column_basis):
         '''Argument: self, extraction (str), column_basis (int)
@@ -57,13 +56,24 @@ class DataHandler:
             value_list[index] = float(i)
         return value_list
 
-    def set_data(self, dataset, country, col):
-        '''Argument: dataset (list), country (Str), col (int)
+    def set_data(self, dataset, extraction, col, column_basis):
+        '''Argument: dataset (list), extraction (str), col (int), column_basis(col)
         Purpose: Has a list of data for a specific country for a specific column
         Return: final_data (list)
         '''
-        cleaned = self.clean_column(col, self.extract_row(country))
+        self.load_data(dataset)
+        cleaned = self.clean_column(col, self.extract_row(extraction,column_basis))
 
         final_data = self.convert_type(cleaned)
+
+        return final_data
+
+    def sets(self, dataset, extraction, column_basis):
+        '''Argument: dataset (list), extraction (str), column_basis(col)
+        Purpose: Has a list of data for a specific year
+        Return: final_data (list)
+        '''
+        self.load_data(dataset)
+        final_data = self.extract_row(extraction,column_basis)
 
         return final_data

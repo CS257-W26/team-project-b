@@ -36,7 +36,7 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    average_list = data_handling.set_data("Data/dummy_data.csv", country, 2)
+    average_list = data_handling.set_data("Data/dummy_data.csv", country, 2, 0)
     average = core.average(average_list)
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
@@ -48,8 +48,8 @@ def route_ratio(country):
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    co2_data = data_handling.set_data("Data/dummy_data.csv", country, 3)
-    co2_per_capita = data_handling.set_data("Data/dummy_energy_data.csv", country, 3)
+    co2_data = data_handling.set_data("Data/dummy_data.csv", country, 3, 0 )
+    co2_per_capita = data_handling.set_data("Data/dummy_energy_data.csv", country, 3, 0)
 
     ratio = core.ratio(co2_data, co2_per_capita)
 
@@ -65,8 +65,8 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    dataset = data_handling.load_data("Data/dummy_data.csv")
-    data = core.year_co2(year, dataset)
+    dataset = data_handling.sets("Data/dummy_data.csv", year, 1)
+    data = core.year_co2(year, dataset, 2)
 
     output = "Annual CO2 emissions (measured in million tonnes) in the year " + year + ": "
 
@@ -89,7 +89,7 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    values = data_handling.set_data("Data/dummy_energy_data.csv", country, 2)
+    values = data_handling.set_data("Data/dummy_energy_data.csv", country, 2, 0)
     data = core.highest_biofuel(values)
 
     output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
@@ -97,4 +97,4 @@ def route_biofuel(country):
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
-    app.run(port = 5001)
+    app.run(port = 5002)
