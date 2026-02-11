@@ -8,7 +8,7 @@ class Features():
         Return: The average of the given dataset (str)
         Purpose: To get the average of a subset of data for a country
         '''
-
+        
         total = 0
         count = 0
         for row in dataset:
