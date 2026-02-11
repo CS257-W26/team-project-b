@@ -8,7 +8,6 @@ class Features():
         Return: The average of the given dataset (str)
         Purpose: To get the average of a subset of data for a country
         '''
-        
         total = 0
         count = 0
         for row in dataset:
@@ -29,7 +28,7 @@ class Features():
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
-    def year_co2 (self,year, dataset):
+    def year_co2 (self,year, dataset, co2_col):
         '''Arguments: year (string)
         Return: A list of lists (string) with each country and
         total CO2 emissions from a specific year
@@ -40,11 +39,8 @@ class Features():
 
         if isinstance(year, str):
             for row in dataset:
-                country = row[0]
-                year_row = row[1]
-                co2 = row[8]
-                if year_row == (year) and co2 != "":
-                    output.append([country, year_row, co2])
+                if row[co2_col] != "":
+                    output.append([row[0], row[1], row[co2_col]])
         return output
 
     def highest_biofuel(self, values):

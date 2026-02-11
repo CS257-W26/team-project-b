@@ -21,16 +21,17 @@ class DataHandler:
                 self.data.append(row)
         return self.data
 
-    def extract_row(self, country):
-        '''Argument: self, country (str)
-        Purpose: Extracts a row from the dataset based on country
+    def extract_row(self, extraction, column_basis):
+        '''Argument: self, extraction (str), column_basis (int)
+        Purpose: Extracts a row from the dataset based on extraction (country/year) 
         Returns: A list
         '''
-        country_data = []
-        for row in self.data:
-            if row[0] == country:
-                country_data.append(row)
-        return country_data
+        extraction_data = []
+        if isinstance(column_basis, int) and column_basis < len(self.data):
+            for row in self.data:
+                if row[column_basis] == extraction:
+                    extraction_data.append(row)
+        return extraction_data
 
     def clean_column(self, col, dataset):
         '''Argument: self, col (int), dataset (list)
@@ -55,15 +56,24 @@ class DataHandler:
             value_list[index] = float(i)
         return value_list
 
-    def set_data(self, dataset, country, col):
-        '''Argument: dataset (list), country (Str), col (int)
+    def set_data(self, dataset, extraction, col, column_basis):
+        '''Argument: dataset (list), extraction (str), col (int), column_basis(col)
         Purpose: Has a list of data for a specific country for a specific column
         Return: final_data (list)
         '''
         self.load_data(dataset)
-
-        cleaned = self.clean_column(col, self.extract_row(country))
+        cleaned = self.clean_column(col, self.extract_row(extraction,column_basis))
 
         final_data = self.convert_type(cleaned)
+
+        return final_data
+
+    def sets(self, dataset, extraction, column_basis):
+        '''Argument: dataset (list), extraction (str), column_basis(col)
+        Purpose: Has a list of data for a specific year
+        Return: final_data (list)
+        '''
+        self.load_data(dataset)
+        final_data = self.extract_row(extraction,column_basis)
 
         return final_data
