@@ -1,8 +1,8 @@
+'''Handles core features'''
 class Features():
     '''
     Purpose: Stores the core features of the website 
     '''
-
     def average(self, dataset):
         '''Arguments: dataset (list of values)
         Return: The average of the given dataset (str)
