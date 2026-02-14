@@ -9,22 +9,67 @@ class DataSource:
         connect = f"postgresql://{config.USER}:{config.PASSWORD}@localhost:5432/{config.DATABASE}"
         self.db = records.Database(connect)
 
-    def get_country (self,country):
+    def get_country (self,data,country):
         '''Arguments: self, data, country
-        Purpose: Gets the data from a specific country
+        Purpose: Helper function for get_country_co2 and get_country_energy 
+        to get the data for a specific year
         Return: A csv
         '''
-        result = self.db.query(f"SELECT * FROM co2_data WHERE country = '{country}'")
+        result = self.db.query(f"SELECT * FROM {data} WHERE country = '{country}'")
         return result.export('csv')
+
+    def get_country_co2 (self,country):
+        '''Arguments: self, country
+        Purpose: Gets the data from a specific country from co2_data
+        Return: A csv
+        '''
+        return self.get_country('co2_data', country)
+    
+    def get_country_energy (self,country):
+        '''Arguments: self, country
+        Purpose: Gets the data from a specific country from energy_data
+        Return: A csv
+        '''
+        return self.get_country('energy_data', country)
 
     def get_year (self,data,year):
         '''Arguments: self, data, year
-        Purpose: Gets the data for a specific year
+        Purpose: Helper function for get_year_co2 and get_year_energy 
+        to get the data for a specific year
         Return: A csv
         '''
         result = self.db.query(f'SELECT country, year, co2 FROM {data} WHERE years = {year}')
         return result.export('csv')
 
+    def get_year_co2 (self, year):
+        '''Arguments: self, year
+        Purpose: Gets the data for a specific year from co2_data
+        Return: A csv
+        '''
+        return ('co2_data',year)
+    
+    def get_year_energy (self, year):
+        '''Arguments: self, year
+        Purpose: Gets the data for a specific year from energy_data
+        Return: A csv
+        '''
+        return ('energy_data',year)
+    
+    def get_co2_per_capita (self, country):
+        '''Arguments: self, country
+        Purpose: Gets the co2_per_capita data from co2_data for a specified country
+        Return: A csv
+        '''
+        result = self.db.query(f'SELECT co2_per_capita FROM co2_data WHERE country = {country}')
+        return result.export('csv')
+    
+    def get_energy_per_capita (self, country):
+        '''Arguments: self, year
+        Purpose: Gets the energy_per_capita data from energy_data for a specified country
+        Return: A csv
+        '''
+        result = self.db.query(f'SELECT energy_per_capita FROM energy_data WHERE country = {country}')
+        return result.export('csv')
 if __name__ == "__main__":
     ds = DataSource()
     print(ds.get_country())
