@@ -10,9 +10,8 @@ from ProductionCode.datasource import DataSource
 app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
 core = Features()
-data_handling = DataHandler()
 
-@app.route("/")
+@api.route("/")
 def homepage():
     '''
     Purpose: homepage to show instructions for available routes
@@ -23,36 +22,32 @@ def homepage():
     To view the highest biofuel consumption for a country,\
     enter the following: /biofuel/Canada"
 
-@app.errorhandler(404)
+@api.errorhandler(404)
 def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
     return str(e) + "Enter one of the following commands: /year_co2/2004, /biofuel/Canada"
 
-@app.route("/average/<country>")
+@api.route("/average/<country>")
 def route_average(country):
     '''Arguments: country (string)
-    Return: The average CO2 emissions of a country (float),
+    Return: The average CO2 emissions of a country (float), 
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    average_list = data_handling.set_data("Data/dummy_data.csv", country, 2, 0)
-    average = core.average(average_list)
+    average = core.average(ds.get_country(country))
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
 
-@app.route("/ratio/<country>")
+@api.route("/ratio/<country>")
 def route_ratio(country):
     '''Arguments: country (year)
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    co2_data = data_handling.set_data("Data/dummy_data.csv", country, 3, 0 )
-    co2_per_capita = data_handling.set_data("Data/dummy_energy_data.csv", country, 3, 0)
-
-    ratio = core.ratio(co2_data, co2_per_capita)
+    ratio = core.ratio(ds.get_co2_per_capita(country), ds.get_energy_per_capita(country))
 
     output = (
         "The ratio between averages of annual CO2 per capita (tonnes per person)"
@@ -61,7 +56,7 @@ def route_ratio(country):
 
     return output + str(ratio)
 
-@app.route("/year_co2/<year>")
+@api.route("/year_co2/<year>")
 def route_year_co2(year):
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and
@@ -73,7 +68,7 @@ def route_year_co2(year):
 
     return year_co2_data
 
-@app.route("/biofuel/<country>")
+@api.route("/biofuel/<country>")
 def route_biofuel(country):
     """
     Arguments: country (string)
@@ -81,14 +76,12 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    values = data_handling.set_data("Data/dummy_energy_data.csv", country, 2, 0)
-    data = core.highest_biofuel(values)
+    data = core.highest_biofuel(ds.get_biofuel(country))
 
     output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
     return output + str(data)
 
 if __name__ == "__main__":
-    # app.register_blueprint(api, url_prefix='/api')
-    # app.run(host='0.0.0.0',port=YOUR_NUMBER)
     ds = DataSource()
-    print(ds.get_country("Canada"))
+    app.register_blueprint(api, url_prefix='/api')
+    app.run(host='0.0.0.0',port=5113)
