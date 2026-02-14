@@ -25,6 +25,8 @@ class TestCommandLine(unittest.TestCase):
         main()
         return sys.stdout.getvalue().strip()
 
+    @patch ('command_line.CO2_DATA',
+            )
     def test_arg_ratio(self):
         '''Arguments: self (TestProductionCode)
         Return value: None

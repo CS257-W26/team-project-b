@@ -55,21 +55,36 @@ class DataSource:
         '''
         return ('energy_data',year)
     
+    def get_value (self,data,col,country):
+        '''Arguments: self, country
+        Purpose: Helper function for other functions that get specific values
+        from a specified dataset
+        Return: A csv
+        '''
+        result = self.db.query(f'SELECT {col} FROM {data} WHERE country = {country}')
+        return result.export('csv')
+
+    def get_biofuel (self, country):
+        '''Arguments: self, country
+        Purpose: Gets the biofuel_consumption data from energy_data for a specified country
+        Return: A csv
+        '''
+        return self.get_value('energy_data', 'biofuel_consumption', country)
+
     def get_co2_per_capita (self, country):
         '''Arguments: self, country
         Purpose: Gets the co2_per_capita data from co2_data for a specified country
         Return: A csv
         '''
-        result = self.db.query(f'SELECT co2_per_capita FROM co2_data WHERE country = {country}')
-        return result.export('csv')
+        return self.get_value('co2_data','co2_per_capita',country)
     
     def get_energy_per_capita (self, country):
         '''Arguments: self, year
         Purpose: Gets the energy_per_capita data from energy_data for a specified country
         Return: A csv
         '''
-        result = self.db.query(f'SELECT energy_per_capita FROM energy_data WHERE country = {country}')
-        return result.export('csv')
+        return self.get_value('energy_data','energy_per_capita',country)
+
 if __name__ == "__main__":
     ds = DataSource()
     print(ds.get_country())
