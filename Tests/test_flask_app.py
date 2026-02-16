@@ -81,7 +81,8 @@ class TestFlaskApp(unittest.TestCase):
         Return: None
         Purpose: Tests for error handling when wrong format is entered.
         '''
-        dictionary = {'/Canada':b'Enter one of the following commands: /year_co2/2004, /biofuel/Canada'}
+        dictionary = {'''/Canada':b'Enter one of the following commands: 
+        /year_co2/2004, /biofuel/Canada'''}
         for case,output in dictionary.items():
             result = self.app.get(case,follow_redirects=True)
             self.assertEqual(result.data, output)
