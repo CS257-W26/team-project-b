@@ -19,7 +19,7 @@ class TestDatasource (unittest.TestCase):
         ds = DataSource()
         result = ds.get_country_co2('Canada')
         mock_db_instance.query.assert_called_once_with(
-        "SELECT * FROM co2_data WHERE country = Canada")
+        "SELECT * FROM co2_data WHERE country = 'Canada'")
         mock_row1.export.assert_called_with('csv')
         #mock_row2.export.assert_called_with('csv')
         #mock_row3.export.assert_called_with('csv')
