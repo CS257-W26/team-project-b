@@ -16,7 +16,7 @@ class DataSource:
         Return: A csv
         '''
         result = self.db.query(f"SELECT * FROM {data} WHERE country = '{country}'")
-        return result.export('csv')
+        return result[0].export('csv')
 
     def get_country_co2 (self,country):
         '''Arguments: self, country
@@ -39,7 +39,7 @@ class DataSource:
         Return: A csv
         '''
         result = self.db.query(f'SELECT country, year, co2 FROM {data} WHERE years = {year}')
-        return result.export('csv')
+        return result[0].export('csv')
 
     def get_year_co2 (self, year):
         '''Arguments: self, year
@@ -62,7 +62,7 @@ class DataSource:
         Return: A csv
         '''
         result = self.db.query(f'SELECT {col} FROM {data} WHERE country = {country}')
-        return result.export('csv')
+        return result[0].export('csv')
 
     def get_biofuel (self, country):
         '''Arguments: self, country
