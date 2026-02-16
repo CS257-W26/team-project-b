@@ -28,7 +28,7 @@ class Features():
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
-    def year_co2 (self,year, dataset, co2_col):
+    def year_co2 (self, dataset):
         '''Arguments: year (string)
         Return: A list of lists (string) with each country and
         total CO2 emissions from a specific year
@@ -40,7 +40,7 @@ class Features():
         if isinstance(year, str):
             for row in dataset:
                 if row[co2_col] != "":
-                    output.append([row[0], row[1], row[co2_col]])
+                    output.append([row[0], row[1], row[2]])
         return output
 
     def highest_biofuel(self, values):

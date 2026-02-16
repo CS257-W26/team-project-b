@@ -4,13 +4,10 @@ Purpose: Allows user to interact with data with the command line
 import argparse
 import sys
 from ProductionCode.core import Features
-from ProductionCode.data_handling import DataHandler
+from ProductionCode.datasource import DataSource
 
-CO2_DATA = 'Data/owid-co2-data-trimmed.csv'
-ENERGY_DATA = 'Data/owid-energy-data-trimmed.csv'
-wanted_columns = [8,9]
 core = Features()
-handler = DataHandler()
+ds = DataSource()
 
 def set_parser():
     ''''Arguments: none
@@ -51,20 +48,21 @@ def main():
     else:
         args = parser.parse_args()
         if args.ratio:
-            data1 = handler.set_data(CO2_DATA,args.ratio,wanted_columns[0],0)
-            data2 = handler.set_data(ENERGY_DATA,args.ratio,wanted_columns[1],0)
+            data1 = ds.get_co2_per_capita(args.ratio)
+            data2 = ds.get_energy_per_capita(args.ratio)
             print(core.ratio(data1, data2))
 
         elif args.average:
-            final_data = handler.set_data(CO2_DATA,args.average,wanted_columns[0],0)
+            final_data = ds.get_country_co2(args.average)
             print(core.average(final_data))
 
         elif args.biofuel:
-            final_data = handler.set_data(ENERGY_DATA,args.biofuel,wanted_columns[1],0)
+            final_data = ds.get_biofuel(args.biofuel)
             print(core.highest_biofuel(final_data))
 
         elif args.year_co2:
-            print(core.year_co2(args.year_co2,handler.load_data(CO2_DATA),wanted_columns[0]))
+            final_data = ds.get_year_co2(args.year_co2)
+            print(core.year_co2(args.year_co2))
 
 if __name__ == "__main__":
     main()

@@ -4,7 +4,6 @@ The eventual location for the Flask app interface for the project.
 
 from flask import Flask, Blueprint
 from ProductionCode.core import Features
-from ProductionCode.data_handling import DataHandler
 from ProductionCode.datasource import DataSource
 
 app = Flask(__name__)
