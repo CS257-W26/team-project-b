@@ -24,7 +24,7 @@ class DataSource:
         Return: A csv
         '''
         return self.get_country('co2_data', country)
-    
+
     def get_country_energy (self,country):
         '''Arguments: self, country
         Purpose: Gets the data from a specific country from energy_data
@@ -47,14 +47,14 @@ class DataSource:
         Return: A csv
         '''
         return ('co2_data',year)
-    
+
     def get_year_energy (self, year):
         '''Arguments: self, year
         Purpose: Gets the data for a specific year from energy_data
         Return: A csv
         '''
         return ('energy_data',year)
-    
+
     def get_value (self,data,col,country):
         '''Arguments: self, country
         Purpose: Helper function for other functions that get specific values
@@ -77,7 +77,7 @@ class DataSource:
         Return: A csv
         '''
         return self.get_value('co2_data','co2_per_capita',country)
-    
+
     def get_energy_per_capita (self, country):
         '''Arguments: self, year
         Purpose: Gets the energy_per_capita data from energy_data for a specified country
@@ -87,4 +87,3 @@ class DataSource:
 
 if __name__ == "__main__":
     ds = DataSource()
-    print(ds.get_country())
