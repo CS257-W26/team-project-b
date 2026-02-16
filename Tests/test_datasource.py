@@ -4,10 +4,18 @@ from unittest.mock import patch, MagicMock
 from ProductionCode.datasource import DataSource
 
 class TestDatasource (unittest.TestCase):
+    '''Argument: unittest.TestCase
+    Return: None
+    Purpose: Holds tests for datasource.py
+    '''
     data_source = DataSource()
 
     @patch ('ProductionCode.datasource.records.Database')
     def test_get_country_co2(self, mock_db_class):
+        '''Argument: self, mock_db_class
+        Return: None
+        Purpose: Sets and tests mock data for get_country_co2
+        '''
         mock_db_instance = mock_db_class.return_value
         mock_row1 = MagicMock()
         #mock_row2 = MagicMock()
@@ -27,6 +35,10 @@ class TestDatasource (unittest.TestCase):
 
     @patch ('ProductionCode.datasource.records.Database')
     def test_get_country_energy(self, mock_db_class):
+        '''Argument: self, mock_db_class
+        Return: None
+        Purpose: Sets and tests mock data for get_country_energy
+        '''
         mock_db_instance = mock_db_class.return_value
         mock_row1 = MagicMock()
         mock_row1.export.return_value = "Canada,1,1,1"
@@ -37,6 +49,3 @@ class TestDatasource (unittest.TestCase):
         "SELECT * FROM energy_data WHERE country = 'Canada'")
         mock_row1.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,1,1,1")
-
-    
-        

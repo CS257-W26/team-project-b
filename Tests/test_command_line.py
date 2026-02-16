@@ -58,7 +58,7 @@ class TestCommandLine(unittest.TestCase):
         Purpose: Tests if year_co2 argument in main displays correct output
         '''
         sys.argv = ['command_line.py', '--year_co2', '1998']
-        self.assertEqual(self.sys_helper(), 
+        self.assertEqual(self.sys_helper(),
         'Annual CO2 emissions (measured in million tonnes) in the year 2019: Argentina: 1.609')
 
     def test_no_arg(self):
