@@ -64,9 +64,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    year_co2_data = ds.get_year_co2(year)
-
-    return core.year_co2(year_co2_data)
+    return ds.get_year_co2(year)
 
 @api.route("/biofuel/<country>")
 def route_biofuel(country):
@@ -76,7 +74,7 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    data = core.highest_biofuel(ds.get_biofuel(country))
+    data = ds.get_biofuel(country)
 
     output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
     return output + str(data)
