@@ -66,7 +66,7 @@ def route_year_co2(year):
     '''
     year_co2_data = ds.get_year_co2(year)
 
-    return year_co2_data
+    return core.year_co2(year_co2_data)
 
 @api.route("/biofuel/<country>")
 def route_biofuel(country):
