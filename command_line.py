@@ -53,16 +53,13 @@ def main():
             print(core.ratio(data1, data2))
 
         elif args.average:
-            final_data = ds.get_country_co2(args.average)
-            print(core.average(final_data))
+            print(ds.get_country_co2(args.average))
 
         elif args.biofuel:
-            final_data = ds.get_biofuel(args.biofuel)
-            print(core.highest_biofuel(final_data))
+            print(ds.get_biofuel(args.biofuel))
 
         elif args.year_co2:
-            final_data = ds.get_year_co2(args.year_co2)
-            print(core.year_co2(args.year_co2))
+            print(ds.get_year_co2(args.year_co2))
 
 if __name__ == "__main__":
     main()

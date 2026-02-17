@@ -11,7 +11,7 @@ class Features():
         total = 0
         count = 0
         for row in dataset:
-            if isinstance(row,float):
+            if isinstance(row,float) and row != "":
                 total += row
                 count += 1
         if count == 0:
@@ -25,6 +25,7 @@ class Features():
         '''
         avg_co2 = float(self.average(dataset1))
         avg_energy = float(self.average(dataset2))
+
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
@@ -38,8 +39,7 @@ class Features():
         output = []
 
         for row in dataset:
-            if row[2] != "":
-                output.append([row[0], row[1], row[2]])
+                output.append(row)
         return output
 
     def highest_biofuel(self, values):

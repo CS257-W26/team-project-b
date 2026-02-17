@@ -36,7 +36,7 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    average = core.average(ds.get_country_co2(country))
+    average = ds.get_country_co2(country)
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
@@ -47,14 +47,15 @@ def route_ratio(country):
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    ratio = core.ratio(ds.get_co2_per_capita(country), ds.get_energy_per_capita(country))
+    ratio1 = ds.get_co2_per_capita(country)
+    ratio2 = ds.get_energy_per_capita(country)
 
     output = (
         "The ratio between averages of annual CO2 per capita (tonnes per person)"
         " to energy use per capita (kilowatt-hours per person) for " + country + ": "
     )
 
-    return output + str(ratio)
+    return output + str(ratio1) + str(ratio2)
 
 @api.route("/year_co2/<year>")
 def route_year_co2(year):
@@ -76,7 +77,7 @@ def route_biofuel(country):
     """
     data = ds.get_biofuel(country)
 
-    output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
+    output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is: "
     return output + str(data)
 
 if __name__ == "__main__":

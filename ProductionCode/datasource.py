@@ -11,7 +11,7 @@ class DataSource:
 
     def get_country (self,data,country):
         '''Arguments: self, data, country
-        Purpose: Helper function for get_country_co2 and get_country_energy 
+        Purpose: Helper function for get_country_energy 
         to get the data for a specific year
         Return: A csv
         '''
@@ -23,7 +23,8 @@ class DataSource:
         Purpose: Gets the data from a specific country from co2_data
         Return: A csv
         '''
-        return self.get_country('co2_data', country)
+        result = self.db.query(f"SELECT AVG(co2) FROM co2_data WHERE country = '{country}'")
+        return result.export('csv')
 
     def get_country_energy (self,country):
         '''Arguments: self, country
@@ -61,7 +62,7 @@ class DataSource:
         from a specified dataset
         Return: A csv
         '''
-        result = self.db.query(f"SELECT {col} FROM {data} WHERE country = '{country}'")
+        result = self.db.query(f"SELECT AVG({col}) FROM {data} WHERE country = '{country}'")
         return result.export('csv')
 
     def get_biofuel (self, country):
@@ -70,6 +71,7 @@ class DataSource:
         Return: A csv
         '''
         result = self.db.query(f"SELECT MAX(biofuel_consumption) FROM energy_data WHERE country = '{country}'")
+        return result.export('csv')
 
     def get_co2_per_capita (self, country):
         '''Arguments: self, country
