@@ -9,6 +9,7 @@ from ProductionCode.datasource import DataSource
 app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
 core = Features()
+ds = DataSource()
 
 @api.route("/")
 def homepage():
@@ -35,7 +36,7 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    average = core.average(ds.get_country(country))
+    average = core.average(ds.get_country_co2(country))
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
@@ -63,7 +64,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    year_co2_data = ds.get_year(year)
+    year_co2_data = ds.get_year_co2(year)
 
     return year_co2_data
 
@@ -81,6 +82,5 @@ def route_biofuel(country):
     return output + str(data)
 
 if __name__ == "__main__":
-    ds = DataSource()
     app.register_blueprint(api, url_prefix='/api')
     app.run(host='0.0.0.0',port=5113)

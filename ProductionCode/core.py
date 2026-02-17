@@ -37,10 +37,9 @@ class Features():
         '''
         output = []
 
-        if isinstance(year, str):
-            for row in dataset:
-                if row[co2_col] != "":
-                    output.append([row[0], row[1], row[4]])
+        for row in dataset:
+            if row[4] != "":
+                output.append([row[0], row[1], row[4]])
         return output
 
     def highest_biofuel(self, values):
