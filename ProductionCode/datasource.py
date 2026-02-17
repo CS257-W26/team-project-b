@@ -46,14 +46,14 @@ class DataSource:
         Purpose: Gets the data for a specific year from co2_data
         Return: A csv
         '''
-        return ('co2_data',year)
+        return self.get_year('co2_data', year)
 
     def get_year_energy (self, year):
         '''Arguments: self, year
         Purpose: Gets the data for a specific year from energy_data
         Return: A csv
         '''
-        return ('energy_data',year)
+        return self.get_year('energy_data',year)
 
     def get_value (self,data,col,country):
         '''Arguments: self, country
