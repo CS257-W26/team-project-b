@@ -38,7 +38,7 @@ class DataSource:
         to get the data for a specific year
         Return: A csv
         '''
-        result = self.db.query(f"SELECT country, year, co2 FROM {data} WHERE years = '{year}'")
+        result = self.db.query(f"SELECT country, year, co2 FROM {data} WHERE year = '{year}'")
         return result[0].export('csv')
 
     def get_year_co2 (self, year):
