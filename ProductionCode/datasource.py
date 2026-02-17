@@ -38,7 +38,7 @@ class DataSource:
         to get the data for a specific year
         Return: A csv
         '''
-        result = self.db.query(f'SELECT country, year, co2 FROM {data} WHERE years = {year}')
+        result = self.db.query(f"SELECT country, year, co2 FROM {data} WHERE years = '{year}'")
         return result[0].export('csv')
 
     def get_year_co2 (self, year):
@@ -61,7 +61,7 @@ class DataSource:
         from a specified dataset
         Return: A csv
         '''
-        result = self.db.query(f'SELECT {col} FROM {data} WHERE country = {country}')
+        result = self.db.query(f"SELECT {col} FROM {data} WHERE country = '{country}'")
         return result[0].export('csv')
 
     def get_biofuel (self, country):
