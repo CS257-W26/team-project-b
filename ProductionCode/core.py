@@ -38,8 +38,8 @@ class Features():
         output = []
 
         for row in dataset:
-            if row[4] != "":
-                output.append([row[0], row[1], row[4]])
+            if row[2] != "":
+                output.append([row[0], row[1], row[2]])
         return output
 
     def highest_biofuel(self, values):
