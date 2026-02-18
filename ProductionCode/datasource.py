@@ -69,7 +69,7 @@ class DataSource:
         Purpose: Gets the biofuel_consumption data from energy_data for a specified country
         Return: A csv
         '''
-        result = self.db.query(f"SELECT MAX(biofuel_consumption) FROM energy_data WHERE country = '{country}'")
+        return self.get_value('energy_data', 'biofuel_consumption', country)
 
     def get_co2_per_capita (self, country):
         '''Arguments: self, country
