@@ -83,5 +83,6 @@ def route_biofuel(country):
 
 if __name__ == "__main__":
     ds = DataSource()
-    app.register_blueprint(api, url_prefix='/api')
-    app.run(host='0.0.0.0',port=5113)
+    #app.register_blueprint(api, url_prefix='/api')
+    #app.run(host='0.0.0.0',port=5113)
+    print(ds.get_year_energy(2001))
