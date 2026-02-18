@@ -4,7 +4,6 @@ The eventual location for the Flask app interface for the project.
 
 from flask import Flask, Blueprint
 from ProductionCode.core import Features
-from ProductionCode.data_handling import DataHandler
 from ProductionCode.datasource import DataSource
 
 app = Flask(__name__)
@@ -80,7 +79,7 @@ def route_biofuel(country):
 
     output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
     return output + str(data)
-
+    
 if __name__ == "__main__":
     ds = DataSource()
     #app.register_blueprint(api, url_prefix='/api')

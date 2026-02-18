@@ -31,3 +31,6 @@ io:  The module io was used to handle input/output streams
 argparse: argparse module was used to create command lines 
 
 flask: Flask framework was used to write and route web applications
+
+# Extraneous Data 
+The columns iso_code, population, gdp, cement_co2, co2_growth_abs, co2_including_luc, co2_per_gdp, co2_per_unit_energy, coal_co2, consumption_co2, flaring_co2, gas_co2, land_use_change_co2, methane, nitrous oxide, oil_co2, and other_industry_co2 were kept as we plan to use them to make our website more detailed. 
