@@ -35,7 +35,7 @@ class Features():
 
         avg_co2 = float(self.average(data1))
         avg_energy = float(self.average(data2))
-        
+
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
