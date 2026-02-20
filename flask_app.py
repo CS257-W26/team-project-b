@@ -2,7 +2,7 @@
 The eventual location for the Flask app interface for the project.
 '''
 
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, render_template, request
 from ProductionCode.core import Features
 from ProductionCode.datasource import DataSource
 
@@ -16,11 +16,13 @@ def homepage():
     '''
     Purpose: homepage to show instructions for available routes
     '''
-    return "Welcome to Emission Tracker!\
-    To view CO2 data from 2004 (or 1998/2018),\
-    enter the following: /year_co2/2004 \n\
-    To view the highest biofuel consumption for a country,\
-    enter the following: /biofuel/Canada"
+    # return "Welcome to Emission Tracker!\
+    # To view CO2 data from 2004 (or 1998/2018),\
+    # enter the following: /year_co2/2004 \n\
+    # To view the highest biofuel consumption for a country,\
+    # enter the following: /biofuel/Canada"
+
+    return render_template('header.html', title = "Emission Tracker")
 
 @api.errorhandler(404)
 def page_not_found(e):
@@ -76,9 +78,9 @@ def route_biofuel(country):
     """
     data = ds.get_biofuel(country)
 
-    output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is "
+    output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is: "
     return output + str(data)
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
-    app.run(host='0.0.0.0',port=5113)
+    app.run(port=5113)
