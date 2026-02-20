@@ -4,12 +4,10 @@ The eventual location for the Flask app interface for the project.
 
 from flask import Flask, Blueprint, render_template, request
 from ProductionCode.core import Features
-from ProductionCode.datasource import DataSource
 
 app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
 core = Features()
-ds = DataSource()
 
 @api.route("/")
 def homepage():
@@ -38,7 +36,7 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    average = core.average(ds.get_country_co2(country))
+    average = core.average(country)
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
@@ -49,7 +47,7 @@ def route_ratio(country):
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    ratio = core.ratio(ds.get_co2_per_capita(country), ds.get_energy_per_capita(country))
+    ratio = core.ratio(country)
 
     output = (
         "The ratio between averages of annual CO2 per capita (tonnes per person)"
@@ -66,7 +64,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    return ds.get_year_co2(year)
+    return core.year_co2(year)
 
 @api.route("/biofuel/<country>")
 def route_biofuel(country):
@@ -76,7 +74,7 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    data = ds.get_biofuel(country)
+    data = core.highest_biofuel(country)
 
     output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is: "
     return output + str(data)
