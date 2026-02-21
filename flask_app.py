@@ -36,10 +36,12 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    average = core.average(country)
+    # average = core.average(country)
 
-    output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
-    return output + str(average)
+    # output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
+    # return output + str(average)
+
+    return render_template('functions.html', function = "average", input = country, output = core.average(country))
 
 @api.route("/ratio/<country>")
 def route_ratio(country):
@@ -81,4 +83,4 @@ def route_biofuel(country):
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
-    app.run(port=5113)
+    app.run(host='0.0.0.0', port=5113)
