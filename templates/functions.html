@@ -1,0 +1,12 @@
+<html>
+    <h1, id="function_title">{{function}}</h1>
+    <ul, id="result_list">
+        {%if isinstance({{output}},list)%}
+            {%for row in {{output}}: %}
+                <li>row [1] : row [2]</li>
+            {%endfor%}
+        {%else:$}
+            <li>{{output}}</li>
+        {%endif%}
+    </ul>
+</html>
