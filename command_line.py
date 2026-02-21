@@ -55,7 +55,7 @@ def main():
             print(core.highest_biofuel(args.biofuel))
 
         elif args.year_co2:
-            print(core.year_co2(args.year))
+            print(core.year_co2(args.year_co2))
 
 if __name__ == "__main__":
     main()

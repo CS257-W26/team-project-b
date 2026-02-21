@@ -25,7 +25,7 @@ class DataSource:
         Purpose: Gets the data from a specific country from co2_data
         Return: A csv
         '''
-        result = self.db.query(f"SELECT AVG(co2) FROM co2_data WHERE country = '{country}'")
+        result = self.db.query(f"SELECT co2 FROM co2_data WHERE country = '{country}'")
         return result.export('csv')
 
     def get_country_energy (self,country):
@@ -65,7 +65,7 @@ class DataSource:
         Return: A csv
         '''
         result = self.db.query(f"SELECT {col} FROM {data} WHERE country = '{country}'")
-        return result[0].export('csv')
+        return result.export('csv')
 
     def get_biofuel (self, country):
         '''Arguments: self, country
