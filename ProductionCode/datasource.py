@@ -2,7 +2,7 @@
 import records
 import ProductionCode.psql_config as config
 
-ds = DataSource()
+# ds = DataSource()
 
 class DataSource:
     '''Purpose:Class that grabs info from table'''
@@ -64,8 +64,8 @@ class DataSource:
         from a specified dataset
         Return: A csv
         '''
-        result = self.db.query(f"SELECT AVG({col}) FROM {data} WHERE country = '{country}'")
-        return result.export('csv')
+        result = self.db.query(f"SELECT {col} FROM {data} WHERE country = '{country}'")
+        return result[0].export('csv')
 
     def get_biofuel (self, country):
         '''Arguments: self, country

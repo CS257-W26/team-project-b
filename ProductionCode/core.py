@@ -63,11 +63,12 @@ class Features():
         values = self.ds.get_biofuel(biofuel_arg)
 
         biofuel = -1
-        if isinstance(values, list):
-            for num in values:
-                if isinstance(num,float) and num > biofuel:
-                    biofuel = num
-            return biofuel
-        if biofuel == -1:
-            return 'Invalid input'
-        return biofuel
+        # if isinstance(values, list):
+        for num in values:
+            if isinstance(num,float) and num > biofuel:
+                biofuel = num
+        return values
+        
+        # if biofuel == -1:
+        #     return 'Invalid input'
+        # return biofuel
