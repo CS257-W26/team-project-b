@@ -87,8 +87,6 @@ class DataSource:
         Return: A csv
         '''
         return self.get_value('energy_data','energy_per_capita',country)
-        
->>>>>>> 4ba06274976c7b41d74bd08f51af461d95a854c0
 
 if __name__ == "__main__":
     ds = DataSource()
