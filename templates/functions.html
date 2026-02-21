@@ -1,7 +1,8 @@
 <html>
     <h1, id="function_title">{{function}}</h1>
+    <h2>{{input}}</h2>
     <ul, id="result_list">
-        {%if isinstance({{output}},list)%}
+        {%if isinstance({{output}},list):%}
             {%for row in {{output}}: %}
                 <li>row [1] : row [2]</li>
             {%endfor%}
