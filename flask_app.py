@@ -36,11 +36,7 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-<<<<<<< HEAD
-    average = core.average(ds.get_country(country))
-=======
     average = core.average(country)
->>>>>>> 4ba06274976c7b41d74bd08f51af461d95a854c0
 
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
