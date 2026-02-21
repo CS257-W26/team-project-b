@@ -24,7 +24,7 @@ class Features():
         if count == 0:
             return 'No data found'
         return str((total/count))
-        
+
     def average(self, average_arg):
         '''Arguments: average_arg, a country (str)
         Return: The average of the given dataset (str)
@@ -72,15 +72,19 @@ class Features():
         final_data = self.csv_helper(self.ds.get_biofuel(biofuel_arg))
 
         biofuel = -1
-        
+
         for num in final_data:
             if num[0] != "" and (float(num[0]) > biofuel):
-                    biofuel = float(num[0])
-        if (biofuel == -1):
+                biofuel = float(num[0])
+        if biofuel == -1:
             return "No data found"
         return biofuel
 
     def csv_helper(self, data):
+        '''Argument: data (csv file to read in)
+        Return: csv reader
+        Purpose: To reduce duplicate code
+        '''
         csv_file = io.StringIO(data)
         reader = csv.reader(csv_file)
         next(reader) #skips col name

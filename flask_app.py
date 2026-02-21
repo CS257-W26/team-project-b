@@ -36,12 +36,13 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    # average = core.average(country)
+    average = core.average(country)
 
-    # output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
-    # return output + str(average)
+    output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
+    return output + str(average)
 
-    return render_template('functions.html', function = "average", input = country, output = core.average(country))
+    # return render_template('functions.html', function = "average", 
+    # input = country, output = core.average(country))
 
 @api.route("/ratio/<country>")
 def route_ratio(country):
@@ -56,7 +57,7 @@ def route_ratio(country):
         " to energy use per capita (kilowatt-hours per person) for " + country + ": "
     )
 
-    return output + str(ratio1) + str(ratio2)
+    return output + str(ratio)
 
 @api.route("/year_co2/<year>")
 def route_year_co2(year):
