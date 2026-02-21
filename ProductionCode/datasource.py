@@ -75,7 +75,3 @@ class DataSource:
 
 if __name__ == "__main__":
     ds = DataSource()
-<<<<<<< HEAD
-    print(ds.get_country_co2())
-=======
->>>>>>> de3a576f6a9da8c30420a742cffdb11bd22c2d30
