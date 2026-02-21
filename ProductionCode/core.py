@@ -48,7 +48,7 @@ class Features():
         ratio_variable = avg_co2/avg_energy
         return ratio_variable
 
-    def year_co2 (self, year_args):
+    def year_co2(self, year_args):
         '''Arguments: year_arg, a year (string)
         Return: A list of lists (string) with each country and
         total CO2 emissions from a specific year
@@ -76,6 +76,8 @@ class Features():
         for num in final_data:
             if num[0] != "" and (float(num[0]) > biofuel):
                     biofuel = float(num[0])
+        if (biofuel == -1):
+            return "No data found"
         return biofuel
 
     def csv_helper(self, data):
