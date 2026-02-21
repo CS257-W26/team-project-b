@@ -4,10 +4,8 @@ Purpose: Allows user to interact with data with the command line
 import argparse
 import sys
 from ProductionCode.core import Features
-from ProductionCode.datasource import DataSource
 
 core = Features()
-ds = DataSource()
 
 def set_parser():
     ''''Arguments: none
@@ -48,18 +46,16 @@ def main():
     else:
         args = parser.parse_args()
         if args.ratio:
-            data1 = ds.get_co2_per_capita(args.ratio)
-            data2 = ds.get_energy_per_capita(args.ratio)
-            print(core.ratio(data1, data2))
+            print(core.ratio(args.ratio))
 
         elif args.average:
-            print(ds.get_country_co2(args.average))
+            print(core.average(args.average))
 
         elif args.biofuel:
-            print(ds.get_biofuel(args.biofuel))
+            print(core.highest_biofuel(args.biofuel))
 
         elif args.year_co2:
-            print(ds.get_year_co2(args.year_co2))
+            print(core.year_co2(args.year))
 
 if __name__ == "__main__":
     main()
