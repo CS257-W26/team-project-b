@@ -44,7 +44,7 @@ class TestDatasource (unittest.TestCase):
         "SELECT * FROM energy_data WHERE country = 'Canada'")
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,1,1,1\nCanada,1,2,3")
-    
+
     @patch ('ProductionCode.datasource.records.Database')
     def test_get_year_co2(self, mock_db_class):
         '''Argument: self, mock_db_class
@@ -98,7 +98,7 @@ class TestDatasource (unittest.TestCase):
         )
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
-    
+
     @patch('ProductionCode.datasource.records.Database')
     def test_co2_per_capita(self, mock_db_class):
         '''Argument: self, mock_db_class
@@ -116,7 +116,7 @@ class TestDatasource (unittest.TestCase):
         )
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
-    
+
     @patch('ProductionCode.datasource.records.Database')
     def test_energy_per_capita(self, mock_db_class):
         '''Argument: self, mock_db_class

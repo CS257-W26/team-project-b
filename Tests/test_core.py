@@ -27,7 +27,7 @@ class TestCore(unittest.TestCase):
         self.assertAlmostEqual(self.core.ratio("Japan"), 9.602605207949379e-05)
 
     @patch('ProductionCode.datasource.records.Database')
-    def test_year_co2(self):
+    def test_year_co2(self, mock_db_class):
         '''Arguments: self (TestCore)
         Return: none
         Purpose: Tests the year_co2 core feature
@@ -37,7 +37,7 @@ class TestCore(unittest.TestCase):
         records_object.export.return_value = "Canada,2000,1.1"
         mock_db_instance.query.return_value = records_object
 
-        results = core.year_co2("2000")
+        results = self.core.year_co2("2000")
         self.assertEqual(results, [['Canada','2000', '1.1']])
 
         mock_db_instance.query.return_value = records_object
