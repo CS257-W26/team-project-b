@@ -2,6 +2,8 @@
 import records
 import ProductionCode.psql_config as config
 
+# ds = DataSource()
+
 class DataSource:
     '''Purpose:Class that grabs info from table'''
 
@@ -11,7 +13,7 @@ class DataSource:
 
     def get_country (self,data,country):
         '''Arguments: self, data, country
-        Purpose: Helper function for get_country_co2 and get_country_energy 
+        Purpose: Helper function for get_country_energy 
         to get the data for a specific year
         Return: A csv
         '''
@@ -23,7 +25,8 @@ class DataSource:
         Purpose: Gets the data from a specific country from co2_data
         Return: A csv
         '''
-        return self.get_country('co2_data', country)
+        result = self.db.query(f"SELECT co2 FROM co2_data WHERE country = '{country}'")
+        return result.export('csv')
 
     def get_country_energy (self,country):
         '''Arguments: self, country
@@ -70,6 +73,20 @@ class DataSource:
         Return: A csv
         '''
         return self.get_value('energy_data', 'biofuel_consumption', country)
+
+    def get_co2_per_capita (self, country):
+        '''Arguments: self, country
+        Purpose: Gets the co2_per_capita data from co2_data for a specified country
+        Return: A csv
+        '''
+        return self.get_value('co2_data','co2_per_capita',country)
+
+    def get_energy_per_capita (self, country):
+        '''Arguments: self, year
+        Purpose: Gets the energy_per_capita data from energy_data for a specified country
+        Return: A csv
+        '''
+        return self.get_value('energy_data','energy_per_capita',country)
 
 if __name__ == "__main__":
     ds = DataSource()

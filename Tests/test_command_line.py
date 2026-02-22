@@ -10,12 +10,7 @@ class TestCommandLine(unittest.TestCase):
     Return value: none
     Purpose: Holds the tests for command_line.py
     '''
-    @patch ('command_line.co2_data',
-           'Data/dummy_data.csv')
-    @patch ('command_line.energy_data',
-            'Data/dummy_energy_data.csv')
-    @patch ('command_line.wanted_columns',
-            [2,3])
+
     def sys_helper(self):
         '''Arguments: self
         Return value: Returns sys.stdout output (str)
@@ -25,32 +20,32 @@ class TestCommandLine(unittest.TestCase):
         main()
         return sys.stdout.getvalue().strip()
 
-    @patch ('command_line.CO2_DATA',
-            )
-    def test_arg_ratio(self):
+    def test_main(self):
         '''Arguments: self (TestProductionCode)
         Return value: None
         Purpose: Tests whether the main function returns the correct value for the
         specified function in command line arguments
         '''
-        sys.argv = ['command_line.py','--ratio','Canada']
-        self.assertEqual(self.sys_helper(), "0.46071556778748357")
+        #Testing for arg_ratio
+        sys.argv = ['command_line.py','--ratio','Japan']
+        self.assertEqual(self.sys_helper(), "9.602605207949379e-05")
 
-    def test_arg_average(self):
-        '''Arguments: self (TestProductionCode)
-        Return value: None
-        Purpose: Tests main function's output for arg.average
-        '''
-        sys.argv = ['command_line.py', '--average', 'Japan']
-        self.assertEqual(self.sys_helper(), '3.6530000000000005')
+        #Testing for arg_average
+        sys.argv = ['command_line.py', '--average', 'Canada']
+        self.assertEqual(self.sys_helper(), '148.5173125')
 
-    def test_arg_biofuel(self):
-        '''Arguments: self (TestProductionCode)
-        Return value: None
-        Purpose: Tests if biofuel argument in main works as expected
-        '''
+        #Testing for arg_biofuel
         sys.argv = ['command_line.py', '--biofuel', 'Canada']
-        self.assertEqual(self.sys_helper(), '3.192')
+        self.assertEqual(self.sys_helper(), '33.705')
+
+        #Testing for arg year_co2
+        # sys.argv = ['command_line.py', '--year_co2', '1998']
+        # self.assertEqual(self.sys_helper(),
+        # 'Annual CO2 emissions (measured in million tonnes) in the year 2019: Argentina: 1.609')
+
+        #Testing for no arg
+        sys.argv = ['command_line.py']
+        self.assertEqual(self.sys_helper(), "Usage: python3 command_line.py [--help]")
 
     def test_arg_year_co2(self):
         '''Arguments: self (TestProductionCode)
@@ -61,13 +56,7 @@ class TestCommandLine(unittest.TestCase):
         self.assertEqual(self.sys_helper(),
         'Annual CO2 emissions (measured in million tonnes) in the year 2019: Argentina: 1.609')
 
-    def test_no_arg(self):
-        '''Arguments: self
-        Return value: None
-        Purpose: Tests if usage statement is printed when no arguments are given
-        '''
-        sys.argv = ['command_line.py']
-        self.assertEqual(self.sys_helper(), "Usage: python3 command_line.py [--help]")
+
 
     if __name__ == '__main__':
         unittest.main()
