@@ -134,4 +134,3 @@ class TestDatasource (unittest.TestCase):
         )
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
-
