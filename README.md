@@ -33,4 +33,6 @@ argparse: argparse module was used to create command lines
 flask: Flask framework was used to write and route web applications
 
 # Extraneous Data 
-The columns iso_code, population, gdp, cement_co2, co2_growth_abs, co2_including_luc, co2_per_gdp, co2_per_unit_energy, coal_co2, consumption_co2, flaring_co2, gas_co2, land_use_change_co2, methane, nitrous oxide, oil_co2, and other_industry_co2 were kept as we plan to use them to make our website more detailed. 
+The columns ISO and population were kept because we plan to use them when we integrate a map into our website. 
+The columns country, year, co2, co2_per_capita, energy_per_capita, biofuel_electricity are currently being used in our features.
+The column gas_electricity is being integrated as an additional year function because we were interested in pulling this column from our energy_data.
