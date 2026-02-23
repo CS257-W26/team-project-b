@@ -62,10 +62,24 @@ class Features():
         output = []
         data = self.ds.get_year_co2(year_args)
         final_data = self.csv_helper(data)
+        #If information about co2 is not empty
+        for row in final_data:
+            output.append(row)
+        return output
+
+    def year_energy(self, year_args):
+        '''Arguments: year_arg, a year (string)
+        Return: A list of lists (string) with each country and
+        total CO2 emissions from a specific year
+        Purpose: To get the total CO2 emissions of each country
+        in the dataset from a specific year
+        '''
+        output = []
+        data = self.ds.get_year_energy(year_args)
+        final_data = self.csv_helper(data)
 
         for row in final_data:
-            if row[2] != "":
-                output.append(row)
+            output.append(row)
         return output
 
     def highest_biofuel(self, biofuel_arg):
