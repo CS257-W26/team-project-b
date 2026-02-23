@@ -52,12 +52,13 @@ def route_ratio(country):
     '''
     ratio = core.ratio(country)
 
-    output = (
-        "The ratio between averages of annual CO2 per capita (tonnes per person)"
-        " to energy use per capita (kilowatt-hours per person) for " + country + ": "
-    )
+    # output = (
+    #     "The ratio between averages of annual CO2 per capita (tonnes per person)"
+    #     " to energy use per capita (kilowatt-hours per person) for " + country + ": "
+    # )
 
-    return output + str(ratio)
+    # return output + str(ratio)
+    return render_template('ratio_function.html', country_html = country, output = ratio)
 
 @api.route("/year_co2/<year>")
 def route_year_co2(year):
@@ -67,7 +68,8 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    return core.year_co2(year)
+    result = core.year_co2(year)
+    return render_template('year_function.html', year_html = year, output = result)
 
 @api.route("/biofuel/<country>")
 def route_biofuel(country):
