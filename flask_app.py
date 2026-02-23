@@ -2,7 +2,7 @@
 The eventual location for the Flask app interface for the project.
 '''
 
-from flask import Flask, Blueprint, render_template, request
+from flask import Flask, Blueprint, render_template
 from ProductionCode.core import Features
 
 app = Flask(__name__)
@@ -14,20 +14,21 @@ def homepage():
     '''
     Purpose: homepage to show instructions for available routes
     '''
-    # return "Welcome to Emission Tracker!\
-    # To view CO2 data from 2004 (or 1998/2018),\
-    # enter the following: /year_co2/2004 \n\
-    # To view the highest biofuel consumption for a country,\
-    # enter the following: /biofuel/Canada"
+    return "Welcome to Emission Tracker!\
+    To view CO2 data from 2004 (or 1998/2018),\
+    enter the following: /year_co2/2004 \n\
+    To view the highest biofuel consumption for a country,\
+    enter the following: /biofuel/Canada"
 
-    return render_template('header.html', title = "Emission Tracker")
+    #return render_template('header.html', title = "Emission Tracker")
 
-@api.errorhandler(404)
+@app.errorhandler(404)
 def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
-    return str(e) + "Enter one of the following commands: /year_co2/2004, /biofuel/Canada"
+    message = " Try: /api/year_co2/2004, /api/biofuel/Canada"
+    return str(e) + message
 
 @api.route("/average/<country>")
 def route_average(country):
@@ -41,8 +42,8 @@ def route_average(country):
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
 
-    return render_template('functions.html', function = "average", 
-    input = country, output = core.average(country))
+    # return render_template('functions.html', function = "average",
+    # input = country, output = core.average(country))
 
 @api.route("/ratio/<country>")
 def route_ratio(country):
@@ -52,12 +53,13 @@ def route_ratio(country):
     '''
     ratio = core.ratio(country)
 
-    output = (
-        "The ratio between averages of annual CO2 per capita (tonnes per person)"
-        " to energy use per capita (kilowatt-hours per person) for " + country + ": "
-    )
+    # output = (
+    #     "The ratio between averages of annual CO2 per capita (tonnes per person)"
+    #     " to energy use per capita (kilowatt-hours per person) for " + country + ": "
+    # )
 
-    return output + str(ratio)
+    # return output + str(ratio)
+    return render_template('ratio_function.html', country_html = country, output = ratio)
 
 @api.route("/year_co2/<year>")
 def route_year_co2(year):
@@ -67,7 +69,8 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    return core.year_co2(year)
+    result = core.year_co2(year)
+    return render_template('year_function.html', year_html = year, output = result)
 
 @api.route("/biofuel/<country>")
 def route_biofuel(country):

@@ -1,9 +1,9 @@
 <html>
     <h1, id="year_title">Year</h1>
-    <h2, id = "year_given">{{year}}</h2>
+    <h2, id = "year_given">{{year_html}}</h2>
     <ul, id="result_list">
         {%for i in range (output|length): %}
-            <li>{{output[i][1]}} : {{output[i][2]}}</li>
+            <li>{{output[i][0]}} : {{output[i][2]}}</li>
         {% endfor %}
     </ul>
 </html>
