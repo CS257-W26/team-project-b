@@ -12,7 +12,7 @@ class TestCore(unittest.TestCase):
 
     @patch('ProductionCode.core.DataSource')
     def test_average(self, mock_db_class):
-        '''Arguments: self (TestCore)
+        '''Arguments: self (TestCore), mock_db_class
         Return: none
         Purpose: Tests the core feature average
         '''
@@ -26,7 +26,7 @@ class TestCore(unittest.TestCase):
 
     @patch('ProductionCode.core.DataSource')
     def test_ratio(self, mock_db_class):
-        '''Arguments: self (TestCore)
+        '''Arguments: self (TestCore), mock_db_class
         Return: none
         Purpose: Tests the core ratio function
         '''
@@ -40,7 +40,7 @@ class TestCore(unittest.TestCase):
 
     @patch('ProductionCode.core.DataSource')
     def test_year_co2(self, mock_db_class):
-        '''Arguments: self (TestCore)
+        '''Arguments: self (TestCore), mock_db_class
         Return: none
         Purpose: Tests the year_co2 core feature
         '''
@@ -56,7 +56,7 @@ class TestCore(unittest.TestCase):
 
     @patch('ProductionCode.core.DataSource')
     def test_highest_biofuel(self, mock_db_class):
-        '''Arguments: self (TestCore)
+        '''Arguments: self (TestCore), mock_db_class
         Return: none
         Purpose: Tests highest_biofuel function from core
         '''
@@ -69,7 +69,7 @@ class TestCore(unittest.TestCase):
 
     @patch('ProductionCode.core.DataSource')
     def test_biofuel_edge(self, mock_db_class):
-        '''Arguments: self (TestCore)
+        '''Arguments: self (TestCore), mock_db_class
         Return: none
         Purpose: Tests edge case for highest_biofuel feature in core
         '''
