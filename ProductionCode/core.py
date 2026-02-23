@@ -25,13 +25,26 @@ class Features():
             return 'No data found'
         return str((total/count))
 
+    def average(self, average_arg):
+        '''Arguments: average_arg, a country (str)
+        Return: The average of the given dataset (str)
+        Purpose: To get the average co2 of a subset of data for a country
+        '''
+        data_set = self.ds.get_country_co2(average_arg)
+        final_data = self.csv_helper(data_set)
+
+        return self.calculate_average(final_data)
+
     def ratio(self, ratio_arg):
         '''Arguments: ratio_arg, a country (year)
         Return: A ratio (float) 
         Purpose: Calculates the ratio for co2_per_capita to energy_per_capita
         '''
-        data1 = self.ds.get_co2_per_capita(ratio_arg).split('\\r\\')
-        data2 = self.ds.get_energy_per_capita(ratio_arg)
+        csv1 = self.ds.get_co2_per_capita(ratio_arg)
+        csv2 = self.ds.get_energy_per_capita(ratio_arg)
+
+        data1 = self.csv_helper(csv1)
+        data2 = self.csv_helper(csv2)
 
 
 
@@ -50,7 +63,8 @@ class Features():
         in the dataset from a specific year
         '''
         output = []
-        final_data = self.ds.get_year_co2(year_args)
+        data = self.ds.get_year_co2(year_args)
+        final_data = self.csv_helper(data)
 
         for row in final_data:
             if row[2] != "":
@@ -63,7 +77,8 @@ class Features():
         Purpose: Returns a single int representing the highest
         biofuel consumption of a specific country
         '''
-        values = self.ds.get_biofuel(biofuel_arg)
+        data = self.ds.get_biofuel(biofuel_arg)
+        final_data = self.csv_helper(data)
 
         biofuel = -1
         if isinstance(values, list):
