@@ -1,6 +1,4 @@
 '''Handles core features'''
-import csv
-import io
 from ProductionCode.datasource import DataSource
 
 class Features():
@@ -10,16 +8,18 @@ class Features():
     def __init__(self):
         self.ds = DataSource()
 
-    def calculate_average(self, data):
-        '''Arguments: data (csv reader)
-        Return: The average (str)
-        Purpose: Calculates the average
+    def average(self, average_arg):
+        '''Arguments: average_arg, a country (str)
+        Return: The average of the given dataset (str)
+        Purpose: To get the average of a subset of data for a country
         '''
+        dataset = self.ds.get_country_co2(average_arg).split('\\r\\')
+
         total = 0
         count = 0
-        for row in data:
-            if row[0] != "":
-                total += float(row[0])
+        for row in dataset:
+            if isinstance(row,float):
+                total += row
                 count += 1
         if count == 0:
             return 'No data found'
@@ -30,7 +30,8 @@ class Features():
         Return: The average of the given dataset (str)
         Purpose: To get the average co2 of a subset of data for a country
         '''
-        final_data = self.csv_helper(self.ds.get_country_co2(average_arg))
+        data_set = self.ds.get_country_co2(average_arg)
+        final_data = self.csv_helper(data_set)
 
         return self.calculate_average(final_data)
 
@@ -39,16 +40,22 @@ class Features():
         Return: A ratio (float) 
         Purpose: Calculates the ratio for co2_per_capita to energy_per_capita
         '''
-        data1 = self.csv_helper(self.ds.get_co2_per_capita(ratio_arg))
-        data2 = self.csv_helper(self.ds.get_energy_per_capita(ratio_arg))
+        csv1 = self.ds.get_co2_per_capita(ratio_arg)
+        csv2 = self.ds.get_energy_per_capita(ratio_arg)
 
-        avg_co2 = float(self.calculate_average(data1))
-        avg_energy = float(self.calculate_average(data2))
+        data1 = self.csv_helper(csv1)
+        data2 = self.csv_helper(csv2)
+
+
+
+        avg_co2 = float(self.average(ratio_arg))
+        avg_energy = float(self.average(ratio_arg))
 
         ratio_variable = avg_co2/avg_energy
+        
         return ratio_variable
 
-    def year_co2(self, year_args):
+    def year_co2 (self, year_args):
         '''Arguments: year_arg, a year (string)
         Return: A list of lists (string) with each country and
         total CO2 emissions from a specific year
@@ -56,11 +63,12 @@ class Features():
         in the dataset from a specific year
         '''
         output = []
-        final_data = self.csv_helper(self.ds.get_year_co2(year_args))
+        data = self.ds.get_year_co2(year_args)
+        final_data = self.csv_helper(data)
 
         for row in final_data:
             if row[2] != "":
-                output.append(row)
+                output.append([row[0], row[1], row[2]])
         return output
 
     def highest_biofuel(self, biofuel_arg):
@@ -69,23 +77,15 @@ class Features():
         Purpose: Returns a single int representing the highest
         biofuel consumption of a specific country
         '''
-        final_data = self.csv_helper(self.ds.get_biofuel(biofuel_arg))
+        data = self.ds.get_biofuel(biofuel_arg)
+        final_data = self.csv_helper(data)
 
         biofuel = -1
-
-        for num in final_data:
-            if num[0] != "" and (float(num[0]) > biofuel):
-                biofuel = float(num[0])
+        if isinstance(values, list):
+            for num in values:
+                if isinstance(num,float) and num > biofuel:
+                    biofuel = num
+            return biofuel
         if biofuel == -1:
-            return "No data found"
+            return 'Invalid input'
         return biofuel
-
-    def csv_helper(self, data):
-        '''Argument: data (csv file to read in)
-        Return: csv reader
-        Purpose: To reduce duplicate code
-        '''
-        csv_file = io.StringIO(data)
-        reader = csv.reader(csv_file)
-        next(reader) #skips col name
-        return reader
