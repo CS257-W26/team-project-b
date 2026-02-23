@@ -41,8 +41,8 @@ def route_average(country):
     output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return output + str(average)
 
-    # return render_template('functions.html', function = "average", 
-    # input = country, output = core.average(country))
+    return render_template('functions.html', function = "average", 
+    input = country, output = core.average(country))
 
 @api.route("/ratio/<country>")
 def route_ratio(country):
