@@ -9,7 +9,7 @@ app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
 core = Features()
 
-@api.route("/")
+@app.route("/")
 def homepage():
     '''
     Purpose: homepage to show instructions for available routes
@@ -19,8 +19,7 @@ def homepage():
     enter the following: /year_co2/2004 \n\
     To view the highest biofuel consumption for a country,\
     enter the following: /biofuel/Canada"
-
-    #return render_template('header.html', title = "Emission Tracker")
+    # return render_template('header.html', title = "Emission Tracker")
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -52,13 +51,13 @@ def route_ratio(country):
     '''
     ratio = core.ratio(country)
 
-    # output = (
-    #     "The ratio between averages of annual CO2 per capita (tonnes per person)"
-    #     " to energy use per capita (kilowatt-hours per person) for " + country + ": "
-    # )
+    output = (
+        "The ratio between averages of annual CO2 per capita (tonnes per person)"
+        " to energy use per capita (kilowatt-hours per person) for " + country + ": "
+    )
 
-    # return output + str(ratio)
-    return render_template('ratio_function.html', country_html = country, output = ratio)
+    return output + str(ratio)
+    #return render_template('ratio_function.html', country_html = country, output = ratio)
 
 @api.route("/year_co2/<year>")
 def route_year_co2(year):
@@ -69,7 +68,9 @@ def route_year_co2(year):
     in the dataset from a specific year
     '''
     result = core.year_co2(year)
-    return render_template('year_function.html', year_html = year, output = result)
+
+    return result
+    # return render_template('year_function.html', year_html = year, output = result)
 
 @api.route("/biofuel/<country>")
 def route_biofuel(country):
@@ -79,10 +80,12 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    data = core.highest_biofuel(country)
+    result = core.highest_biofuel(country)
 
     output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is: "
-    return output + str(data)
+    return output + str(result)
+
+    #return render_template('biofuel_function.html', country_html = country, output = result)
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
