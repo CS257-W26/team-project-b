@@ -1,8 +1,7 @@
 '''
 The eventual location for the Flask app interface for the project.
 '''
-
-from flask import Flask, Blueprint, render_template
+from flask import Flask, Blueprint
 from ProductionCode.core import Features
 
 app = Flask(__name__)
