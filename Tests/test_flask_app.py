@@ -54,10 +54,9 @@ class TestFlaskApp(unittest.TestCase):
         result = self.client.get("/api/ratio/Japan", follow_redirects = True)
 
         self.assertEqual(result.status_code, 200)
-        self.assertEqual(result.data.decode('utf-8'), 
+        self.assertEqual(result.data.decode('utf-8'),
                          "The ratio between averages of annual CO2 per capita (tonnes per person)"
                          " to energy use per capita (kilowatt-hours per person) for Japan: 1.24")
-        
         mock_ratio.assert_called_once_with("Japan")
 
     @patch('flask_app.core.year_co2')
@@ -100,4 +99,3 @@ class TestFlaskApp(unittest.TestCase):
         self.assertIn(" Try: /api/year_co2/2004, /api/biofuel/Canada",
                       result.data.decode('utf-8')
                      )
-
