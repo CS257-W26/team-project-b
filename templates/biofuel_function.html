@@ -1,6 +1,16 @@
 <html>
-    <h1, id="function_title">Biofuel</h1>
-    <h2, id = "country_given">{{country_html}}</h2>
-    <p, id="result">Highest biofuel consumption (measured in terawatt-hours) for 
-        {{country_html}}  is:  {{output}}</p>
+    
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='header.css')}}">
+    </head>
+
+    <body>
+        {% include 'header.html' %}
+        <h1>Biofuel</h1>
+        
+        <h2, id = "country_given">{{country_html}}</h2>
+        <p, id="result">Highest biofuel consumption (measured in terawatt-hours) for 
+            {{country_html}}  is:  {{output}}</p>
+    </body>
+
 </html>

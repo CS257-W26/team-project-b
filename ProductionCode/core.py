@@ -70,8 +70,8 @@ class Features():
     def year_energy(self, year_args):
         '''Arguments: year_arg, a year (string)
         Return: A list of lists (string) with each country and
-        total CO2 emissions from a specific year
-        Purpose: To get the total CO2 emissions of each country
+        total energy emissions from a specific year
+        Purpose: To get the total energy emissions of each country
         in the dataset from a specific year
         '''
         output = []
