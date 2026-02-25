@@ -69,10 +69,10 @@ class DataSource:
 
     def get_biofuel (self, country):
         '''Arguments: self, country
-        Purpose: Gets the biofuel_consumption data from energy_data for a specified country
+        Purpose: Gets the biofuel_electricity data from energy_data for a specified country
         Return: A csv
         '''
-        return self.get_value('energy_data', 'gas_electricity', country)
+        return self.get_value('energy_data', 'biofuel_electricity', country)
 
     def get_co2_per_capita (self, country):
         '''Arguments: self, country
