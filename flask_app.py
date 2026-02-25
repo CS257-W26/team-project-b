@@ -3,11 +3,10 @@ The eventual location for the Flask app interface for the project.
 '''
 from flask import Flask, render_template, request
 from ProductionCode.core import Features
-from flask_api import ApiFunctions
+from flask_api import *
 
 app = Flask(__name__)
 core = Features()
-api = ApiFunctions()
 
 @app.route("/")
 def homepage():
