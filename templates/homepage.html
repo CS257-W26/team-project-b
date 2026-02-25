@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Emission Tracker</h1>
+        <div><em>{% include 'header.html' %}</em></div>
+
+        <div>
+            <h2>Our Goal</h2>
+            <p>
+            This is a tracker for global emissions. We hope you can explore the site 
+            and learn more of how our climate is changing.
+            </p>
+            
+            <h3>Select a field</h3>
+            <p>Choose a topic to analyze climate change</p>
+        </div>
+        
+        <div>
+            <form action="/">
+                <label for="topic">Topic:</label><br>
+                
+                <select id = "topic" name = "topic" required>
+                    <option value="year">CO2 by Year</option>
+                    <option value="biofuel">Biofuel Consumption</option>
+                    <option value="ratio">Ratio</option>
+                </select>
+        
+            <p>Select</p>
+            <label for="year">Enter a year</label><br>
+            <input type="text" id="year" name="year"> <br>
+            <br>
+            <label for="country">Enter a country</label><br>
+            <input type="text" id="country" name="country"><br>
+            <br>
+            <input type="submit" value="Submit">
+            </form>
+        </div>
+        
+    </body>
+</html>
