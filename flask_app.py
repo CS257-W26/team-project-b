@@ -3,7 +3,8 @@ The eventual location for the Flask app interface for the project.
 '''
 from flask import Flask, render_template
 from ProductionCode.core import Features
-from flask_api import route_api_average, route_api_ratio, route_api_year_co2, route_api_year_energy, route_api_biofuel
+from flask_api import (route_api_average, route_api_ratio,
+route_api_year_co2, route_api_year_energy, route_api_biofuel)
 
 app = Flask(__name__)
 core = Features()
@@ -51,7 +52,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    result = route_year_co2(year)
+    result = route_api_year_co2(year)
     return render_template('year_function.html', title = 'Year CO2',
                            year_html = year, output = result)
 
