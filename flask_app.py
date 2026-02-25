@@ -73,10 +73,9 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    result = api.route_biofuel(country)
+    result = route_api_biofuel(country)
     return render_template('biofuel_function.html', country_html = country, output = result)
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
     app.run(host='0.0.0.0', port=5113)
-
