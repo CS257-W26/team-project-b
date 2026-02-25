@@ -8,7 +8,13 @@ from flask_app import app, api
 class TestFlaskApp(unittest.TestCase) :
     '''Purpose: Tests the user front facing website'''
 
-    @patch('flask_app.api.route_average')
+    def setUp(self):
+        if "api" not in app.blueprints:
+            app.register_blueprint(api, url_prefix = "/")
+        self.client = app.test_client()
+        self.client.testing = True
+
+    @patch('flask_app.route_api_average')
     def test_route_average(self, mock_average):
         '''Argument: self, mock_average
         Return: None

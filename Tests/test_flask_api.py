@@ -1,13 +1,13 @@
 '''
-Test file for flask_app.py
+Test file for flask_api.py
 Run with:
-python -m unittest Tests/test_flask_app.py
+python -m unittest Tests/test_flask_api.py
 '''
 import unittest
 from unittest.mock import patch
 from flask_app import app, api
 
-class TestFlaskApp(unittest.TestCase):
+class TestFlaskApi(unittest.TestCase):
     '''Purpose: Tests the api route functions in flask_app'''
     def setUp(self):
         if "api" not in app.blueprints:
@@ -20,7 +20,7 @@ class TestFlaskApp(unittest.TestCase):
         Return: None
         Purpose: Tests home page for expected instructions
         '''
-        result = self.client.get('/',follow_redirects=True)
+        result = self.client.get('/api',follow_redirects=True)
 
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.data.decode('utf-8'), 'Welcome to Emission Tracker!\
@@ -54,7 +54,7 @@ class TestFlaskApp(unittest.TestCase):
 
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.data.decode('utf-8'),"1.24")
-        mock_ratio.assert_called_once_with("Japan")
+        mock_ratio.assert_called_once_with("Canada")
 
     @patch('flask_api.core.year_co2')
     def test_route_year_co2(self, mock_year_co2):
@@ -72,13 +72,13 @@ class TestFlaskApp(unittest.TestCase):
         mock_year_co2.assert_called_once_with("2000")
 
     @patch('flask_api.core.year_energy')
-    def test_route_year_co2(self, mock_year_energy):
+    def test_route_year_energy(self, mock_year_energy):
         '''Argument: self
         Return: None
         Purpose: Tests year_co2 route for expected output messages
         '''
         mock_year_energy.return_value = "['Canada','2000','2.3']"
-        result = self.client.get("/api/year_co2/2000", follow_redirects = True)
+        result = self.client.get("/api/year_energy/2000", follow_redirects = True)
 
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.data.decode('utf-8'),
