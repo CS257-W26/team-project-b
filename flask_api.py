@@ -24,7 +24,7 @@ def page_not_found(e):
     return str(e) + message
 
 @api.route("/average/<country>")
-def route_average(country):
+def route_api_average(country):
     '''Arguments: country (string)
     Return: The average CO2 emissions of a country (float), 
     or a correction of how this function should work (string)
@@ -36,7 +36,7 @@ def route_average(country):
     return str(average)
 
 @api.route("/ratio/<country>")
-def route_ratio(country):
+def route_api_ratio(country):
     '''Arguments: country (year)
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
@@ -51,7 +51,7 @@ def route_ratio(country):
     return str(ratio)
 
 @api.route("/year_co2/<year>")
-def route_year_co2(year):
+def route_api_year_co2(year):
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and
     total CO2 emissions from a specific year
@@ -63,7 +63,7 @@ def route_year_co2(year):
     return result
 
 @api.route("/year_energy/<year>")
-def route_year_energy(year):
+def route_api_year_energy(year):
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and
     total CO2 emissions from a specific year
@@ -75,7 +75,7 @@ def route_year_energy(year):
     return result
 
 @api.route("/biofuel/<country>")
-def route_biofuel(country):
+def route_api_biofuel(country):
     """
     Arguments: country (string)
     Return: inputted country by user (string) and highest biofuel 

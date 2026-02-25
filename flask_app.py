@@ -30,7 +30,7 @@ def route_average(country):
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    average = api.route_average(country)
+    average = route_api_average(country)
     return render_template('functions.html', function = "average",
     input = country, output = average)
 
@@ -40,7 +40,7 @@ def route_ratio(country):
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    ratio = api.route_ratio(country)
+    ratio = route_api_ratio(country)
     return render_template('ratio_function.html', country_html = country, output = ratio)
 
 @app.route("/year_co2/<year>")
@@ -51,7 +51,7 @@ def route_year_co2(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    result = api.route_year_co2(year)
+    result = route__api_year_co2(year)
     return render_template('year_function.html', title = 'Year CO2', year_html = year, output = result)
 
 @app.route("/year_energy/<year>")
@@ -62,7 +62,7 @@ def route_year_energy(year):
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    result = api.route_year_energy(year)
+    result = route_api_year_energy(year)
     return render_template('year_function.html', title = 'Year Energy', year_html = year, output = result)
 
 @app.route("/biofuel/<country>")
@@ -73,10 +73,9 @@ def route_biofuel(country):
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    result = api.route_biofuel(country)
+    result = route_api_biofuel(country)
     return render_template('biofuel_function.html', country_html = country, output = result)
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
     app.run(host='0.0.0.0', port=5113)
-
