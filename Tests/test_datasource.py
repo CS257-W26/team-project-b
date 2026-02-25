@@ -94,7 +94,7 @@ class TestDatasource (unittest.TestCase):
         ds = DataSource()
         result = ds.get_biofuel('Canada')
         mock_db_instance.query.assert_called_once_with(
-            "SELECT biofuel_consumption FROM energy_data WHERE country = 'Canada'"
+            "SELECT biofuel_electricity FROM energy_data WHERE country = 'Canada'"
         )
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
@@ -134,4 +134,3 @@ class TestDatasource (unittest.TestCase):
         )
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
-

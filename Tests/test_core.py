@@ -71,6 +71,22 @@ class TestCore(unittest.TestCase):
         self.assertEqual(results, expected)
 
     @patch('ProductionCode.core.DataSource')
+    def test_year_energy(self, mock_db_class):
+        '''Arguments: self (TestCore), mock_db_class
+        Return: none
+        Purpose: Tests the year_energy core feature
+        '''
+        mock_db_instance = mock_db_class.return_value
+
+        mock_db_instance.get_year_energy.return_value = "country,year,gas\nCanada,2000,4.7"
+        core = Features()
+        results = core.year_energy("2000")
+
+        expected = [['Canada', '2000', '4.7']]
+
+        self.assertEqual(results, expected)
+
+    @patch('ProductionCode.core.DataSource')
     def test_highest_biofuel(self, mock_db_class):
         '''Arguments: self (TestCore), mock_db_class
         Return: none
