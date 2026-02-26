@@ -52,7 +52,9 @@ class DataSource:
         Purpose: Gets the biofuel_electricity data from energy_data for a specified country
         Return: A csv
         '''
-        result = self.db.query(f"SELECT MAX(biofuel_electricity) FROM energy_data WHERE country = '{country}'")
+        result = self.db.query(
+            f"SELECT MAX(biofuel_electricity) FROM energy_data WHERE country = '{country}'"
+        )
         return result.export('csv')
 
     def get_average_co2_per_capita (self, country):
@@ -60,7 +62,9 @@ class DataSource:
         Purpose: Gets the average co2_per_capita data from energy_data for a specified country
         Return: A csv
         '''
-        result = self.db.query(f"SELECT AVG(co2_per_capita) FROM co2_data WHERE country = '{country}'")
+        result = self.db.query(
+            f"SELECT AVG(co2_per_capita) FROM co2_data WHERE country = '{country}'"
+        )
         return result[0].export('csv')
 
     def get_average_energy_per_capita (self, country):
@@ -68,7 +72,9 @@ class DataSource:
         Purpose: Gets the average energy_per_capita data from energy_data for a specified country
         Return: A csv
         '''
-        result = self.db.query(f"SELECT AVG(energy_per_capita) FROM energy_data WHERE country = '{country}'")
+        result = self.db.query(
+            f"SELECT AVG(energy_per_capita) FROM energy_data WHERE country = '{country}'"
+        )
         return result[0].export('csv')
 
     def get_average_co2 (self, country):
