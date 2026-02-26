@@ -18,7 +18,7 @@ class TestCore(unittest.TestCase):
         '''
         mock_db_instance = mock_db_class.return_value
 
-        mock_db_instance.get_country_co2.return_value = "co2\n0\n2\n3\n3"
+        mock_db_instance.get_average_co2.return_value = "2.0"
         core = Features()
         results = core.average("Canada")
 
@@ -31,12 +31,12 @@ class TestCore(unittest.TestCase):
         Purpose: Tests the core ratio function
         '''
         mock_db_instance = mock_db_class.return_value
-        mock_db_instance.get_co2_per_capita.return_value = "21\n21"
+        mock_db_instance.get_average_co2_per_capita.return_value = "Japan, 11"
         mock_db_instance_two = mock_db_class.return_value
-        mock_db_instance_two.get_energy_per_capita.return_value = "19\n12"
+        mock_db_instance_two.get_average_energy_per_capita.return_value = "Japan, 20"
         core = Features()
         results = core.ratio("Japan")
-        self.assertEqual(results, 1.75)
+        self.assertEqual(results, 0.55)
 
     @patch('ProductionCode.core.DataSource')
     def test_year_co2(self, mock_db_class):
@@ -78,7 +78,7 @@ class TestCore(unittest.TestCase):
         '''
         mock_db_instance = mock_db_class.return_value
 
-        mock_db_instance.get_biofuel.return_value = "country\n33.705"
+        mock_db_instance.get_biofuel.return_value = 33.705
         core = Features()
         results = core.highest_biofuel("Canada")
         self.assertEqual(results, 33.705)
@@ -94,4 +94,4 @@ class TestCore(unittest.TestCase):
         mock_db_instance.get_biofuel.return_value = " "
         core = Features()
         results = core.highest_biofuel("Uruguay")
-        self.assertEqual(results, "No data found")
+        self.assertEqual(results, " ")
