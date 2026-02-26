@@ -11,22 +11,22 @@ class DataSource:
         connect = f"postgresql://{config.USER}:{config.PASSWORD}@localhost:5432/{config.DATABASE}"
         self.db = records.Database(connect)
 
-    def get_country (self,data,country):
-        '''Arguments: self, data, country
-        Purpose: Helper function for get_country_energy 
-        to get the data for a specific year
+    def get_country_co2 (self, country):
+        '''Arguments: self, country
+        Purpose: Gets all the related data of a specific country from co2_data
         Return: A csv
         '''
-        result = self.db.query(f"SELECT * FROM {data} WHERE country = '{country}'")
+        result = self.db.query(f"SELECT * FROM co2_data WHERE country = '{country}'")
         return result.export('csv')
 
-    def get_year (self,data,year):
-        '''Arguments: self, data, year
-        Purpose: Helper function for get_year_co2 and get_year_energy 
-        to get the data for a specific year
+    def get_country_energy (self, country):
+        '''Arguments: self, country
+        Purpose: Gets all the related data of a specific country from energy_data
         Return: A csv
         '''
-        result = self.db.query(f"SELECT country, year, co2 FROM {data} WHERE year = '{year}'")
+        result = self.db.query(
+            f"SELECT * FROM energy_data WHERE country = '{country}'"
+        )
         return result.export('csv')
 
     def get_year_co2 (self, year):
@@ -34,14 +34,18 @@ class DataSource:
         Purpose: Gets the data for a specific year from co2_data
         Return: A csv
         '''
-        return self.get_year('co2_data', year)
+        result = self.db.query(f"SELECT country, year, co2 FROM co2_data WHERE year = '{year}'")
+        return result.export('csv')
 
     def get_year_energy (self, year):
         '''Arguments: self, year
         Purpose: Gets the data for a specific year from energy_data
         Return: A csv
         '''
-        return self.get_year('energy_data',year)
+        result = self.db.query(
+            f"SELECT country, year, gas_electricity FROM energy_data WHERE year = '{year}'"
+        )
+        return result.export('csv')
 
     def get_biofuel (self, country):
         '''Arguments: self, country

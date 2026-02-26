@@ -11,10 +11,10 @@ class TestDatasource (unittest.TestCase):
     data_source = DataSource()
 
     @patch ('ProductionCode.datasource.records.Database')
-    def test_get_country_co2(self, mock_db_class):
+    def test_get_country(self, mock_db_class):
         '''Argument: self, mock_db_class
         Return: None
-        Purpose: Sets and tests mock data for get_country_co2
+        Purpose: Sets and tests mock data for get_country
         '''
         mock_db_instance = mock_db_class.return_value
         mock_list = MagicMock()
@@ -23,7 +23,7 @@ class TestDatasource (unittest.TestCase):
         ds = DataSource()
         result = ds.get_country_co2('Canada')
         mock_db_instance.query.assert_called_once_with(
-        "SELECT co2 FROM co2_data WHERE country = 'Canada'")
+        "SELECT * FROM co2_data WHERE country = 'Canada'")
         mock_list.export.assert_called_with('csv')
 
         self.assertEqual(result, "Canada,1,1,1\nCanada,2,2,2")
@@ -76,7 +76,7 @@ class TestDatasource (unittest.TestCase):
         ds = DataSource()
         result = ds.get_year_energy('2000')
         mock_db_instance.query.assert_called_once_with(
-            "SELECT country, year, co2 FROM energy_data WHERE year = '2000'"
+            "SELECT country, year, gas_electricity FROM energy_data WHERE year = '2000'"
         )
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
@@ -89,48 +89,63 @@ class TestDatasource (unittest.TestCase):
         '''
         mock_db_instance = mock_db_class.return_value
         mock_list = MagicMock()
-        mock_list.export.return_value = "Canada,2000,1,1\nCanada,2000,2,3"
+        mock_list.export.return_value = "5.6"
         mock_db_instance.query.return_value = mock_list
         ds = DataSource()
         result = ds.get_biofuel('Canada')
         mock_db_instance.query.assert_called_once_with(
-            "SELECT biofuel_electricity FROM energy_data WHERE country = 'Canada'"
+            "SELECT MAX(biofuel_electricity) FROM energy_data WHERE country = 'Canada'"
         )
         mock_list.export.assert_called_with('csv')
-        self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
+        self.assertEqual(result, "5.6")
 
     @patch('ProductionCode.datasource.records.Database')
-    def test_co2_per_capita(self, mock_db_class):
+    def test_get_average_co2_per_capita(self, mock_db_class):
         '''Argument: self, mock_db_class
         Return: None
-        Purpose: Sets and tests mock data for get_co2_per_capita
+        Purpose: Sets and tests mock data for get_average_co2_per_capita
         '''
         mock_db_instance = mock_db_class.return_value
         mock_list = MagicMock()
-        mock_list.export.return_value = "Canada,2000,1,1\nCanada,2000,2,3"
-        mock_db_instance.query.return_value = mock_list
+        mock_list.export.return_value = "1.333"
+        mock_db_instance.query.return_value = [mock_list]
         ds = DataSource()
-        result = ds.get_co2_per_capita('Canada')
+        result = ds.get_average_co2_per_capita('Canada')
         mock_db_instance.query.assert_called_once_with(
-            "SELECT co2_per_capita FROM co2_data WHERE country = 'Canada'"
+            "SELECT AVG(co2_per_capita) FROM co2_data WHERE country = 'Canada'"
         )
-        mock_list.export.assert_called_with('csv')
-        self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
+        self.assertEqual(result, "1.333")
 
     @patch('ProductionCode.datasource.records.Database')
-    def test_energy_per_capita(self, mock_db_class):
+    def test_get_average_energy_per_capita(self, mock_db_class):
         '''Argument: self, mock_db_class
         Return: None
-        Purpose: Sets and tests mock data for get_energy_per_capita
+        Purpose: Sets and tests mock data for get_average_energy_per_capita
         '''
         mock_db_instance = mock_db_class.return_value
         mock_list = MagicMock()
-        mock_list.export.return_value = "Canada,2000,1,1\nCanada,2000,2,3"
-        mock_db_instance.query.return_value = mock_list
+        mock_list.export.return_value = "2.222"
+        mock_db_instance.query.return_value = [mock_list]
         ds = DataSource()
-        result = ds.get_energy_per_capita('Canada')
+        result = ds.get_average_energy_per_capita('Canada')
         mock_db_instance.query.assert_called_once_with(
-            "SELECT energy_per_capita FROM energy_data WHERE country = 'Canada'"
+            "SELECT AVG(energy_per_capita) FROM energy_data WHERE country = 'Canada'"
         )
-        mock_list.export.assert_called_with('csv')
-        self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")
+        self.assertEqual(result, "2.222")
+       
+    @patch('ProductionCode.datasource.records.Database')
+    def test_get_average_co2(self, mock_db_class):
+        '''Argument: self, mock_db_class
+        Return: None
+        Purpose: Sets and tests mock data for get_average_co2
+        '''
+        mock_db_instance = mock_db_class.return_value
+        mock_list = MagicMock()
+        mock_list.export.return_value = "3.33"
+        mock_db_instance.query.return_value = [mock_list]
+        ds = DataSource()
+        result = ds.get_average_co2('Canada')
+        mock_db_instance.query.assert_called_once_with(
+            "SELECT AVG(co2) FROM co2_data WHERE country = 'Canada'"
+        )
+        self.assertEqual(result, "3.33")

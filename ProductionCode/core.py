@@ -23,9 +23,8 @@ class Features():
         Return: A ratio (float) 
         Purpose: Calculates the ratio for co2_per_capita to energy_per_capita
         '''
-        print (self.ds.get_average_co2_per_capita(country))
-        avg_co2 = float(self.ds.get_average_co2_per_capita(country))
-        avg_energy = float(self.ds.get_average_energy_per_capita(country))
+        avg_co2 = float(self.ds.get_average_co2_per_capita(country).split()[1])
+        avg_energy = float(self.ds.get_average_energy_per_capita(country).split()[1])
         ratio = avg_co2/avg_energy
         return ratio
 
@@ -65,17 +64,9 @@ class Features():
         Purpose: Returns a single int representing the highest
         biofuel consumption of a specific country
         '''
-        data = self.ds.get_biofuel(biofuel_arg)
-        final_data = self.csv_helper(data)
-
-        biofuel = -1
-
-        for num in final_data:
-            if num[0] != "" and (float(num[0]) > biofuel):
-                biofuel = float(num[0])
-        if biofuel == -1:
-            return "No data found"
-        return biofuel
+        max_biofuel = self.ds.get_biofuel(biofuel_arg)
+        
+        return max_biofuel
 
     def csv_helper(self, data):
         '''Argument: data (csv file to read in)
