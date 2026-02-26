@@ -4,11 +4,11 @@ The eventual location for the Flask app interface for the project.
 from flask import Flask, Blueprint, render_template, request
 from ProductionCode.core import Features
 from flask_api import (route_api_average, route_api_ratio,
-route_api_year_co2, route_api_year_energy, route_api_biofuel)
+route_api_year_co2, route_api_year_energy, route_api_biofuel, api)
 
 app = Flask(__name__)
 core = Features()
-api = Blueprint('api', __name__) #api object
+
 
 @app.route("/")
 def homepage():
@@ -38,12 +38,10 @@ def route_average():
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    if request.method == 'POST':
-        country = str(request.args['average_input'])
-        average = route_api_average(country)
-        return render_template('average_function.html', function = "average",
-                               input = country, output = average)
-    return render_template('average_function.html', function="average")
+    country = str(request.args['average_country'])
+    average = route_api_average(country)
+    return render_template('average_function.html', function = "average",
+                           country_html = country, output = average)
 
 @app.route("/ratio", methods = ['GET', 'POST'])
 def route_ratio():
@@ -51,11 +49,9 @@ def route_ratio():
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    if request.method == 'POST':
-        country = str(request.form['ratio_input'])
-        ratio = route_api_ratio(country)
-        return render_template('ratio_function.html', country_html = country, output = ratio)
-    return render_template('ratio_function.html', function = "ratio")
+    country = str(request.args['ratio_country'])
+    ratio = route_api_ratio(country)
+    return render_template('ratio_function.html', country_html = country, output = ratio)
 
 @app.route("/year_co2/<year>")
 def route_year_co2(year):

@@ -1,28 +1,4 @@
-DROP TABLE IF EXISTS years,countries,co2,energy,co2_data,energy_data;
-CREATE TABLE years (
-    id SERIAL,
-    year INTEGER,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE countries(
-    id SERIAL,
-    country TEXT,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE co2 (
-    id SERIAL,
-    co2_per_capita FLOAT,
-    cummulative_co2 FLOAT,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE energy (
-    id SERIAL,
-    biofuel_cons_per_capita FLOAT,
-    PRIMARY KEY (id)
-);
+DROP TABLE IF EXISTS co2_data,energy_data;
 
 CREATE TABLE co2_data (
     country TEXT,

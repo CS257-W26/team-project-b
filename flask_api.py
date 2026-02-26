@@ -32,7 +32,7 @@ def route_api_average(country):
     Purpose: Display the average CO2 emissions of a country
     '''
     average = core.average(country)
-
+    print ("Printed")
     # output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return str(average)
 

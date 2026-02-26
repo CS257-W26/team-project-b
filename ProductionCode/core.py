@@ -10,47 +10,24 @@ class Features():
     def __init__(self):
         self.ds = DataSource()
 
-    def calculate_average(self, data):
-        '''Arguments: data (csv reader)
-        Return: The average (str)
-        Purpose: Calculates the average
-        '''
-        total = 0
-        count = 0
-        for row in data:
-            if row[0] != "":
-                total += float(row[0])
-                count += 1
-        if count == 0:
-            return 'No data found'
-        return str((total/count))
-
-    def average(self, average_arg):
-        '''Arguments: average_arg, a country (str)
+    def average(self, country):
+        '''Arguments: country (str)
         Return: The average of the given dataset (str)
         Purpose: To get the average co2 of a subset of data for a country
         '''
-        data_set = self.ds.get_country_co2(average_arg)
-        final_data = self.csv_helper(data_set)
+        data_set = self.ds.get_average_co2(country)
+        return data_set
 
-        return self.calculate_average(final_data)
-
-    def ratio(self, ratio_arg):
-        '''Arguments: ratio_arg, a country (year)
+    def ratio(self, country):
+        '''Arguments: country (str)
         Return: A ratio (float) 
         Purpose: Calculates the ratio for co2_per_capita to energy_per_capita
         '''
-        csv1 = self.ds.get_co2_per_capita(ratio_arg)
-        csv2 = self.ds.get_energy_per_capita(ratio_arg)
-
-        data1 = self.csv_helper(csv1)
-        data2 = self.csv_helper(csv2)
-
-        avg_co2 = float(self.calculate_average(data1))
-        avg_energy = float(self.calculate_average(data2))
-
-        ratio_variable = avg_co2/avg_energy
-        return ratio_variable
+        print (self.ds.get_average_co2_per_capita(country))
+        avg_co2 = float(self.ds.get_average_co2_per_capita(country))
+        avg_energy = float(self.ds.get_average_energy_per_capita(country))
+        ratio = avg_co2/avg_energy
+        return ratio
 
     def year_co2(self, year_args):
         '''Arguments: year_arg, a year (string)
