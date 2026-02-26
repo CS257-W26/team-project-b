@@ -13,15 +13,13 @@ class TestFlaskApp(unittest.TestCase) :
         self.client.testing = True
 
     @patch('flask_app.route_api_average')
-    def test_route_average(self, mock_average):
+    def test_route_average(self):
         '''Argument: self, mock_average
         Return: None
         Purpose: Tests average route for appropriate output messages
         '''
-        mock_average.return_value = '2.222'
-        result = self.client.post("/average",
-                                  data = {'average_input': 'Canada'},
-                                  follow_redirects=True)
+        
+        result = self.client.get("/average", follow_redirects=True)
 
         self.assertIn('2.222', result.data.decode('utf-8'))
 

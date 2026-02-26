@@ -31,7 +31,7 @@ def action_page():
     Purpose: Handles user input in the homepage
     '''
 
-@app.route("/average", methods = ['GET', 'POST'])
+@app.route("/average")
 def route_average():
     '''Arguments: country (string)
     Return: The average CO2 emissions of a country (float), 
