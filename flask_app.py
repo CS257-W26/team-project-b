@@ -1,7 +1,7 @@
 '''
 The eventual location for the Flask app interface for the project.
 '''
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from ProductionCode.core import Features
 from flask_api import (route_api_average, route_api_ratio,
 route_api_year_co2, route_api_year_energy, route_api_biofuel)
@@ -31,22 +31,24 @@ def action_page():
     '''
 
 @app.route("/average/<country>")
-def route_average(country):
+def route_average():
     '''Arguments: country (string)
     Return: The average CO2 emissions of a country (float), 
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
+    country = str(request.form['average_input'])
     average = route_api_average(country)
     return render_template('functions.html', function = "average",
     input = country, output = average)
 
 @app.route("/ratio/<country>")
-def route_ratio(country):
+def route_ratio():
     '''Arguments: country (year)
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
+    country = str(request.form['ratio_input'])
     ratio = route_api_ratio(country)
     return render_template('ratio_function.html', country_html = country, output = ratio)
 
@@ -84,6 +86,24 @@ def route_biofuel(country):
     """
     result = route_api_biofuel(country)
     return render_template('biofuel_function.html', country_html = country, output = result)
+
+@app.route ("/data")
+def route_data():
+    """
+    Arguments: None
+    Return: returns render of data.html
+    Purpose: Display data.html
+    """
+    return render_template('data.html')
+
+@app.route ("/info")
+def route_data():
+    """
+    Arguments: None
+    Return: returns render of info.html
+    Purpose: Display info.html
+    """
+    return render_template('info.html')
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
