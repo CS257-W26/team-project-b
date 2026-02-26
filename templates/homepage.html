@@ -21,24 +21,18 @@
         </div>
         
         <div>
-            <form action="/">
-                <label for="topic">Topic:</label><br>
-                
-                <select id = "topic" name = "topic" required>
-                    <option value="year">CO2 by Year</option>
-                    <option value="biofuel">Biofuel Consumption</option>
-                    <option value="ratio">Ratio</option>
-                </select>
-        
-            <p>Select</p>
-            <label for="year">Enter a year</label><br>
-            <input type="text" id="year" name="year"> <br>
-            <br>
-            <label for="country">Enter a country</label><br>
-            <input type="text" id="country" name="country"><br>
-            <br>
-            <input type="submit" value="Submit">
-            </form>
+            <ul>
+                <li><form action="/average">
+                    <label id="average_label">Average:</label>
+                    <input type="text" id = "average_text">
+                    <input type="submit" name ="average_input" value="Submit">
+                </form></li>
+                <li><form action="/ratio">
+                    <label id="ratio_label">Ratio:</label>
+                    <input type="text" id = "ratio_text">
+                    <input type="submit" name ="ratio_input" value="Submit">
+                </form></li>
+            </ul>
         </div>
         
     </body>
