@@ -5,7 +5,7 @@ python -m unittest Tests/test_flask_api.py
 '''
 import unittest
 from unittest.mock import patch
-from flask_app import app, api
+from flask_api import app, api
 
 class TestFlaskApi(unittest.TestCase):
     '''Purpose: Tests the api route functions in flask_app'''
@@ -20,7 +20,7 @@ class TestFlaskApi(unittest.TestCase):
         Return: None
         Purpose: Tests home page for expected instructions
         '''
-        result = self.client.get('/api',follow_redirects=True)
+        result = self.client.get('/',follow_redirects=True)
 
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.data.decode('utf-8'), 'Welcome to Emission Tracker!\

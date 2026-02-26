@@ -2,9 +2,10 @@ from flask import Flask, Blueprint
 from ProductionCode.core import Features
 
 core = Features()
+app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
 
-@api.route("/")
+@app.route("/")
 def homepage():
     '''
     Purpose: homepage to show instructions for available routes
@@ -15,7 +16,7 @@ def homepage():
     To view the highest biofuel consumption for a country,\
     enter the following: /biofuel/Canada"
 
-@api.errorhandler(404)
+@app.errorhandler(404)
 def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted

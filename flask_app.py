@@ -1,13 +1,14 @@
 '''
 The eventual location for the Flask app interface for the project.
 '''
-from flask import Flask, render_template
+from flask import Flask, Blueprint, render_template
 from ProductionCode.core import Features
 from flask_api import (route_api_average, route_api_ratio,
 route_api_year_co2, route_api_year_energy, route_api_biofuel)
 
 app = Flask(__name__)
 core = Features()
+api = Blueprint('api', __name__) #api object
 
 @app.route("/")
 def homepage():
