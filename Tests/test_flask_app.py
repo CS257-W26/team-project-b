@@ -21,6 +21,6 @@ class TestFlaskApp(unittest.TestCase) :
         mock_average.return_value = '2.222'
         result = self.client.get("/average/Canada", follow_redirects=True)
 
-        self.assertIn('2.222', 'The average annual CO2 emissions (measured in million tonnes) for Canada: 2.222' )
+        self.assertIn('2.222', result.data.decode('utf-8'))
 
         mock_average.assert_called_once_with("Canada")
