@@ -31,27 +31,31 @@ def action_page():
     Purpose: Handles user input in the homepage
     '''
 
-@app.route("/average/<country>")
+@app.route("/average", methods = ['GET', 'POST'])
 def route_average():
     '''Arguments: country (string)
     Return: The average CO2 emissions of a country (float), 
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    country = str(request.form['average_input'])
-    average = route_api_average(country)
-    return render_template('functions.html', function = "average",
-    input = country, output = average)
+    if request.method == 'POST':
+        country = str(request.form['average_input'])
+        average = route_api_average(country)
+        return render_template('average_function.html', function = "average",
+                               input = country, output = average)
+    return render_template('average_function.html', function="average")
 
-@app.route("/ratio/<country>")
+@app.route("/ratio", methods = ['GET', 'POST'])
 def route_ratio():
     '''Arguments: country (year)
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    country = str(request.form['ratio_input'])
-    ratio = route_api_ratio(country)
-    return render_template('ratio_function.html', country_html = country, output = ratio)
+    if request.method == 'POST':
+        country = str(request.form['ratio_input'])
+        ratio = route_api_ratio(country)
+        return render_template('ratio_function.html', country_html = country, output = ratio)
+    return render_template('ratio_function.html', function = "ratio")
 
 @app.route("/year_co2/<year>")
 def route_year_co2(year):
