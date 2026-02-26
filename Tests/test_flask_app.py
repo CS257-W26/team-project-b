@@ -19,7 +19,7 @@ class TestFlaskApp(unittest.TestCase) :
         Purpose: Tests average route for appropriate output messages
         '''
         mock_average.return_value = '2.222'
-        result = self.client.post("/average", 
+        result = self.client.post("/average",
                                   data = {'average_input': 'Canada'},
                                   follow_redirects=True)
 
