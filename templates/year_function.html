@@ -5,7 +5,11 @@
     </head>
 
     <body>
-        {% include 'header.html' %}
+        {% extends 'base.html' %}
+        
+        {% block title %}Biofuel{% endblock %}
+
+        {% block content %}
         
         <h1, id="year_title">{{title}}</h1>
         <h2, id = "year_given">{{year_html}}</h2>
@@ -14,6 +18,7 @@
                 <li>{{output[i][0]}} : {{output[i][2]}}</li>
             {% endfor %}
         </ul>
+        {% endblock%}
     </body>
 
 </html>

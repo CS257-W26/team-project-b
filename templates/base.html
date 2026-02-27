@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <nav class = navbar>
+            <ul>
+                <li><a href = '/'>Home</a></li>
+                <li><a href = '/data'>Data</a></li>
+                <li><a href = '/info'>Info</a></li>
+            </ul>
+        </nav>
+        <div class = "content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
+

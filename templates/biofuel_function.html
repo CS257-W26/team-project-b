@@ -1,16 +1,35 @@
 <html>
     
     <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='header.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     </head>
 
     <body>
-        {% include 'header.html' %}
-        <h1>Biofuel</h1>
+        {% extends 'base.html' %}
         
-        <h2, id = "country_given">{{country_html}}</h2>
-        <p, id="result">Highest biofuel consumption (measured in terawatt-hours) for 
-            {{country_html}}  is:  {{output}}</p>
+        {% block title %}Biofuel{% endblock %}
+
+        {% block content %}
+        <div class = "biofuel-descript">
+            <h1>Finding Max Biofuel Electricity Usage</h1>
+    
+            <h3>View what the maximum electricity generation is for a selected country</h3>
+        </div>
+
+        <div class = "biofuel-search">
+            <li><form action = "/biofuel">
+                <label id = "biofuel_label">Search By:</label>
+                <input type = "text" id = "biofuel" name = "biofuel_country" value = "Country">
+                <input type = "submit" name = "biofuel_input" value = "Submit">
+            </form></li>
+        </div>
+
+        <div class = "biofuel-output">
+            <h2 id = "country_given">{{country_html}}</h2>
+            <p id="result">Highest biofuel consumption (measured in terawatt-hours) for 
+                {{country_html}}  is:  {{output}}</p>
+        </div>
+        {% endblock %}
     </body>
 
 </html>
