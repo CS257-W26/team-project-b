@@ -37,7 +37,7 @@ def route_api_average(country):
 @api.route("/ratio/<country>")
 def route_api_ratio(country):
     '''Arguments: country (year)
-    Return: A ratio (float) 
+    Return: A ratio (string) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
     ratio = core.ratio(country)
@@ -69,11 +69,10 @@ def route_api_year_energy(year):
 
 @api.route("/biofuel/<country>")
 def route_api_biofuel(country):
-    """
-    Arguments: country (string)
+    '''Arguments: country (string)
     Return: inputted country by user (string) and highest biofuel 
-    consumption value of that country (string)
-    Purpose: Display the highest biofuel consumption for the given country
-    """
+    electricity value of that country (string)
+    Purpose: Display the highest biofuel electricity usage for the given country
+    '''
     result = core.highest_biofuel(country)
     return str(result)

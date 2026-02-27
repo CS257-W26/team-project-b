@@ -1,7 +1,7 @@
 # User Stories:
 
 # Feature 1
-As a user interested in climate change, I can look up individual countries' top biofuel consumption information so that I can form a more comprehensive view of the world. 
+As a user interested in climate change, I can look up individual countries' top biofuel electricity information so that I can form a more comprehensive view of the world. 
 
 Acceptance test: 
 - test_command_line.py 
