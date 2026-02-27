@@ -5,7 +5,7 @@ core = Features()
 app = Flask(__name__)
 api = Blueprint('api', __name__) #api object
 
-@app.route("/")
+@api.route("/")
 def homepage():
     '''
     Purpose: homepage to show instructions for available routes
@@ -16,7 +16,7 @@ def homepage():
     To view the highest biofuel consumption for a country,\
     enter the following: /biofuel/Canada"
 
-@app.errorhandler(404)
+@api.errorhandler(404)
 def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted

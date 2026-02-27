@@ -132,7 +132,7 @@ class TestDatasource (unittest.TestCase):
             "SELECT AVG(energy_per_capita) FROM energy_data WHERE country = 'Canada'"
         )
         self.assertEqual(result, "2.222")
-       
+
     @patch('ProductionCode.datasource.records.Database')
     def test_get_average_co2(self, mock_db_class):
         '''Argument: self, mock_db_class

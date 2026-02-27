@@ -65,7 +65,6 @@ class Features():
         biofuel consumption of a specific country
         '''
         max_biofuel = self.ds.get_biofuel(biofuel_arg)
-        
         return max_biofuel
 
     def csv_helper(self, data):

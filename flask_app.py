@@ -43,7 +43,7 @@ def route_average():
     return render_template('average_function.html', function = "average",
                            country_html = country, output = average)
 
-@app.route("/ratio", methods = ['GET', 'POST'])
+@app.route("/ratio")
 def route_ratio():
     '''Arguments: country (year)
     Return: A ratio (float) 
@@ -77,16 +77,17 @@ def route_year_energy(year):
     return render_template('year_function.html', title = 'Year Energy',
                            year_html = year, output = result)
 
-@app.route("/biofuel/<country>")
-def route_biofuel(country):
+@app.route("/biofuel")
+def route_biofuel():
     """
     Arguments: country (string)
     Return: inputted country by user (string) and highest biofuel 
     consumption value of that country (string)
     Purpose: Display the highest biofuel consumption for the given country
     """
-    result = route_api_biofuel(country)
-    return render_template('biofuel_function.html', country_html = country, output = result)
+    country = str(request.args['biofuel_country'])
+    biofuel = route_api_biofuel(country)
+    return render_template('biofuel_function.html', country_html = country, output = biofuel)
 
 @app.route ("/data")
 def route_data():
