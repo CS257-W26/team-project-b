@@ -20,7 +20,7 @@ class TestFlaskApi(unittest.TestCase):
         Return: None
         Purpose: Tests home page for expected instructions
         '''
-        result = self.client.get('/',follow_redirects=True)
+        result = self.client.get('/api',follow_redirects=True)
 
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.data.decode('utf-8'), 'Welcome to Emission Tracker!\
@@ -104,8 +104,6 @@ class TestFlaskApi(unittest.TestCase):
         Return: None
         Purpose: Tests for error handling when wrong format is entered.
         '''
-        result = self.client.get("/Canaada",follow_redirects=True)
-        self.assertEqual(result.status_code, 200)
-        self.assertIn(" Try: /api/year_co2/2004, /api/biofuel/Canada",
-                      result.data.decode('utf-8')
-                     )
+        result = self.client.get("/api/random",follow_redirects=True)
+        self.assertEqual(result.status_code, 404)
+        self.assertIn("404 Not Found", result.data.decode('utf-8'))

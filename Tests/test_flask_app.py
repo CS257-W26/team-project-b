@@ -58,5 +58,3 @@ class TestFlaskApp(unittest.TestCase) :
         self.assertIn('Japan', result.data.decode('utf-8'))
 
         mock_biofuel.assert_called_once_with('Japan')
-        
-        
