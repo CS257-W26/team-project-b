@@ -6,34 +6,44 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <h1>Emission Tracker</h1>
-        <div><em>{% include 'header.html' %}</em></div>
+        {% extends 'base.html' %}
 
-        <div>
-            <h2>Our Goal</h2>
-            <p>
-            This is a tracker for global emissions. We hope you can explore the site 
-            and learn more of how our climate is changing.
-            </p>
+        {% block title %}Home{% endblock %}
+
+        {% block content %}
+        
+            <h1>Emission Tracker</h1>
+    
+            <div>
+                <h2>Our Goal</h2>
+                <p>
+                This is a tracker for global emissions. We hope you can explore the site 
+                and learn more of how our climate is changing.
+                </p>
+                
+                <h3>Select a field</h3>
+                <p>Choose a topic to analyze climate change</p>
+            </div>
             
-            <h3>Select a field</h3>
-            <p>Choose a topic to analyze climate change</p>
-        </div>
-        
-        <div>
-            <ul>
-                <li><form action="/average">
-                    <label id="average_label">Average:</label>
-                    <input type="text" id = "average" name = "average_country" value = "Country">
-                    <input type="submit" name ="average_input" value="Submit">
-                </form></li>
-                <li><form action="/ratio">
-                    <label id="ratio_label">Ratio:</label>
-                    <input type="text" id = "average" name = "ratio_country" value = "Country">
-                    <input type="submit" name ="ratio_input" value="Submit">
-                </form></li>
-            </ul>
-        </div>
-        
+            <div>
+                <ul>
+                    <li><form action="/average">
+                        <label id="average_label">Average:</label>
+                        <input type="text" id = "average" name = "average_country" value = "Country">
+                        <input type="submit" name ="average_input" value="Submit">
+                    </form></li>
+                    <li><form action="/ratio">
+                        <label id="ratio_label">Ratio:</label>
+                        <input type="text" id = "average" name = "ratio_country" value = "Country">
+                        <input type="submit" name ="ratio_input" value="Submit">
+                    </form></li>
+                    <li><form action = "/biofuel">
+                        <label id = "biofuel_label">Biofuel:</label>
+                        <input type = "text" id = "biofuel" name = "biofuel_country" value = "Country">
+                        <input type = "submit" name = "biofuel_input" value = "Submit">
+                    </form></li>
+                </ul>
+            </div>
+        {% endblock %}
     </body>
 </html>
