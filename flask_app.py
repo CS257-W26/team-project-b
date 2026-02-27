@@ -22,8 +22,8 @@ def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
-    message = " Try: /api/year_co2/2004, /api/biofuel/Canada"
-    return str(e) + message
+    return render_template('404.html', title = '404', message = "Try: /api/year_co2/2004, /api/biofuel/Canada")
+                           # str(e) + message
 
 @app.route("/action_page")
 def action_page():

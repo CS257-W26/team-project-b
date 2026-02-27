@@ -1,4 +1,9 @@
 <html>
-    <title>{{404 page}}</title>
+    <title>{{title}}</title>
     <h1>404 Error Page</h1>
+    <body>
+        {%if error%}
+        <p> Error: {message}</p>
+        {% endif %}
+    </body>
 </html>
