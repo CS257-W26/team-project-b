@@ -8,8 +8,14 @@ from unittest.mock import patch
 from flask_api import app, api
 
 class TestFlaskApi(unittest.TestCase):
-    '''Purpose: Tests the api route functions in flask_app'''
+    '''Purpose: Tests the api route functions in flask_app
+    Run with: python -m unittest Tests/test_core.py
+    '''
     def setUp(self):
+        '''Argument: self
+        Return: none
+        Purpose: Sets up the app for testing
+        '''
         if "api" not in app.blueprints:
             app.register_blueprint(api, url_prefix = "/api")
         self.client = app.test_client()
