@@ -32,8 +32,6 @@ def route_api_average(country):
     Purpose: Display the average CO2 emissions of a country
     '''
     average = core.average(country)
-    print ("Printed")
-    # output = "The average annual CO2 emissions (measured in million tonnes) for " + country + ": "
     return str(average)
 
 @api.route("/ratio/<country>")
@@ -43,12 +41,6 @@ def route_api_ratio(country):
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
     ratio = core.ratio(country)
-
-    # output = (
-    #     "The ratio between averages of annual CO2 per capita (tonnes per person)"
-    #     " to energy use per capita (kilowatt-hours per person) for " + country + ": "
-    # )
-
     return str(ratio)
 
 @api.route("/year_co2/<year>")
@@ -84,6 +76,4 @@ def route_api_biofuel(country):
     Purpose: Display the highest biofuel consumption for the given country
     """
     result = core.highest_biofuel(country)
-
-    # output = "Highest biofuel consumption (measured in terawatt-hours) for " + country + " is: "
     return str(result)
