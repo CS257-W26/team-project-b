@@ -34,7 +34,7 @@ def set_parser():
 
     return parser
 
-def command_line_input():
+def main():
     '''Arguments: None
     Purpose: Handles command line user input
     Return: None
@@ -58,4 +58,4 @@ def command_line_input():
             print(core.year_co2(args.year_co2))
 
 if __name__ == "__main__":
-    command_line_input()
+    main()
