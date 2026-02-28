@@ -1,19 +1,22 @@
 <html>
 
     <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='header.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     </head>
 
     <body>
         {% extends 'base.html' %}
         
-        {% block title %}Biofuel{% endblock %}
+        {% block title %}Filter by Year{% endblock %}
 
         {% block content %}
-        
-        <h1, id="year_title">{{title}}</h1>
-        <h2, id = "year_given">{{year_html}}</h2>
-        <ul, id="result_list">
+
+        <div class = "year_heading">
+            <h1 id="year_title">{{title}}</h1>
+            <h2 id = "year_given">{{year_html}}</h2>
+        </div>
+
+        <ul id="result_list">
             {%for i in range (output|length): %}
                 <li>{{output[i][0]}} : {{output[i][2]}}</li>
             {% endfor %}

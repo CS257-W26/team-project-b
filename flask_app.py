@@ -52,26 +52,28 @@ def route_ratio():
     ratio = route_api_ratio(country)
     return render_template('ratio_function.html', country_html = country, output = ratio)
 
-@app.route("/year_co2/<year>")
-def route_year_co2(year):
+@app.route("/year_co2")
+def route_year_co2():
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and
     total CO2 emissions from a specific year
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
+    year = str(request.args['co2_year'])
     result = route_api_year_co2(year)
     return render_template('year_function.html', title = 'Year CO2',
                            year_html = year, output = result)
 
-@app.route("/year_energy/<year>")
-def route_year_energy(year):
+@app.route("/year_energy")
+def route_year_energy():
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and
     total CO2 emissions from a specific year
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
+    year = str(request.args['energy_year'])
     result = route_api_year_energy(year)
     return render_template('year_function.html', title = 'Year Energy',
                            year_html = year, output = result)
