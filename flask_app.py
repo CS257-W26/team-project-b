@@ -22,8 +22,7 @@ def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
-    return render_template('404.html', title = '404', message = "Try: /api/year_co2/2004, /api/biofuel/Canada")
-                           # str(e) + message
+    return render_template('404.html'), str(e)
 
 @app.route("/action_page")
 def action_page():
@@ -96,7 +95,7 @@ def route_data():
     Return: returns render of data.html
     Purpose: Display data.html
     """
-    return render_template('data.html')
+    return render_template('data.html', title = 'Data Sources and Project Info')
 
 @app.route ("/info")
 def route_info():
