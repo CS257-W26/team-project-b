@@ -25,24 +25,33 @@
                 <p>Choose a topic to analyze climate change</p>
             </div>
             
-            <div>
-                <ul>
-                    <li><form action="/average">
-                        <label id="average_label">Average:</label>
-                        <input type="text" id = "average" name = "average_country" value = "Country">
-                        <input type="submit" name ="average_input" value="Submit">
-                    </form></li>
-                    <li><form action="/ratio">
-                        <label id="ratio_label">Ratio:</label>
-                        <input type="text" id = "average" name = "ratio_country" value = "Country">
-                        <input type="submit" name ="ratio_input" value="Submit">
-                    </form></li>
-                    <li><form action = "/biofuel">
-                        <label id = "biofuel_label">Biofuel:</label>
-                        <input type = "text" id = "biofuel" name = "biofuel_country" value = "Country">
-                        <input type = "submit" name = "biofuel_input" value = "Submit">
-                    </form></li>
-                </ul>
+            <div class = form-group>
+                <li><form action="/average">
+                    <label id="average_label">Average:</label>
+                    <input type="text" id = "average" name = "average_country" placeholder = "Country">
+                    <input type="submit" name ="average_input" value="Submit">
+                </form></li>
+                <li><form action="/ratio">
+                    <label id="ratio_label">Ratio:</label>
+                    <input type="text" id = "average" name = "ratio_country" placeholder = "Country">
+                    <input type="submit" name ="ratio_input" value="Submit">
+                </form></li>
+                <li><form action = "/biofuel">
+                    <label id = "biofuel_label">Biofuel:</label>
+                    <input type = "text" id = "biofuel" name = "biofuel_country" placeholder = "Country">
+                    <input type = "submit" name = "biofuel_input" value = "Submit">
+                </form></li>
+                <li><form action = "/year_co2">
+                    <label id = "year_co2_label">Year_Co2:</label>
+                    <input type = "text" id = "year_co2" name = "co2_year" placeholder = "Year">
+                    <input type = "submit" name = "year_co2_input" value = "Submit">
+                </form></li>
+                <li><form action = "/year_energy">
+                    <label id = "year_energy_label">Year_Energy:</label>
+                    <input type = "text" id = "year_energy" name = "energy_year" placeholder = "Year">
+                    <input type = "submit" name = "year_energy_input" value = "Submit">
+                </form></li>
+
             </div>
         {% endblock %}
     </body>
