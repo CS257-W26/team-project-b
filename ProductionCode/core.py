@@ -29,7 +29,7 @@ class Features():
         return ratio
 
     def year_co2(self, year_args):
-        '''Arguments: year_arg, a year (string)
+        '''Arguments: self, year_arg, a year (string)
         Return: A list of lists (string) with each country and
         total CO2 emissions from a specific year
         Purpose: To get the total CO2 emissions of each country
@@ -62,13 +62,13 @@ class Features():
         '''Argument: biofuel_arg (str), a country name
         Return: int highest emissions
         Purpose: Returns a single int representing the highest
-        biofuel consumption of a specific country
+        biofuel electricity usage of a specific country
         '''
         max_biofuel = self.ds.get_biofuel(biofuel_arg)
         return max_biofuel
 
     def csv_helper(self, data):
-        '''Argument: data (csv file to read in)
+        '''Argument: data (exported csv from SQL query)
         Return: csv reader
         Purpose: To reduce duplicate code
         '''

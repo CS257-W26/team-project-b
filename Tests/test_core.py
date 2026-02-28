@@ -5,7 +5,6 @@ from ProductionCode.core import Features
 
 class TestCore(unittest.TestCase):
     '''Arguments: unittest.TestCase
-    Return value: none
     Purpose: Holds the tests for core.py
     Run with: python -m unittest Tests/test_core.py
     '''
