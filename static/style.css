@@ -65,6 +65,45 @@ h1 {
     padding: 1em;
 }
 
+.info-page {
+    width: 70%;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.info-section {
+    margin-bottom: 30px;
+}
+
+.info-section h2 {
+    border-bottom: 2px solid #1e3d59;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.info-section h3 {
+    margin-top: 20px;
+    color: #1e3d59;
+}
+
+.info-section ul {
+    padding-left: 20px;
+}
+
+.info-section li {
+    margin-bottom: 8px;
+}
+
+a {
+    color: #0b4a89;
+}
+
+a:hover {
+    color: #30c1e5;
+}
+
 .biofuel-descript {
     font-family: Verdana, Geneva, sans-serif;
 }
@@ -92,4 +131,35 @@ h1 {
     margin:auto;
 }
 
+.table-data {
+    width: 90%;
+    margin: 40px;
+}
 
+.year-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.year-table thead th {
+    background-color: rgb(27, 67, 50);
+    color: white;
+    text-align: left;
+    padding: 18px 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.year-table td {
+    padding: 10px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.year-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

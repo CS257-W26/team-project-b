@@ -62,15 +62,15 @@ def route_year_co2():
     '''
     year = str(request.args['co2_year'])
     result = route_api_year_co2(year)
-    return render_template('year_function.html', title = 'Year CO2',
+    return render_template('year_function.html', title = 'Yearly CO₂ Data',
                            year_html = year, output = result)
 
 @app.route("/year_energy")
 def route_year_energy():
     '''Arguments: year (string)
     Return: A list of lists (string) with each country and
-    total CO2 emissions from a specific year
-    Purpose: To display the total CO2 emissions of each country
+    total energy emissions from a specific year
+    Purpose: To display the total energy emissions of each country
     in the dataset from a specific year
     '''
     year = str(request.args['energy_year'])

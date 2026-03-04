@@ -1,32 +1,71 @@
 <html>
+
     <head>
-        <title>{{title}}</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     </head>
+
     <body>
-        <h1>Datasets and Project Goals</h1>
-        <h2>Introduction</h2>
-        <p></p>
-        <h2>Data Sources</h2>
-        <p>Our project uses the datasets "Data on Energy by Our World in Data" and "CO2 and Greenhouse Gas Emissions by Our World in Data". Both were downloaded on 1/14/2026</p>
-        <h3>Energy Dataset</h3>
-        <ul>
-            <li>
-                <p>URL: <a href="https://github.com/owid/energy-data">Energy-Data Github</a> </p>
-            </li>
-            <li>
-                <p>Authors: Pablo Rosado, Hannah Ritchie, Edouard Mathieu, and Max Roser</p>
-            </li>
-        </ul>
-        <h3>CO2 Dataset</h3>
-        <p>Our project also uses the dataset </p>
-
-        <h2>What is in our Data?</h2>
-        <p>From the energy dataset, we inherited the columns:</p>
-
-
+        {% extends 'base.html' %}
         
-        <p></p>
-        <h2>Our Goal</h2>
-        <p></p>
+        {% block title %}Filter by Year{% endblock %}
+
+        {% block content %}
+        
+        <div class = "info-page">
+            
+            <h1>Datasets and Project Goals</h1>
+            
+            <div class =  "info-section">
+                <h2>Introduction</h2>
+                <p>Focusing on the 13th UN Sustainable Development Goal of Climate Action, our project explores data on the growing record of emissions and tracks patterns depicting climate change across each country.  </p>
+            </div>
+            
+            <div class = "info-section">
+                <h2>Data Sources</h2>
+                <p>Our project uses the datasets "Data on Energy by Our World in Data" and "CO2 and Greenhouse Gas Emissions by Our World in Data". Both were downloaded on 1/14/2026</p>
+                <h3>Energy Dataset</h3>
+                <ul>
+                    <li>
+                        <p>URL: <a href="https://github.com/owid/energy-data">Energy-Data Github</a> </p>
+                    </li>
+                    <li>
+                        <p>Authors: Pablo Rosado, Hannah Ritchie, Edouard Mathieu, and Max Roser</p>
+                    </li>
+                </ul>
+                <h3>CO2 Dataset</h3>
+                <ul>
+                    <li>
+                        <p>URL: <a href="https://github.com/owid/co2-data">CO2-Data Github</a> </p>
+                    </li>
+                    <li>
+                        <p>Authors: Pablo Rosado, Hannah Ritchie, Max Roser, Edouard Mathieu, and Bobbie Macdonald</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class = "info-section">
+                <h2>What is in the Data?</h2>
+                <p>From the energy and CO2 datasets, we inherited the columns:</p>
+                <ul>
+                    <li>country: Geographic location recorded</li>
+                    <li>year: The year of observation</li>
+                    <li>co2: Annual total emissions of carbon dioxide (CO₂), excluding land-use change, measured in million tonnes</li>
+                    <li>co2_per_capita: Carbon dioxide (CO₂) emissions from burning fossil fuels and industrial processes</li>
+                    <li>energy_per_capita: Primary energy consumption per capita (measured in kilowatt-hours per person)</li>
+                    <li>biofuel_electricity: or consumption?? </li>
+                </ul>
+                <p>We plan to use specific columns in the future, including: </p>
+                <ul>
+                    <li>ISO and population: integrate a map into our website. </li>
+                    <li>gas_electricity: interested in pulling from our energy_data.</li>
+                </ul>
+        </div>
+        
+        <div class = "info-section">
+            <h2>Our Goal</h2>
+            <p>The goal of our project is to make global emissions data accessible and interactive, allowing users to explore country-level trends through different contexts</p>
+        </div>
+    </div>
+        {% endblock %}
     </body>
 </html>
