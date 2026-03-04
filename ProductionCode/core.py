@@ -66,6 +66,15 @@ class Features():
         '''
         max_biofuel = self.ds.get_biofuel(biofuel_arg)
         return max_biofuel
+        
+    def country_co2 (self, country) :
+        output = []
+        data = self.ds.get_country_co2(country)
+        final_data = self.csv_helper(data)
+
+        for row in final_data:
+            output.append(row)
+        return output
 
     def csv_helper(self, data):
         '''Argument: data (exported csv from SQL query)
