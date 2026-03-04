@@ -2,8 +2,6 @@
 import records
 import ProductionCode.psql_config as config
 
-# ds = DataSource()
-
 class DataSource:
     '''Purpose:Class that grabs info from table'''
 
