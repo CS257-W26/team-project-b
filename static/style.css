@@ -40,14 +40,13 @@ nav {
 body {
     margin-left: 5px;
     margin-right: 5px;
-    background-color: rgb(245, 245, 245);
+    background-color: white;
 }
 
 h1 {
     padding-top: 3em;
     padding-bottom: .5em;
     text-align: center;
-    font-family: 'Public Sans', sans-serif;
 }
 
 .home-instruct {
@@ -57,7 +56,8 @@ h1 {
 .form-container {
     display:flex;
     flex-direction: column;
-    text-align: center;
+    width: 350px;
+    align-content: center;
     background-color: rgb(235, 235, 235);
 }
 
@@ -104,9 +104,6 @@ a:hover {
     color: #30c1e5;
 }
 
-.biofuel-descript {
-    font-family: Verdana, Geneva, sans-serif;
-}
 
 .biofuel-descript h1, 
 .biofuel-descript h3{

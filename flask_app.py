@@ -1,6 +1,10 @@
 '''
 The eventual location for the Flask app interface for the project.
 '''
+import base64
+import io
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 from flask import Flask, render_template, request
 from ProductionCode.core import Features
 from flask_api import (route_api_average, route_api_ratio,
@@ -97,7 +101,32 @@ def route_data():
     Return: returns render of data.html
     Purpose: Display data.html
     """
-    return render_template('data.html', title = 'Data Sources and Project Info')
+    try:
+        country = str(request.args['co2_country'])
+    except:
+        country = "Afghanistan"
+
+    data = core.country_co2(country)
+    fig = Figure()
+    
+    axis = fig.add_subplot(1, 1, 1)
+    axis.set_title(f'{country}')
+    axis.set_xlabel("Years")
+    axis.set_ylabel("CO2")
+    x_values = []
+    y_values = []
+    for row in data:
+        if (row[4] != ''):
+            x_values.append(int(row[1]))
+            y_values.append(float((row[4])))
+    axis.plot(x_values[0:-1], y_values[0:-1])
+    axis.locator_params(nbins=10)
+    pngImage = io.BytesIO()
+    FigureCanvas(fig).print_png(pngImage)
+    # Encode PNG image to base64 string
+    pngImageB64String = "data:image/png;base64,"
+    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+    return render_template("data.html", image=pngImageB64String)
 
 @app.route ("/info")
 def route_info():
