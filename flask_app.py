@@ -101,32 +101,7 @@ def route_data():
     Return: returns render of data.html
     Purpose: Display data.html
     """
-    try:
-        country = str(request.args['co2_country'])
-    except :
-        country = "Afghanistan"
-
-    data = core.country_co2(country)
-    fig = Figure()
-
-    axis = fig.add_subplot(1, 1, 1)
-    axis.set_title(f'{country}')
-    axis.set_xlabel("Years")
-    axis.set_ylabel("CO2")
-    x_values = []
-    y_values = []
-    for row in data:
-        if row[4] != '':
-            x_values.append(int(row[1]))
-            y_values.append(float((row[4])))
-    axis.plot(x_values[0:-1], y_values[0:-1])
-    axis.locator_params(nbins=10)
-    png_image = io.BytesIO()
-    FigureCanvas(fig).print_png(png_image)
-    # Encode PNG image to base64 string
-    png_image_b64_string = "data:image/png;base64,"
-    png_image_b64_string += base64.b64encode(png_image.getvalue()).decode('utf8')
-    return render_template("data.html", image=png_image_b64_string)
+    return render_template('data.html')
 
 @app.route ("/info")
 def route_info():
