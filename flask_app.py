@@ -103,12 +103,12 @@ def route_data():
     """
     try:
         country = str(request.args['co2_country'])
-    except:
+    except :
         country = "Afghanistan"
 
     data = core.country_co2(country)
     fig = Figure()
-    
+
     axis = fig.add_subplot(1, 1, 1)
     axis.set_title(f'{country}')
     axis.set_xlabel("Years")
@@ -116,17 +116,17 @@ def route_data():
     x_values = []
     y_values = []
     for row in data:
-        if (row[4] != ''):
+        if row[4] != '':
             x_values.append(int(row[1]))
             y_values.append(float((row[4])))
     axis.plot(x_values[0:-1], y_values[0:-1])
     axis.locator_params(nbins=10)
-    pngImage = io.BytesIO()
-    FigureCanvas(fig).print_png(pngImage)
+    png_image = io.BytesIO()
+    FigureCanvas(fig).print_png(png_image)
     # Encode PNG image to base64 string
-    pngImageB64String = "data:image/png;base64,"
-    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
-    return render_template("data.html", image=pngImageB64String)
+    png_image_b64_string = "data:image/png;base64,"
+    png_image_b64_string += base64.b64encode(png_image.getvalue()).decode('utf8')
+    return render_template("data.html", image=png_image_b64_string)
 
 @app.route ("/info")
 def route_info():
