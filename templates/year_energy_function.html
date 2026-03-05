@@ -16,12 +16,21 @@
             <h2 id = "year_given">Global Energy from {{year_html}}</h2>
         </div>
 
+        <div class = "year-energy-search">
+            <form action = "/year_energy" method = "get">
+                <label id = "energy_year_label">Enter a year:</label>
+                <input type = "text" id = "energy_year" name = "energy_year" placeholder = "Year" value = "{{ year_html }}" required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        
         <div class = "table-data">
             <table class="year-table">
                 <thead>
                     <tr>
                         <th>Country</th>
-                        <th>CO₂ Emissions</th>
+                        <th>Energy Emissions (Gas Electricity)</th>
+                        <th>Energy per Capita</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,13 +38,12 @@
                     <tr>
                         <td>{{ row[0] }}</td>
                         <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-
-        <div class = 
         
         {% endblock%}
     </body>
