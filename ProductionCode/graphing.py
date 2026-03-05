@@ -1,3 +1,4 @@
+'''Handles graphing through matplotlib library'''
 import matplotlib.pyplot as plt
 import numpy as np
 # from ProductionCode.datasource import DataSource
@@ -14,7 +15,7 @@ values = [['2000','3'],['2001','3'],['2002','4']]
 xvalues = []
 yvalues = []
 for row in values:
-    if (row[1] != ""):
+    if row[1] != "":
         xvalues.append(float(row[1]))
         yvalues.append(float(row[0]))
 
