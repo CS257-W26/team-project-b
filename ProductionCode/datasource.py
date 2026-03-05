@@ -43,7 +43,8 @@ class DataSource:
         Return: A csv
         '''
         result = self.db.query(
-            f"SELECT country, year, gas_electricity,energy_per_capita FROM energy_data WHERE year = '{year}'"
+            f"""SELECT country, year, gas_electricity, 
+            energy_per_capita FROM energy_data WHERE year = '2000'"""
         )
         return result.export('csv')
 
