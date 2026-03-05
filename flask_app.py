@@ -79,7 +79,7 @@ def route_year_energy():
     '''
     year = str(request.args['energy_year'])
     result = route_api_year_energy(year)
-    return render_template('year_function.html', title = 'Year Energy',
+    return render_template('year_energy_function.html', title = 'Year Energy',
                            year_html = year, output = result)
 
 @app.route("/biofuel")

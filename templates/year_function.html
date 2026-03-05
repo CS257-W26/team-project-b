@@ -15,13 +15,22 @@
             <h1 id="year_title">{{title}}</h1>
             <h2 id = "year_given">Global CO₂ Emissions from {{year_html}}</h2>
         </div>
-
+        
+        <div class = "year-co2-search">
+            <form action = "/year_co2" method = "get">
+                <label id = "co2_year_label">Enter a year:</label>
+                <input type = "text" id = "co2_year" name = "co2_year" placeholder = "Year" value = "{{ year_html }}" required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        
         <div class = "table-data">
             <table class="year-table">
                 <thead>
                     <tr>
                         <th>Country</th>
                         <th>CO₂ Emissions</th>
+                        <th>CO₂ per Capita</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,13 +38,12 @@
                     <tr>
                         <td>{{ row[0] }}</td>
                         <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-
-        <div class = 
         
         {% endblock%}
     </body>

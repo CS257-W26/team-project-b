@@ -32,7 +32,7 @@ class DataSource:
         Purpose: Gets the data for a specific year from co2_data
         Return: A csv
         '''
-        result = self.db.query(f"SELECT country, year, co2 FROM co2_data WHERE year = '{year}'")
+        result = self.db.query(f"SELECT country, year, co2, co2_per_capita FROM co2_data WHERE year = '{year}'")
         return result.export('csv')
 
     def get_year_energy (self, year):
@@ -41,7 +41,7 @@ class DataSource:
         Return: A csv
         '''
         result = self.db.query(
-            f"SELECT country, year, gas_electricity FROM energy_data WHERE year = '{year}'"
+            f"SELECT country, year, gas_electricity, energy_per_capita FROM energy_data WHERE year = '{year}'"
         )
         return result.export('csv')
 
