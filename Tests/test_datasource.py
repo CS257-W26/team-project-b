@@ -76,7 +76,11 @@ class TestDatasource (unittest.TestCase):
         ds = DataSource()
         result = ds.get_year_energy('2000')
         mock_db_instance.query.assert_called_once_with(
+<<<<<<< HEAD
+            "SELECT country,year,gas_electricity FROM energy_data WHERE year='2000'"
+=======
             "SELECT country, year, gas_electricity, energy_per_capita FROM energy_data WHERE year = '2000'"
+>>>>>>> ddba8b6e4b13981141b7f2587cbcc5ce5fedd2a5
         )
         mock_list.export.assert_called_with('csv')
         self.assertEqual(result, "Canada,2000,1,1\nCanada,2000,2,3")

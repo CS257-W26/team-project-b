@@ -1,3 +1,7 @@
+* {
+    font-family: 'Public Sans', sans-serif;
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -42,13 +46,29 @@ nav {
 body {
     margin-left: 5px;
     margin-right: 5px;
+    background-color: white;
 }
 
 h1 {
     padding-top: 3em;
     padding-bottom: .5em;
     text-align: center;
-    font-family: Verdana, Geneva, sans-serif;
+}
+
+.home-instruct {
+    text-align: center;
+}
+
+.form-container {
+    display:flex;
+    flex-direction: column;
+    width: 350px;
+    align-content: center;
+    background-color: rgb(235, 235, 235);
+}
+
+.form-container form{
+    padding: 1em;
 }
 
 .info-page {
@@ -90,14 +110,10 @@ a:hover {
     color: #30c1e5;
 }
 
-.biofuel-descript {
-    font-family: Verdana, Geneva, sans-serif;
-}
 
 .biofuel-descript h1, 
 .biofuel-descript h3{
     font-weight: normal;
-    background-color: white;
     text-align: center;
     margin: 0;
 }
@@ -111,10 +127,6 @@ a:hover {
     color: #666
     margin-top: 5px;
     margin-bottom: 15px;
-}
-
-.biofuel-search {
-    color: white;
 }
 
 .biofuel-search form {
