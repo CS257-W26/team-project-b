@@ -59,15 +59,9 @@ h1 {
     text-align: center;
 }
 
-.form-container {
-    display:flex;
-    flex-direction: column;
-    width: 350px;
-    align-content: center;
-    background-color: rgb(235, 235, 235);
-}
-
 .form-container form{
+    display: flex;    
+    justify-content: center;
     padding: 1em;
 }
 
