@@ -17,7 +17,7 @@ class TestCore(unittest.TestCase):
         '''
         mock_db_instance = mock_db_class.return_value
 
-        mock_db_instance.get_average_co2.return_value = "2.0"
+        mock_db_instance.get_average_co2.return_value = "avg,\r2.0"
         core = Features()
         results = core.average("Canada")
 

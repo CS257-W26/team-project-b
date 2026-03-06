@@ -64,7 +64,7 @@ class Features():
         Purpose: Returns a single int representing the highest
         biofuel electricity usage of a specific country
         '''
-        max_biofuel = self.ds.get_biofuel(biofuel_arg).split()[1]
+        max_biofuel = self.ds.get_biofuel(biofuel_arg)
         return max_biofuel
 
     def country_co2 (self, country):
