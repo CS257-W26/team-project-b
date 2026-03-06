@@ -1,6 +1,35 @@
 <html>
-    <h1, id="function_title">Ratio</h1>
-    <h2, id = "country_given">{{country_html}}</h2>
-    <p, id="result">The ratio between averages of annual CO2 per capita (tonnes per person)
+    
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+        
+        {% block title %}Ratio{% endblock %}
+
+        {% block content %}
+        <div class = "biofuel-descript">
+            <h1>Finding The Per Capita Ratio For A Country</h1>
+    
+            <h3>View what the ratio between the CO2 per capita and energy per capita is for a selected country</h3>
+        </div>
+
+        <div class = "biofuel-search">
+            <li><form action="/ratio">
+                    <label id="ratio_label">Ratio:</label>
+                    <input type="text" id = "average" name = "ratio_country" placeholder = "Country">
+                    <input type="submit" name ="ratio_input" value="Submit">
+            </form></li>
+        </div>
+
+        <div class = "biofuel-output">
+            <h2 id = "country_given">{{country_html}}</h2>
+            <p, id="result">The ratio between averages of annual CO2 per capita (tonnes per person)
          to energy use per capita (kilowatt-hours per person) for {{country_html}} : {{output}}</p>
+        </div>
+        {% endblock %}
+    </body>
+
 </html>

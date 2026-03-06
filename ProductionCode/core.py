@@ -15,7 +15,7 @@ class Features():
         Return: The average of the given dataset (str)
         Purpose: To get the average co2 of a subset of data for a country
         '''
-        data_set = self.ds.get_average_co2(country)
+        data_set = self.ds.get_average_co2(country).split()[1]
         return data_set
 
     def ratio(self, country):
@@ -64,7 +64,7 @@ class Features():
         Purpose: Returns a single int representing the highest
         biofuel electricity usage of a specific country
         '''
-        max_biofuel = self.ds.get_biofuel(biofuel_arg)
+        max_biofuel = self.ds.get_biofuel(biofuel_arg).split()[1]
         return max_biofuel
 
     def country_co2 (self, country):
