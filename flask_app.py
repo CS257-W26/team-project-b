@@ -24,11 +24,20 @@ def page_not_found(e):
     '''
     return render_template('404.html'), str(e)
 
-@app.route("/action_page")
-def action_page():
+@app.route("/stats")
+def route_country_stats():
     '''
     Purpose: Handles user input in the homepage
     '''
+    country = str(request.args['country_stats'])
+    average = route_api_average(country)
+    ratio = route_api_ratio(country)
+    biofuel = route_api_biofuel(country)
+    
+    return render_template('stats.html', country_html = country,
+                          average_html = average,
+                          ratio_html = ratio,
+                          biofuel_html = biofuel)
 
 @app.route("/average")
 def route_average():
@@ -51,6 +60,18 @@ def route_ratio():
     country = str(request.args['ratio_country'])
     ratio = route_api_ratio(country)
     return render_template('ratio_function.html', country_html = country, output = ratio)
+
+@app.route("/biofuel")
+def route_biofuel():
+    """
+    Arguments: country (string)
+    Return: inputted country by user (string) and highest biofuel 
+    consumption value of that country (string)
+    Purpose: Display the highest biofuel consumption for the given country
+    """
+    country = str(request.args['biofuel_country'])
+    biofuel = route_api_biofuel(country)
+    return render_template('biofuel_function.html', country_html = country, output = biofuel)
 
 @app.route("/year_co2")
 def route_year_co2():
@@ -77,18 +98,6 @@ def route_year_energy():
     result = route_api_year_energy(year)
     return render_template('year_energy_function.html', title = 'Year Energy',
                            year_html = year, output = result)
-
-@app.route("/biofuel")
-def route_biofuel():
-    """
-    Arguments: country (string)
-    Return: inputted country by user (string) and highest biofuel 
-    consumption value of that country (string)
-    Purpose: Display the highest biofuel consumption for the given country
-    """
-    country = str(request.args['biofuel_country'])
-    biofuel = route_api_biofuel(country)
-    return render_template('biofuel_function.html', country_html = country, output = biofuel)
 
 @app.route ("/data")
 def route_data():

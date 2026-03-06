@@ -1,0 +1,49 @@
+<html>
+    
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+        
+        {% block title %}Stats{% endblock %}
+
+        {% block content %}
+
+        <div class = "stat-descript">
+            <h1>Country Statistics of {{country_html}}</h1>
+    
+            <h3>View what the average, ratio, and maximum electricity generation is for a selected country</h3>
+        </div>
+
+
+        <div class = "stat-search">
+                 <li><form action = "/stats">
+                    <label for = "country_stats">Country</label>
+                    <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
+                    <input type = "submit" name = "stats_input" value = "Submit">
+                </form></li>
+        </div>
+ 
+        <div class = "table-data">
+            <table class="year-table">
+                <thead>
+                    <tr>
+                        <th>Average</th>
+                        <th>Ratio</th>
+                        <th>Biofuel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{average_html}}</td>
+                        <td>{{ratio_html}}</td>
+                        <td>{{biofuel_html}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        {% endblock %}
+    </body>

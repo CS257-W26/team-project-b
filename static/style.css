@@ -133,11 +133,11 @@ a:hover {
     margin: 40px auto;
 }
 
-.year_heading {
+.year_heading, .stat-descript {
     text-align: center;
 }
 
-.year-co2-search {
+.year-co2-search{
     color: white;
     width: 95%;
 }
@@ -155,12 +155,18 @@ a:hover {
     padding: 8px 12px;
 }
 
-.year-energy-search {
+.year-energy-search, .stat-search {
     color: white;
     width: 95%;
 }
 
 .year-energy-search form {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.stat-search form {
     width: 70%;
     margin: auto;
     text-align: center;
