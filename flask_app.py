@@ -23,6 +23,7 @@ def page_not_found(e):
     Purpose: Handles user error if wrong format is inputted
     '''
     return render_template('404.html'), str(e)
+        
 
 @app.route("/action_page")
 def action_page():
@@ -37,7 +38,10 @@ def route_average():
     or a correction of how this function should work (string)
     Purpose: Display the average CO2 emissions of a country
     '''
-    country = str(request.args['average_country'])
+    try:
+        country = str(request.args['average_country'])
+    except:
+        country = 'Canada'
     average = route_api_average(country)
     return render_template('average_function.html', function = "average",
                            country_html = country, output = average)
@@ -48,9 +52,13 @@ def route_ratio():
     Return: A ratio (float) 
     Purpose: Display the ratio for co2_per_capita to energy_per_capita
     '''
-    country = str(request.args['ratio_country'])
+    try:
+        country = str(request.args['ratio_country'])
+    except:
+        country = 'Canada'
     ratio = route_api_ratio(country)
-    return render_template('ratio_function.html', country_html = country, output = ratio)
+    return render_template('ratio_function.html', function = "ratio",
+                           country_html = country, output = ratio)
 
 @app.route("/year_co2")
 def route_year_co2():
