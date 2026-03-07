@@ -34,10 +34,16 @@ def route_country_stats():
 
     except:
         country = 'Canada'
-    average = route_api_average(country)
-    ratio = route_api_ratio(country)
-    biofuel = route_api_biofuel(country)
-    #stats = route_api_average(country)
+
+    try:
+        average = route_api_average(country)
+        ratio = route_api_ratio(country)
+        biofuel = route_api_biofuel(country)
+    except ValueError:
+        average = 'N/A'
+        ratio = 'N/A'
+        biofuel = 'N/A'
+    
     return render_template('stats.html', function = "stats",
                            country_html = country,
                            average_html = average,

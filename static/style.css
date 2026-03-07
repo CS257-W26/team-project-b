@@ -104,30 +104,6 @@ a:hover {
     color: #30c1e5;
 }
 
-
-.biofuel-descript h1, 
-.biofuel-descript h3{
-    font-weight: normal;
-    text-align: center;
-    margin: 0;
-}
-
-.biofuel-descript h1 {
-    margin-top: 5px;
-}
-
-.biofuel-descript h3 {
-    font-size: .8em;
-    color: #666
-    margin-top: 5px;
-    margin-bottom: 15px;
-}
-
-.biofuel-search form {
-    width: 30%;
-    margin:auto;
-}
-
 .table-data {
     width: 90%;
     margin: 40px auto;
@@ -137,45 +113,31 @@ a:hover {
     text-align: center;
 }
 
-.year-co2-search{
+.year-co2-search,
+.year-energy-search,
+.stat-search{
     color: white;
     width: 95%;
 }
 
-.year-co2-search form {
-    width: 70%;
-    margin: auto;
-    text-align: center;
-}
-
-.year-co2-search input[type="text"] {
-    padding: 8px;
-}
-.year-co2-search input[type="submit"] {
-    padding: 8px 12px;
-}
-
-.year-energy-search, .stat-search {
-    color: white;
-    width: 95%;
-}
-
-.year-energy-search form {
-    width: 70%;
-    margin: auto;
-    text-align: center;
-}
-
+.year-co2-search,
+.year-energy-search,
 .stat-search form {
     width: 70%;
     margin: auto;
     text-align: center;
 }
 
-.year-energy-search input[type="text"] {
+.year-co2-search,
+.stat-search,
+.year-energy-search,
+.form-container input[type="text"] {
     padding: 8px;
 }
-.year-energy-search input[type="submit"] {
+.year-co2-search,
+.stat-search,
+.year-energy-search,
+.form-container input[type="submit"] {
     padding: 8px 12px;
 }
 
