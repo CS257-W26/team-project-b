@@ -32,7 +32,7 @@ def route_country_stats():
     try:
         country = str(request.args['country_stats'])
 
-    except:
+    except Exception:
         country = 'Canada'
 
     try:
