@@ -39,11 +39,11 @@ class TestFlaskApp(unittest.TestCase) :
         Purpose: Tests year_co2 route for appropriate output
         '''
         # mock_year_co2.return_value = "['Canada','2000','2.3']"
-        result = self.client.get('year_co2', query_string = {'year_co2': 2000})
-    
+        result = self.client.get('/year_co2', query_string = {'year_co2': 2000})
+
         self.assertIn('2000', result.data.decode('utf-8'))
         # self.assertIn("Canada", result.data.decode('utf-8'))
-    
+
         mock_year_co2.assert_called_once_with('2000')
 
     @patch('flask_app.route_api_year_energy')
@@ -52,8 +52,6 @@ class TestFlaskApp(unittest.TestCase) :
         Return: None
         Purpose: Tests year_energy route for appropriate output
         '''
-        result = self.client.get('year_energy', query_string = {'year_energy': 2000})
-    
+        result = self.client.get('/year_energy', query_string = {'year_energy': 2000})
         self.assertIn('2000', result.data.decode('utf-8'))
-    
         mock_year_energy.assert_called_once_with('2000')

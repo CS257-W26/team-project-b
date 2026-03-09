@@ -21,8 +21,7 @@ def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
-    return render_template('404.html'), str(e)
-        
+    return render_template('404.html'), str(e)  
 
 @app.route("/stats")
 def route_country_stats():
@@ -36,7 +35,7 @@ def route_country_stats():
         biofuel = route_api_biofuel(country)
     except ValueError:
         return render_template('na.html', country_html = country)
-    
+
     return render_template('stats.html', function = "stats",
                            country_html = country,
                            average_html = average,
