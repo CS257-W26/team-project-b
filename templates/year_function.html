@@ -17,14 +17,13 @@
         </div>
 
         <div class = "year-body">
-            <p>Over the years, greenhouse gas emissions have continued to rise as the world becomes more industrialized. In particular, human producation of carbon dioxide (CO₂) is one of the primary gases that are linked to increasing global temperatures</p>
-            <p>Using the table below, explore the CO₂ emissions and CO₂ per capita produced by any country from a specific year. Through the data, explore difference in emissions produced from country to country, see how they change over time.  </p>
+            <p>Over the years, greenhouse gas emissions have continued to rise as the world becomes more industrialized. In particular, human producation of carbon dioxide (CO₂) is one of the primary gases that are linked to increasing global temperatures. Using the table below, explore the CO₂ emissions and CO₂ per capita produced by any country from a specific year. Explore the differences in emissions produced from country to country and how each changes over time.  </p>
         </div>
         
-        <div class = "year-co2-search">
+        <div class = "search-box">
             <form action = "/year_co2" method = "get">
-                <label id = "year_co2">Enter a year:</label>
-                <input type = "text" id = "year_co2" name = "year_co2" placeholder = "Year" value = "{{ year_html }}" required>
+                <label id = "co2_year_label">Enter a year:</label>
+                <input type = "text" id = "co2_year" name = "co2_year" placeholder = "Year" value = "{{ year_html }}" required>
                 <input type="submit" value="Submit">
             </form>
         </div>

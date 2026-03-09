@@ -113,32 +113,37 @@ a:hover {
     text-align: center;
 }
 
-.year-co2-search,
-.year-energy-search,
-.stat-search{
+.search-box{
     color: white;
     width: 95%;
 }
 
-.year-co2-search,
-.year-energy-search,
-.stat-search form {
+.search-box form {
     width: 70%;
     margin: auto;
     text-align: center;
 }
 
-.year-co2-search,
-.stat-search,
-.year-energy-search,
+.search-box,
 .form-container input[type="text"] {
     padding: 8px;
 }
-.year-co2-search,
-.stat-search,
-.year-energy-search,
+.search-box,
 .form-container input[type="submit"] {
     padding: 8px 12px;
+}
+
+.year-body {
+    width: 65%;
+    margin: 20px auto 40px auto;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #333;
+    text-align: center;
+}
+
+.year-body p {
+    margin-bottom: 15px;
 }
 
 .year-table {
