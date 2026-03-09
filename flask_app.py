@@ -21,7 +21,7 @@ def page_not_found(e):
     '''
     Purpose: Handles user error if wrong format is inputted
     '''
-    return render_template('404.html'), str(e)  
+    return render_template('404.html'), str(e)
 
 @app.route("/stats")
 def route_country_stats():
