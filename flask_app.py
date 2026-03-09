@@ -32,7 +32,7 @@ def route_country_stats():
     try:
         country = str(request.args['country_stats'])
 
-    except Exception:
+    except :
         country = 'Canada'
 
     try:
@@ -75,7 +75,7 @@ def route_year_energy():
     in the dataset from a specific year
     '''
     try:
-        year = str(request.args['energy_year'])
+        year = str(request.args['year_energy'])
     except:
         year = '2004'
     result = route_api_year_energy(year)
