@@ -59,7 +59,7 @@ def route_year_co2():
     in the dataset from a specific year
     '''
     try:
-        year = str(request.args['co2_year'])
+        year = str(request.args['year_co2'])
     except:
         year = '2004'
     result = route_api_year_co2(year)
@@ -76,7 +76,7 @@ def route_year_energy():
     '''
     try:
         year = str(request.args['year_energy'])
-    except:
+    except :
         year = '2004'
     result = route_api_year_energy(year)
     return render_template('year_energy_function.html', title = 'Year Energy',
