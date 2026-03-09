@@ -29,20 +29,13 @@ def route_country_stats():
     '''
     Purpose: Handles user input in the homepage
     '''
-    try:
-        country = str(request.args['country_stats'])
-
-    except :
-        country = 'Canada'
-
+    country = str(request.args['country_stats'])
     try:
         average = route_api_average(country)
         ratio = route_api_ratio(country)
         biofuel = route_api_biofuel(country)
     except ValueError:
-        average = 'N/A'
-        ratio = 'N/A'
-        biofuel = 'N/A'
+        return render_template('na.html', country_html = country)
     
     return render_template('stats.html', function = "stats",
                            country_html = country,
@@ -58,10 +51,7 @@ def route_year_co2():
     Purpose: To display the total CO2 emissions of each country
     in the dataset from a specific year
     '''
-    try:
-        year = str(request.args['year_co2'])
-    except:
-        year = '2004'
+    year = str(request.args['year_co2'])
     result = route_api_year_co2(year)
     return render_template('year_function.html', title = 'Yearly CO₂ Data',
                            year_html = year, output = result)
@@ -74,10 +64,7 @@ def route_year_energy():
     Purpose: To display the total energy emissions of each country
     in the dataset from a specific year
     '''
-    try:
-        year = str(request.args['year_energy'])
-    except :
-        year = '2004'
+    year = str(request.args['energy_year'])
     result = route_api_year_energy(year)
     return render_template('year_energy_function.html', title = 'Year Energy',
                            year_html = year, output = result)
