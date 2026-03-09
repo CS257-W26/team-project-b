@@ -9,13 +9,27 @@
     <h3>Here are functions of our site you can explore:</h3>
 <ul>
     <li>
-        <p>Stats for average, ratio, and biofuel emissions: <a href='/stats'>Country Stats Page</a></p>
+        <p>Stats for average, ratio, and biofuel emissions: <form action = "/stats">
+                    <label for = "country_stats">Country:</label>
+                    <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
+                    <input type = "submit" name = "stats_input" value = "Submit">
+                </form></p>
     </li>
     <li>
-        <p>Year-specific global CO2 emissions: <a href='/year_co2'>CO2 Emissions Page</a></p>
+        <p>Year-specific global CO2 emissions: <a href='/year_co2?year_co2=2004'>CO2 Emissions Page</a><form action = "/year_co2">
+                    <label for = "year_co2">Yearly Co2:</label>
+                    <br>
+                    <input type = "text" id = "year_co2" name = "year_co2" placeholder = "Year">
+                    <input type = "submit" name = "year_co2_input" value = "Submit">
+                </form></p>
     </li>
     <li>
-        <p>Year-specific global energy data: <a href='/year_energy'>Energy Data Page</a></p>
+        <p>Year-specific global energy data: <a href='/year_energy'>Energy Data Page</a><form action = "/year_energy">
+                    <label for = "year_energy">Yearly Energy:</label>
+                    <br>
+                    <input type = "text" id = "year_energy" name = "year_energy" placeholder = "Year">
+                    <input type = "submit" name = "year_energy_input" value = "Submit">
+                </form></p>
     </li>
 </ul>
 
