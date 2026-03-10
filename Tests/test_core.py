@@ -94,3 +94,15 @@ class TestCore(unittest.TestCase):
         core = Features()
         results = core.highest_biofuel("Uruguay")
         self.assertEqual(results, " ")
+
+    @patch('ProductionCode.core.DataSource')
+    def test_country_co2(self, mock_db_class):
+        '''Arguments: self, mock_db_class
+        Return: None
+        Purpose: Tests to see all related data for a specific country 
+        '''
+        mock_db_instance = mock_db_class.return_value
+        mock_db_instance.get_country_co2.return_value = "country,co2,capita\nCanada,1,2"
+        core = Features()
+        results = core.country_co2("Canada")
+        self.assertEqual(results, [['Canada','1','2']])

@@ -52,6 +52,6 @@ class TestFlaskApp(unittest.TestCase) :
         Return: None
         Purpose: Tests year_energy route for appropriate output
         '''
-        result = self.client.get('/year_energy', query_string = {'energy_year': 2000})
+        result = self.client.get('/year_energy', query_string = {'year_energy': 2000})
         self.assertIn('2000', result.data.decode('utf-8'))
         mock_year_energy.assert_called_once_with('2000')

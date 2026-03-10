@@ -3,16 +3,22 @@
         <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     </head>
     <body>
-        {% block title %}Stats{% endblock %}
+        {% extends 'base.html' %}
+        
+        {% block title %}Warning{% endblock %}
 
         {% block content %}
-        <p>{{country_html}} is not a country in our database. Please try again with a valid country. (You may have misspelled or forgotten to capitalize your country's name).</p>
-        <div class = "search">
-                 <li><form action = "/stats">
+
+        <div class = "warning">
+            <p>{{country_html}} is not a country in our database. Please try again with a valid country. (You may have misspelled or forgotten to capitalize your country's name).</p> 
+        </div>
+
+        <div class = "search-container">
+                 <form action = "/stats">
                     <label for = "country_stats">Country</label>
                     <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
                     <input type = "submit" name = "stats_input" value = "Submit">
-                </form></li>
+                </form>
         </div>
         {% endblock %}
     </body>

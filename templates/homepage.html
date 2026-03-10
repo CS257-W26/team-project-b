@@ -13,31 +13,31 @@
         {% block content %}
         
             <h1>Emission Tracker</h1>
-    
+        
             <div class = home-instruct>
                 <h3>Select a field</h3>
                 <p>Choose a topic to analyze climate change</p>
             </div>
             
-            <div class = form-container>
+            <div class = "search-container">
 
-                <li><form action = "/stats">
+                <form action = "/stats">
                     <label for = "country_stats">Country:</label>
                     <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
                     <input type = "submit" name = "stats_input" value = "Submit">
-                </form></li>
-                <li><form action = "/year_co2">
+                </form>
+                <form action = "/year_co2">
                     <label for = "year_co2">Yearly Co2:</label>
                     <br>
                     <input type = "text" id = "year_co2" name = "year_co2" placeholder = "Year">
                     <input type = "submit" name = "year_co2_input" value = "Submit">
-                </form></li>
-                <li><form action = "/year_energy">
+                </form>
+                <form action = "/year_energy">
                     <label for = "year_energy">Yearly Energy:</label>
                     <br>
                     <input type = "text" id = "year_energy" name = "year_energy" placeholder = "Year">
                     <input type = "submit" name = "year_energy_input" value = "Submit">
-                </form></li>
+                </form>
 
             </div>
         {% endblock %}

@@ -18,31 +18,29 @@
         </div>
 
 
-        <div class = "stat-search">
-                 <li><form action = "/stats">
-                    <label for = "country_stats">Country</label>
-                    <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
-                    <input type = "submit" name = "stats_input" value = "Submit">
-                </form></li>
+        <div class = "search-container">
+            <form action = "/stats">
+                <label for = "country_stats">Country</label>
+                <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
+                <input type = "submit" name = "stats_input" value = "Submit">
+            </form>
         </div>
- 
-        <div class = "table-data">
-            <table class="year-table">
-                <thead>
-                    <tr>
-                        <th>Average</th>
-                        <th>Ratio</th>
-                        <th>Biofuel</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{average_html}}</td>
-                        <td>{{ratio_html}}</td>
-                        <td>{{biofuel_html}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class = "row">
+            <div class = "card">
+                <h2>{{ average_html }}</h2>
+                <span>Average Co2 Emissions</spn>
+            </div>
+    
+            <div class = "card">
+                <h2>{{ ratio_html }}</h2>
+                <span>Ratio between Co2 and Co2 Per Capita</spn>
+            </div>
+    
+            <div class = "card">
+                <h2>{{ biofuel_html }}</h2>
+                <span>Top Gas Electricity Usage</spn>
+            </div>
         </div>
 
         {% endblock %}
