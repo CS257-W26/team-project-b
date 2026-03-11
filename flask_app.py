@@ -1,10 +1,6 @@
 '''
 The eventual location for the Flask app interface for the project.
 '''
-import base64
-import io
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
 from flask import Flask, render_template, request
 from ProductionCode.core import Features
 from flask_api import (route_api_average, route_api_ratio,
