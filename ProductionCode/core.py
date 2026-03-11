@@ -81,6 +81,20 @@ class Features():
             output.append(row)
         return output
 
+    def country_energy(self,country):
+        '''Argument: country (str)
+        Return: A list of data from co2_data for a specific country
+        Purpose: To get all of the data in 
+        the database for a specific country
+        '''
+        output = []
+        data = self.ds.get_country_energy(country)
+        final_data = self.csv_helper(data)
+
+        for row in final_data:
+            output.append(row)
+        return output
+
     def csv_helper(self, data):
         '''Argument: data (exported csv from SQL query)
         Return: csv reader
