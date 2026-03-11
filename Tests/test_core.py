@@ -106,3 +106,15 @@ class TestCore(unittest.TestCase):
         core = Features()
         results = core.country_co2("Canada")
         self.assertEqual(results, [['Canada','1','2']])
+
+    @patch('ProductionCode.core.DataSource')
+    def test_country_energy(self, mock_db_class):
+        '''Arguments: self, mock_db_class
+        Return: None
+        Purpose: Tests to see all related energy data for a specific country 
+        '''
+        mock_db_instance = mock_db_class.return_value
+        mock_db_instance.get_country_energy.return_value = "country,energy,capita\nCanada,1,2"
+        core = Features()
+        results = core.country_energy("Canada")
+        self.assertEqual(results, [['Canada','1','2']])
