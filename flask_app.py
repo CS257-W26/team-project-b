@@ -68,14 +68,16 @@ def route_year_energy():
     return render_template('year_energy_function.html', title = 'Year Energy',
                            year_html = year, output = result)
 
-@app.route ("/data")
+@app.route ("/graph")
 def route_data():
     """
     Arguments: None
     Return: returns render of data.html
     Purpose: Display data.html
     """
-    return render_template('data.html')
+    country = str(request.args['graph_country'])
+    
+    return render_template("data.html", image=png_image_b64_string)
 
 @app.route ("/info")
 def route_info():
