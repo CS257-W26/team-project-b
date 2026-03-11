@@ -1,3 +1,7 @@
+import base64
+import io
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 from flask import Flask, Blueprint
 from ProductionCode.core import Features
 
@@ -78,29 +82,20 @@ def route_api_biofuel(country):
     return str(result)
 
 @api.route('/graph/<country>')
-def route_graph(country):
+def route_api_graph(country):
     co2_data = core.country_co2(country)
     energy_data = core.country_energy(country)
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-    axis.set_title(f'{country}')
-    axis.set_xlabel("Years")
-    axis.set_ylabel("CO2")
     x1_values = []
     y1_values = []
     x2_values = []
     y2_values = []
-    for row in data:
+    for row in co2_data:
         if row[4] != '':
             x1_values.append(int(row[1]))
             y1_values.append(float((row[4])))
+    for row in energy_data:
+        if row[4] != '':
             x2_values.append(int(row[1]))
             y2_values.append(float((row[4])))
-    axis.plot(x_values[0:-1], y_values[0:-1])
-    axis.locator_params(nbins=10)
-    png_image = io.BytesIO()
-    FigureCanvas(fig).print_png(png_image)
-    # Encode PNG image to base64 string
-    png_image_b64_string = "data:image/png;base64,"
-    png_image_b64_string += base64.b64encode(png_image.getvalue()).decode('utf8')
-    return 
+    output = [x1_values, y1_values, x2_values, y2_values]
+    return output
