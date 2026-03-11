@@ -26,7 +26,7 @@ def page_not_found(e):
     Purpose: Handles user error if wrong format is inputted
     '''
     return render_template('404.html'), str(e)
-        
+
 
 @app.route("/stats")
 def route_country_stats():
@@ -40,7 +40,7 @@ def route_country_stats():
         biofuel = route_api_biofuel(country)
     except ValueError:
         return render_template('na.html', country_html = country)
-    
+
     return render_template('stats.html', function = "stats",
                            country_html = country,
                            average_html = average,
@@ -72,33 +72,6 @@ def route_year_energy():
     result = route_api_year_energy(year)
     return render_template('year_energy_function.html', title = 'Year Energy',
                            year_html = year, output = result)
-
-@app.route ("/graph")
-def route_graph():
-    """
-    Arguments: None
-    Return: returns render of data.html
-    Purpose: Display data.html
-    """
-    country = str(request.args['graph_country'])
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-    axis.set_title(f'{country}')
-    axis.set_xlabel("Years")
-    
-    axis.set_ylabel("CO2")
-    graph_data = route_api_graph(country)
-    axis.locator_params(nbins=10)
-    png_image = io.BytesIO()
-    FigureCanvas(fig).print_png(png_image)
-    # Encode PNG image to base64 string
-    axis.plot(graph_data[0], graph_data[1])
-    co2Graph = "data:image/png;base64,"
-    co2Graph += base64.b64encode(png_image.getvalue()).decode('utf8')
-    axis.plot(graph_data[2], graph_data[3])
-    energyGraph = "data:image/png;base64,"
-    energyGraph += base64.b64encode(png_image.getvalue()).decode('utf8')
-    return render_template("graph.html", co2Image=co2Graph, energyImage=energyGraph)
 
 @app.route ("/info")
 def route_info():
