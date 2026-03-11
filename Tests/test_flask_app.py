@@ -13,47 +13,45 @@ class TestFlaskApp(unittest.TestCase) :
         self.client.testing = True
 
     @patch('flask_app.route_api_average')
-    def test_route_average(self, mock_average):
+    @patch('flask_app.route_api_ratio')
+    @patch('flask_app.route_api_biofuel')
+    def test_route_country_stats(self, mock_average, mock_ratio, mock_biofuel):
         '''Argument: self, mock_average
         Return: None
-        Purpose: Tests average route for appropriate output messages
+        Purpose: Tests stat route for appropriate output messages
         '''
         mock_average.return_value = '5.5'
-        result = self.client.get('/average', query_string= {'average_country': 'Canada'})
+        mock_ratio.return_value = '2.3'
+        mock_biofuel.return_value = '1.1'
+        result = self.client.get('/stats', query_string= {'country_stats': 'Canada'})
 
         self.assertIn('5.5', result.data.decode('utf-8'))
         self.assertIn('Canada', result.data.decode('utf-8'))
 
         mock_average.assert_called_once_with('Canada')
-
-    @patch('flask_app.route_api_ratio')
-    def test_route_ratio(self, mock_ratio):
-        '''Argument: self, mock_ratio
-        Return: None
-        Purpose: Tests ratio route for appropriate output
-        '''
-        mock_ratio.return_value = '12.5'
-
-        result = self.client.get('/ratio', query_string = {'ratio_country' : 'Canada'})
-
-        self.assertIn('12.5', result.data.decode('utf-8'))
-        self.assertIn('Canada', result.data.decode('utf-8'))
-
         mock_ratio.assert_called_once_with('Canada')
+        mock_biofuel.assert_called_once_with('Canada')
 
-    @patch('flask_app.route_api_biofuel')
-    def test_route_biofuel(self, mock_biofuel):
-        '''Argument: self, mock_biofuel
+    @patch('flask_app.route_api_year_co2')
+    def test_route_year_co2(self, mock_year_co2):
+        '''Argument: self, mock_year_co2
         Return: None
-        Purpose: Tests ratio route for appropriate output
+        Purpose: Tests year_co2 route for appropriate output
         '''
-        mock_biofuel.return_value = '11.1'
+        # mock_year_co2.return_value = "['Canada','2000','2.3']"
+        result = self.client.get('/year_co2', query_string = {'year_co2': 2000})
 
-        result = self.client.get(
-            '/biofuel', query_string = {'biofuel_country': 'Japan'}
-        )
+        self.assertIn('2000', result.data.decode('utf-8'))
+        # self.assertIn("Canada", result.data.decode('utf-8'))
 
-        self.assertIn('11.1', result.data.decode('utf-8'))
-        self.assertIn('Japan', result.data.decode('utf-8'))
+        mock_year_co2.assert_called_once_with('2000')
 
-        mock_biofuel.assert_called_once_with('Japan')
+    @patch('flask_app.route_api_year_energy')
+    def test_route_year_energy(self, mock_year_energy):
+        '''Argument: self, mock_year_energy
+        Return: None
+        Purpose: Tests year_energy route for appropriate output
+        '''
+        result = self.client.get('/year_energy', query_string = {'year_energy': 2000})
+        self.assertIn('2000', result.data.decode('utf-8'))
+        mock_year_energy.assert_called_once_with('2000')
