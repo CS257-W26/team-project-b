@@ -1,7 +1,3 @@
-import base64
-import io
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
 from flask import Flask, Blueprint
 from ProductionCode.core import Features
 
@@ -80,22 +76,3 @@ def route_api_biofuel(country):
     '''
     result = core.highest_biofuel(country)
     return str(result)
-
-@api.route('/graph/<country>')
-def route_api_graph(country):
-    co2_data = core.country_co2(country)
-    energy_data = core.country_energy(country)
-    x1_values = []
-    y1_values = []
-    x2_values = []
-    y2_values = []
-    for row in co2_data:
-        if row[4] != '':
-            x1_values.append(int(row[1]))
-            y1_values.append(float((row[4])))
-    for row in energy_data:
-        if row[4] != '':
-            x2_values.append(int(row[1]))
-            y2_values.append(float((row[4])))
-    output = [x1_values, y1_values, x2_values, y2_values]
-    return output
