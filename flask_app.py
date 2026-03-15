@@ -108,7 +108,7 @@ def route_graph():
 
     axis.plot = fig.clf()
     axis = fig.add_subplot(1, 1, 1)
-    axis.set_title(f'{country}')
+    axis.set_title(f'{country} Energy')
     axis.set_xlabel("Years")
     axis.set_ylabel("Energy")
     axis.locator_params(nbins=10)
