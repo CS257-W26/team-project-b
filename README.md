@@ -61,10 +61,7 @@ Page changed: core.py
 
 Lines changed: 13-26, 31, 39, 43-50, 85-101
 
-How we addressed this issue: Intially, our variables names for our function arguments lacked the appropriate description for what they were. We improved this by changing the names to "country" or "year" to provide more context. 
-
-After changing our datasource.py, we were able to remove the calculate_average function. Our average and biofuel functions became shorter improving readability of our code. 
-
+How we addressed this issue: Intially, our variables names for our function arguments lacked the appropriate description for what they were. We improved this by changing variables to names like "country" or "year" to provide more context. In addition, after changing our datasource.py, we were able to remove calculate_average function. This shortened not only our average function but significantly cut down on unneeded lines of code in our ratio and biofuel functions improving the overall readability of our code. 
 
 # Front-End Design Improvements
 
