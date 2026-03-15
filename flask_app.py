@@ -1,10 +1,14 @@
 '''
 The eventual location for the Flask app interface for the project.
 '''
+import base64
+import io
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 from flask import Flask, render_template, request
 from ProductionCode.core import Features
 from flask_api import (route_api_average, route_api_ratio,
-route_api_year_co2, route_api_year_energy, route_api_biofuel, api)
+route_api_year_co2, route_api_year_energy, route_api_biofuel, api, route_api_graph)
 
 app = Flask(__name__)
 core = Features()
@@ -77,6 +81,43 @@ def route_info():
     Purpose: Display info.html
     """
     return render_template('info.html')
+
+@app.route ("/graph")
+def route_graph():
+    """
+    Arguments: None
+    Return: returns render of data.html
+    Purpose: Display data.html
+    """
+    country = str(request.args['graph_country'])
+    graph_data = route_api_graph(country)
+
+    fig = Figure()
+    axis = fig.add_subplot(1, 1, 1)
+    axis.set_title(f'{country} CO2')
+    axis.set_xlabel("Years")
+    axis.set_ylabel("CO2")
+    axis.locator_params(nbins=10)
+
+    axis.plot(graph_data[0], graph_data[1])
+    co2_png_image = io.BytesIO()
+    FigureCanvas(fig).print_png(co2_png_image)
+    # Encode PNG image to base64 string
+    co2_graph = "data:image/co2_png;base64,"
+    co2_graph += base64.b64encode(co2_png_image.getvalue()).decode('utf8')
+
+    axis.plot = fig.clf()
+    axis = fig.add_subplot(1, 1, 1)
+    axis.set_title(f'{country} Energy')
+    axis.set_xlabel("Years")
+    axis.set_ylabel("Energy")
+    axis.locator_params(nbins=10)
+    axis.plot(graph_data[2], graph_data[3])
+    energy_png_image = io.BytesIO()
+    FigureCanvas(fig).print_png(energy_png_image)
+    energy_graph = "data:image/energy_png;base64,"
+    energy_graph += base64.b64encode(energy_png_image.getvalue()).decode('utf8')
+    return render_template("graph.html", co2Image=co2_graph, energyImage=energy_graph)
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')

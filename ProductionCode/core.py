@@ -28,43 +28,43 @@ class Features():
         ratio = avg_co2/avg_energy
         return ratio
 
-    def year_co2(self, year_args):
-        '''Arguments: self, year_arg, a year (string)
+    def year_co2(self, year):
+        '''Arguments: self, year (string)
         Return: A list of lists (string) with each country and
         total CO2 emissions from a specific year
         Purpose: To get the total CO2 emissions of each country
         in the dataset from a specific year
         '''
         output = []
-        data = self.ds.get_year_co2(year_args)
+        data = self.ds.get_year_co2(year)
         final_data = self.csv_helper(data)
         #If information about co2 is not empty
         for row in final_data:
             output.append(row)
         return output
 
-    def year_energy(self, year_args):
-        '''Arguments: year_arg, a year (string)
+    def year_energy(self, year):
+        '''Arguments: self, year (string)
         Return: A list of lists (string) with each country and
         total energy emissions from a specific year
         Purpose: To get the total energy emissions of each country
         in the dataset from a specific year
         '''
         output = []
-        data = self.ds.get_year_energy(year_args)
+        data = self.ds.get_year_energy(year)
         final_data = self.csv_helper(data)
 
         for row in final_data:
             output.append(row)
         return output
 
-    def highest_biofuel(self, biofuel_arg):
-        '''Argument: biofuel_arg (str), a country name
+    def highest_biofuel(self, country):
+        '''Argument: country (str), a country name
         Return: int highest emissions
         Purpose: Returns a single int representing the highest
         biofuel electricity usage of a specific country
         '''
-        max_biofuel = self.ds.get_biofuel(biofuel_arg)
+        max_biofuel = self.ds.get_biofuel(country)
         return max_biofuel
 
     def country_co2 (self, country):

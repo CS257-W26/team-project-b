@@ -1,11 +1,18 @@
 <html>
-    <form action="/graph">
-        <label id="graph_country">Data:</label>
-        <input type="text" id = "graph_country" name = "graph_country" placeholder = "Country">
-        <input type="submit" name ="co2_input" value="Submit">
-    </form>
-    <div>
-        <img src={{co2Image}} alt="Graph of country's co2 over years">
-        <img src={{energyImage}} alt="Graph of country's energy over years">
-    </div>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <form action="/graph">
+            <label id="graph_country">Graph:</label>
+            <input type="text" id = "graph_country" name = "graph_country" placeholder = "Country">
+            <input type="submit" name ="co2_input" value="Submit">
+        </form>
+        <div>
+            <img src={{co2Image}} alt="Graph of country's co2 over years">
+            <img src={{energyImage}} alt="Graph of country's energy over years">
+        </div>
+    </body>
+    {% extends 'base.html' %}
 </html>

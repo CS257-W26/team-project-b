@@ -52,3 +52,11 @@ class TestFlaskApp(unittest.TestCase) :
         result = self.client.get('/year_energy', query_string = {'year_energy': 2000})
         self.assertIn('2000', result.data.decode('utf-8'))
         mock_year_energy.assert_called_once_with('2000')
+
+    def test_route_graph(self):
+        '''Argument: self
+        Return: None
+        Purpose: Tests year_energy route for appropriate output
+        '''
+        result = self.client.get('/graph', query_string = {'graph_country': "Canada"})
+        self.assertIn('Graph', result.data.decode('utf-8'))
