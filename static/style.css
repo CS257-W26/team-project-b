@@ -77,16 +77,16 @@ h1 {
 
 .instruction-list {
     background-color: white;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 30px auto;
-    padding: 25x 35px;
-    border-radius: 15px;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+    padding: 40px 60px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.instruction-list h3 {
-    font-size: 1.4rem;
+.instruction-list h1 {
+    font-size: 2rem;
     margin-bottom: 18px;
 }
 

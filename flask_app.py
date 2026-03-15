@@ -82,6 +82,15 @@ def route_info():
     """
     return render_template('info.html')
 
+@app.route ("/help")
+def route_help():
+    """
+    Arguments: None
+    Return: returns render of help.html
+    Purpose: Display help.html
+    """
+    return render_template('help.html')
+
 @app.route ("/graph")
 def route_graph():
     """

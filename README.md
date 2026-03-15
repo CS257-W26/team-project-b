@@ -47,21 +47,21 @@ Muddling Through: Our website enables muddling by having a bar with main pages s
 
 # Code Design Improvements
 
-### Code smells: Large Class and Long Parameter List 
+### Code Smells: Large Class and Long Parameter List 
 
 Page changed: datasource.py
 
 Lines changed: 14-21, 38-45, 61-68
 
-How we addressed this issue: We removed the helper functions that had general sql queries that needed multiple parameters. This caused the datasource class to be longer than it needed to be. By removing these helper functions, we removed methods with long parameter lists and shortened our datasource class to only include methods that are necessary.
+Explanation of refactoring: The previous version of our datasource class was longer than necessary due to helper functions containing general SQL queries, which needed multiple parameters. By removing these helper functions, we removed methods with long parameter lists and shortened our datasource class to only include methods that are necessary.
 
-### Code smells: Naming Principles for Variables and Improvement of Function (idk change this)
+### Code Smells: Naming Principles for Variables and Improvement of Function (idk change this)
 
 Page changed: core.py
 
 Lines changed: 13-26, 31, 39, 43-50, 85-101
 
-How we addressed this issue: Intially, our variables names for our function arguments lacked the appropriate description for what they were. We improved this by changing variables to names like "country" or "year" to provide more context. In addition, after changing our datasource.py, we were able to remove calculate_average function. This shortened not only our average function but significantly cut down on unneeded lines of code in our ratio and biofuel functions improving the overall readability of our code. 
+Explanation of refactoring: Initially, variables names for our function arguments lacked appropriate description for what they were. We improved this by changing variables to names like "country" or "year" to provide more context. In addition, after changing our datasource.py, we were able to remove calculate_average function. This shortened our average function and significantly cut down on excessive lines of code in our ratio and biofuel functions, improving the overall readability of our code. 
 
 # Front-End Design Improvements
 
@@ -71,14 +71,15 @@ Usability issue: In the initial front-end version of our website, the navigation
 
 Page changed: templates/base.html
 
-How we adressed this issue: We expanded the navigation bar to include links to all of our main function pages. This allows users to easily move between different features of the website without needing to return to the homepage, making the navigation more fluid and improving the operability of our website.
+How we addressed this issue: We expanded the navigation bar to include links to all of our main function pages, a graph page, and a help page. This allows users to easily move between different features of the website without needing to return to the homepage, making the navigation more fluid and improving the operability of our website. The help page also offers added clarity on how to use the main function pages, supporting users who are scanning through and want to quickly understand the website's system.
 
 ## Improvement: Added Information and Improved Visual Hierarchy for Homepage
 
-Usability issue: In the intial front-end version of our website, the homepage contained very little background information on the purpose of the website and how to navigate the function pages. There were only two brief lines addressing the goal of the website and one vague instruction line that directed users to enter a value for one of our functions. There were also some functions missing from the homepage, and in general, a weak visual hierarchy that made scanning difficult for users.
+Usability issue: In the initial front-end version of our website, the homepage contained minimal background information on the purpose of the website and how to navigate the function pages. There were only two brief lines addressing the goal of the website and one vague instruction line that directed users to enter a value for one of the search boxes. There were also functions missing from the homepage, and in general, a weak visual hierarchy that made scanning difficult for users.
 
 Page changed: templates/homepage.html, static/style.css
 
-How we addressed this issue: We revised the CSS styling of the homepage by adding labels to distinguish sections of the homepage and included more background information about the website. This resulted in the general information about the site being formatted  larger text at the top of the page, the instructions emphasized by using a box-shadow, and the search boxes spread out at the bottom of the page.
+How we addressed this issue: We revised the styling of the homepage by adding labels in the HTML template, which created distinct sections to allow for separate styling. Additional background information was also included to inform the user about the website. This resulted in the general information about the site being formatted with larger text at the top of the page and the search boxes spread out at the bottom of the page.
 
+the instructions emphasized by using a box-shadow, 
 This allowed different sections to be styled seperately from one another,

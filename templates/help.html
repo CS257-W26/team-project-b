@@ -1,0 +1,25 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+        
+        {% block title %}Filter by Year{% endblock %}
+
+        {% block content %}
+        
+        <div class = instruction-list>
+            <h1>How to Use This Site</h1>
+            <ul>
+                <li><strong>Graphs:</strong> Enter a country name to see trends in emissions over time.</li>
+                <li><strong>Country Statistics:</strong> Enter a country name to see average emissions and other statistics.</li>
+                <li><strong>CO₂ by Year:</strong> Enter a year to view data on CO₂ emissions across countries.</li>
+                <li><strong>Energy by Year:</strong> Enter a year to explore energy emissions and energy use per capita in that year.</li>
+            </ul>
+        </div>
+        {% endblock %}
+    </body>
+</html>
