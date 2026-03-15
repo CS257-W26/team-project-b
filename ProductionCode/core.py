@@ -36,7 +36,7 @@ class Features():
         in the dataset from a specific year
         '''
         output = []
-        data = self.ds.get_year_co2(year_args)
+        data = self.ds.get_year_co2(year)
         final_data = self.csv_helper(data)
         #If information about co2 is not empty
         for row in final_data:
@@ -51,7 +51,7 @@ class Features():
         in the dataset from a specific year
         '''
         output = []
-        data = self.ds.get_year_energy(year_args)
+        data = self.ds.get_year_energy(year)
         final_data = self.csv_helper(data)
 
         for row in final_data:
