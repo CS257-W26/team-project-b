@@ -6,20 +6,28 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    height: 70px;
+    height: 45px;
     width: 100%
 }
+.navbar {
+    background-color: rgb(27, 67, 50);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
 .navbar ul {
     background-color: rgb(27, 67, 50);
-    list-style-type: none;
-    overflow: auto;
+    display: flex;
     margin: 0px;
+    padding: 0;
 }
 
 .navbar li {
-    float: left;
+    list-style-type: none;
     font-size: 1.1em;
     padding: 0;
+    margin-right: 20px;
 }
 
 .navbar a {
@@ -54,17 +62,48 @@ h1 {
     padding-bottom: 0.4em;
 }
 
-.home-instruct,
-.year_heading, 
-.warning{
+.home-intro {
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.home-intro p {
+    line-height: 1.8;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.instruction-list {
+    background-color: white;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25x 35px;
+    border-radius: 15px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.search-container form{
-    display: flex;    
-    justify-content: center;
+.instruction-list h3 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+}
+
+.instruction-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.instruction-list li {
+    margin: 14px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.year_heading, 
+.warning{
     text-align: center;
-    padding: 1em;
 }
 
 .info-page {
@@ -119,12 +158,22 @@ a:hover {
     margin-bottom: 20px;
 }
 
-.search-box{
-    color: white;
-    width: 100%;
+.search-container {
     display: flex;
     justify-content: center;
-    margin: 30px auto;
+    gap: 30px;
+    margin: 40px auto;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    background-color: white;
+    padding: 25px;
+    width: 400px;
+    margin: 40px auto;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .search-box form {
@@ -134,19 +183,34 @@ a:hover {
     display: flex;
 }
 
-.search-box input[type="text"] {
-    width: 260px;
-    padding: 14px 16px;
-    font-size: 1.1rem;
-    border-radius: 8px;
-}
-.search-box input[type="submit"] {
-    padding: 14px 20px;
-    font-size: 1.1rem;
-    border-radius: 8px;
+.search-box h4 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
 }
 
-.year-body {
+.search-box p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 18px;
+}
+
+.search-box input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.search-box input[type="submit"] {
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgb(27, 67, 50);
+    color: white;
+}
+
+.page-body {
     width: 70%;
     max-width: 1000px;
     margin: 20px auto 40px auto;
@@ -156,7 +220,7 @@ a:hover {
     text-align: center;
 }
 
-.year-body p {
+.page-body {
     margin-bottom: 18px;
 }
 
@@ -191,6 +255,7 @@ a:hover {
 
 .row {
     display:flex;
+    justify-content: center;
     margin-bottom: 2em;
 }
 

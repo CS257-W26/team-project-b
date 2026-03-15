@@ -14,31 +14,49 @@
         
             <h1>Emission Tracker</h1>
         
-            <div class = home-instruct>
-                <h3>Select a field</h3>
-                <p>Choose a topic to analyze climate change</p>
+            <div class = home-intro>
+                <p> This website allows you to explore global climate data using datasets from Our World in Data. You can compare carbon 
+                    dioxide emissions, examine energy use across countries, and explore trends across different years. </p>
+                <p> Choose a field below to search by country/year to learn more about how emissions and energy usage vary around the
+                    world.</p>
             </div>
+
+        <div class = instruction-list>
+            <h3>How to Use This Site</h3>
+            <ul>
+                <li><strong>Country Statistics:</strong> Enter a country name to see average emissions and other statistics.</li>
+                <li><strong>CO₂ by Year:</strong> Enter a year to view data on CO₂ emissions across countries.</li>
+                <li><strong>Energy by Year:</strong> Enter a year to explore energy emissions and energy use per capita in that year.</li>
+            </ul>
+        </div>
             
             <div class = "search-container">
+                <div class ="search-box">
+                    <h4>Stats by Country</h4>
+                    <p>View summary statistics for a selected country.</p>
+                    <form action = "/stats">
+                        <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
+                        <input type = "submit" name = "country_stats_input" value = "Submit">
+                </form>
+                </div>
 
-                <form action = "/stats">
-                    <label for = "country_stats">Cumulative Stats by Country:</label>
-                    <input type = "text" id = "country_stats" name = "country_stats" placeholder = "Country">
-                    <input type = "submit" name = "country_stats_input" value = "Submit">
-                </form>
-                <form action = "/year_co2">
-                    <label for = "year_co2">Co2 Emissions Across Countries by Year:</label>
-                    <br>
-                    <input type = "text" id = "year_co2" name = "year_co2" placeholder = "Year">
-                    <input type = "submit" name = "year_co2_input" value = "Submit">
-                </form>
-                <form action = "/year_energy">
-                    <label for = "year_energy">Energy Emissions Across Countries by Year:</label>
-                    <br>
-                    <input type = "text" id = "year_energy" name = "year_energy" placeholder = "Year">
-                    <input type = "submit" name = "year_energy_input" value = "Submit">
-                </form>
+                <div class ="search-box">
+                    <h4>CO₂ Emissions by Year</h4>
+                    <p>Compare CO₂ emissions across countries in a specific year.</p>
+                    <form action = "/year_co2">
+                        <input type = "text" id = "year_co2" name = "year_co2" placeholder = "Year">
+                        <input type = "submit" name = "year_co2_input" value = "Submit">
+                    </form>
+                </div>
 
+                <div class ="search-box">
+                    <h4>Energy Emissions by Year</h4>
+                    <p>Compare energy emissions and energy use per capita across countries.</p>
+                    <form action = "/year_energy">
+                        <input type = "text" id = "year_energy" name = "year_energy" placeholder = "Year">
+                        <input type = "submit" name = "year_energy_input" value = "Submit">
+                    </form>
+                </div>
             </div>
         {% endblock %}
     </body>

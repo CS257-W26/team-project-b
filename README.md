@@ -44,3 +44,24 @@ Scanning: Our wesite enables scanning by having a heading that shows where users
 Satisficing: Our website enables satisficing by having noticeable buttons [] that are easy to read and see would be helpful in guiding users while they are searching. 
 
 Muddling Through: Our website enables muddling by having a bar with main pages stays at the top of each page, so users can easily go back to the most significant pages while traversing the website since they can expect where to find them.
+
+# Code Design Inmprovements
+
+# Front-End Design Improvements
+
+Improvement: Expanded Navigation Bar
+
+Usability issue: In the initial version of our website, the navigation bar only included links to the homepage and information page. As a result, users would have to return to back to the homepage after navigating to one of the function pages in order to visit a different function page. For example, if a user visited the stats page and wanted to explore a different field, they would have to return to the homepage. This creates unnecessary navigation steps and makes exploring and satisficing through the site more difficult.
+
+Page changed: templates/base.html
+
+How we adressed this issue: We expanded the navigation bar to include links to all of our main function pages. This allows users to easily move between different features of the website without needing to return to the homepage, making the navigation more fluid and improving the operability of our website.
+
+Improvement:
+
+Usability issue:
+
+Page changed:
+
+How we addressed this issue:
+
