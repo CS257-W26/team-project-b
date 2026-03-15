@@ -45,23 +45,24 @@ Satisficing: Our website enables satisficing by having noticeable buttons [] tha
 
 Muddling Through: Our website enables muddling by having a bar with main pages stays at the top of each page, so users can easily go back to the most significant pages while traversing the website since they can expect where to find them.
 
-# Code Design Inmprovements
+# Code Design Improvements
 
 # Front-End Design Improvements
 
-Improvement: Expanded Navigation Bar
+### Improvement: Expanded Navigation Bar
 
-Usability issue: In the initial version of our website, the navigation bar only included links to the homepage and information page. As a result, users would have to return to back to the homepage after navigating to one of the function pages in order to visit a different function page. For example, if a user visited the stats page and wanted to explore a different field, they would have to return to the homepage. This creates unnecessary navigation steps and makes exploring and satisficing through the site more difficult.
+Usability issue: In the initial front-end version of our website, the navigation bar only included links to the homepage and information page. As a result, users would have to return back to the homepage after navigating to one of the function pages in order to visit a page of a different function. For example, if a user visited the stats page and wanted to explore a different field, they would have to return to the homepage. This creates unnecessary navigation steps and makes exploring and satisficing through the site more difficult.
 
 Page changed: templates/base.html
 
 How we adressed this issue: We expanded the navigation bar to include links to all of our main function pages. This allows users to easily move between different features of the website without needing to return to the homepage, making the navigation more fluid and improving the operability of our website.
 
-Improvement:
+## Improvement: Added Information and Improved Visual Hierarchy for Homepage
 
-Usability issue:
+Usability issue: In the intial front-end version of our website, the homepage contained very little background information on the purpose of the website and how to navigate the function pages. There were only two brief lines addressing the goal of the website and one vague instruction line that directed users to enter a value for one of our functions. There were also some functions missing from the homepage, and in general, a weak visual hierarchy that made scanning difficult for users.
 
-Page changed:
+Page changed: templates/homepage.html, static/style.css
 
-How we addressed this issue:
+How we addressed this issue: We revised the CSS styling of the homepage by adding labels to distinguish sections of the homepage and included more background information about the website. This provides a stronger visual hierarchy
 
+This allowed different sections to be styled seperately from one another,
