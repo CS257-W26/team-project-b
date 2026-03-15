@@ -103,8 +103,8 @@ def route_graph():
     co2_png_image = io.BytesIO()
     FigureCanvas(fig).print_png(co2_png_image)
     # Encode PNG image to base64 string
-    co2Graph = "data:image/co2_png;base64,"
-    co2Graph += base64.b64encode(co2_png_image.getvalue()).decode('utf8')
+    co2_graph = "data:image/co2_png;base64,"
+    co2_graph += base64.b64encode(co2_png_image.getvalue()).decode('utf8')
 
     axis.plot = fig.clf()
     axis = fig.add_subplot(1, 1, 1)
@@ -115,9 +115,9 @@ def route_graph():
     axis.plot(graph_data[2], graph_data[3])
     energy_png_image = io.BytesIO()
     FigureCanvas(fig).print_png(energy_png_image)
-    energyGraph = "data:image/energy_png;base64,"
-    energyGraph += base64.b64encode(energy_png_image.getvalue()).decode('utf8')
-    return render_template("graph.html", co2Image=co2Graph, energyImage=energyGraph)
+    energy_graph = "data:image/energy_png;base64,"
+    energy_graph += base64.b64encode(energy_png_image.getvalue()).decode('utf8')
+    return render_template("graph.html", co2Image=co2_graph, energyImage=energy_graph)
 
 if __name__ == "__main__":
     app.register_blueprint(api, url_prefix='/api')
