@@ -47,6 +47,22 @@ Muddling Through: Our website enables muddling by having a bar with main pages s
 
 # Code Design Improvements
 
+### Code smells: Large Class and Long Parameter List 
+
+Page changed: datasource.py
+
+Lines changed: 14-21, 38-45, 61-68
+
+How we addressed this issue: We removed the helper functions that had general sql queries that needed multiple parameters. This caused the datasource class to be longer than it needed to be. By removing these helper functions, we removed methods with long parameter lists and shortened our datasource class to only include methods that are necessary.
+
+### Code smells: Naming Principles for Variables and Improvement of Function (idk change this)
+
+Page changed: core.py
+
+Lines changed: 13-26, 31, 39, 43-50, 85-101
+
+How we addressed this issue: Intially, our variables names for our function arguments lacked the appropriate description for what they were. We improved this by changing variables to names like "country" or "year" to provide more context. In addition, after changing our datasource.py, we were able to remove calculate_average function. This shortened not only our average function but significantly cut down on unneeded lines of code in our ratio and biofuel functions improving the overall readability of our code. 
+
 # Front-End Design Improvements
 
 ### Improvement: Expanded Navigation Bar
