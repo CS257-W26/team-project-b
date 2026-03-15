@@ -63,6 +63,6 @@ Usability issue: In the intial front-end version of our website, the homepage co
 
 Page changed: templates/homepage.html, static/style.css
 
-How we addressed this issue: We revised the CSS styling of the homepage by adding labels to distinguish sections of the homepage and included more background information about the website. This provides a stronger visual hierarchy
+How we addressed this issue: We revised the CSS styling of the homepage by adding labels to distinguish sections of the homepage and included more background information about the website. This resulted in the general information about the site being formatted  larger text at the top of the page, the instructions emphasized by using a box-shadow, and the search boxes spread out at the bottom of the page.
 
 This allowed different sections to be styled seperately from one another,
