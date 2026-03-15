@@ -4,11 +4,18 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <form action="/graph">
+        <div class = "graph-heading">
+            <h1 id = "graph_title">Emission Trends by Country</h1>
+        </div>
+        
+        <div class = "search-box">
+            <form action="/graph">
             <label id="graph_country">Graph:</label>
             <input type="text" id = "graph_country" name = "graph_country" placeholder = "Country">
             <input type="submit" name ="co2_input" value="Submit">
         </form>
+        </div>
+
         <div>
             <img src={{co2Image}} alt="Graph of country's co2 over years">
             <img src={{energyImage}} alt="Graph of country's energy over years">
