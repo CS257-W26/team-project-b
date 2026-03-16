@@ -55,7 +55,7 @@ Lines changed: 14-21, 38-45, 61-68
 
 Explanation of refactoring: The previous version of our datasource class was longer than necessary due to helper functions containing general SQL queries, which needed multiple parameters. By removing these helper functions, we removed methods with long parameter lists and shortened our datasource class to only include methods that are necessary.
 
-### Code Smells: Naming Principles for Variables and Improvement of Function (idk change this)
+### Code Smells: Naming Principles for Variables and Minimizing Function
 
 Page changed: core.py
 
